@@ -3,7 +3,7 @@ Sequel.migration do
 
     create_table :items do
       primary_key :id
-      String :path, null: false
+      String :path, null: false, unique: true
       String :title, null: false
 
       DateTime :created_at, null: false

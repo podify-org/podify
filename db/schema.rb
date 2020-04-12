@@ -6,6 +6,8 @@ Sequel.migration do
       column :title, "text", :null=>false
       column :created_at, "timestamp without time zone", :null=>false
       column :updated_at, "timestamp without time zone", :null=>false
+      
+      index [:path], :name=>:items_path_key, :unique=>true
     end
     
     create_table(:schema_migrations) do
