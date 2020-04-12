@@ -31,5 +31,9 @@ module Podify
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.sequel.after_connect = proc do
+      Sequel::Model.plugin :timestamps, update_on_create: true
+    end
   end
 end
