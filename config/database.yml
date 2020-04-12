@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: paaaaaasss
+
+development:
+  <<: *default
+  database: podify_development
+
+test:
+  <<: *default
+  database: podify_test
+
+production:
+  <<: *default
+  database: podify_production
