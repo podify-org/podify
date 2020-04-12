@@ -19,6 +19,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'sequel-rails'
 
+gem 'dry-monads'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
