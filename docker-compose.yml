@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: paaaaaasss
+    network_mode: host
+
+  # redis:
+  #   image: redis
+  #   network_mode: host
+  #   restart: always
+  #   ports:
+  #     - "6379:6379"
+
+  # memcached:
+  #   image: memcached
+  #   network_mode: host
+  #   restart: always
+  #   ports:
+  #     - "11211:11211"
