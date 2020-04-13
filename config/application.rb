@@ -37,10 +37,15 @@ module Podify
     # Remove heinous monkey patch
     Dry::View::Part.undef_method :to_param
 
-    config.sequel.skip_connect = true
+    # config.sequel.skip_connect = true
+    Sequel.extension(:pg_json_ops)
+
     config.sequel.after_connect = proc do |conn|
       Sequel::Model.plugin :timestamps, update_on_create: true
       Sequel::Model.plugin :association_dependencies
+
+      Sequel::Model.db.extension :pg_json
+      Sequel::Model.db.extension :pg_enum
     end
   end
 end

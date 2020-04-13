@@ -1,6 +1,6 @@
 h1 Sources
 
-== new_source.form
+== new_source.render_form
 
 - sources.each do |source|
-  p= link_to source.title, source_path(source.id)
+  == source.render_list_entry
