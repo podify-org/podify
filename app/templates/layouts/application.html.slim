@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title Podify
+
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    /= csrf_meta_tags
+    /= csp_meta_tag
+
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    .navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand href=root_path Podify
+      button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        span.navbar-toggler-icon
+
+      .collapse.navbar-collapse#navbarSupportedContent
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link href="/" Sources
+          li.nav-item
+            a.nav-link href="/downloads" Downloads
+
+    .container
+      == yield

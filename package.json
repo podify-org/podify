@@ -2,7 +2,14 @@
   "name": "podify",
   "private": true,
   "dependencies": {
-    "@rails/ujs": "^6.0.0"
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.2.2",
+    "bootstrap": "4.4.1",
+    "jquery": "^3.5.0",
+    "popper.js": "^1.16.1"
   },
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
 }

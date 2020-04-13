@@ -267,7 +267,6 @@ DEPENDENCIES
   byebug
   dry-monads
   dry-rails
-  dry-validation
   dry-view
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
