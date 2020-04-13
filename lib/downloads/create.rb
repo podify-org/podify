@@ -10,8 +10,8 @@ module Downloads
 
     def validate(attributes)
       return Failure(:attributes_missing) unless attributes
-      return Failure(:title_missing) unless attributes[:title]
       return Failure(:path_missing) unless attributes[:path]
+      return Failure(:source_missing) unless attributes[:source_id]
       Success()
     end
 

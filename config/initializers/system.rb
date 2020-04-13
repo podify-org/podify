@@ -4,5 +4,4 @@ Dry::Rails.container do
 
   # enable auto-registration in the lib dir
   auto_register!('lib')
-  auto_register!('app/operations')
 end

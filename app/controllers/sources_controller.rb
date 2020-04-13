@@ -4,10 +4,7 @@ class SourcesController < ApplicationController
   end
 
   schema(:create, :update) do
-    required(:source).hash do
-      required(:url).filled(:string)
-      optional(:title).filled(:string)
-    end
+    required(:source).hash
   end
 
   def show
@@ -19,8 +16,13 @@ class SourcesController < ApplicationController
   end
 
   def create
-    attrs = safe_params[:source]
-    Source.create(attrs)
-    redirect_to root_path
+    case resolve('sources.create').call(safe_params[:source])
+    in Dry::Monads::Success(source)
+      puts "CREATED #{source.id}"
+      redirect_to root_path
+    in Dry::Monads::Failure(validation)
+      puts validation.errors(full: true).to_a.map(&:to_s).join(", ")
+      render html: Views::Sources::Index.new.call.to_s.html_safe
+    end
   end
 end

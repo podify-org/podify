@@ -1,2 +1,3 @@
 * TODO Protect against forgery
 [[file:app/templates/layouts/application.html.slim::/=%20csrf_meta_tags][CSRF etc]]
+* TODO Set empty title to nil
