@@ -1,11 +1,11 @@
-module Items
+module Downloads
   class Create
     include Dry::Monads[:result, :do]
 
     def call(attributes)
       yield validate(attributes)
-      item = yield create_item(attributes)
-      Success(item)
+      download = yield create_download(attributes)
+      Success(download)
     end
 
     def validate(attributes)
@@ -15,8 +15,8 @@ module Items
       Success()
     end
 
-    def create_item(attrs)
-      Success(Item.create(attrs))
+    def create_download(attrs)
+      Success(Download.create(attrs))
     end
   end
 end

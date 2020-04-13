@@ -1,9 +1,9 @@
-module Items
+module Downloads
   class ImportFile
     include Dry::Monads[:result]
     include Dry::Monads::Do.for(:call)
 
-    include Podify::Import['expand_path', 'items.create']
+    include Podify::Import['expand_path', 'downloads.create']
 
     def call(path)
       path = yield expand_path.call(path)
@@ -19,7 +19,7 @@ module Items
     end
 
     def assert_not_yet_imported(path)
-      return Failure(:already_exists) if Item.by_path(path).any?
+      return Failure(:already_exists) if Download.by_path(path).any?
       Success()
     end
 

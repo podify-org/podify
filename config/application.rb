@@ -35,6 +35,7 @@ module Podify
     config.sequel.skip_connect = true
     config.sequel.after_connect = proc do |conn|
       Sequel::Model.plugin :timestamps, update_on_create: true
+      Sequel::Model.plugin :association_dependencies
     end
   end
 end
