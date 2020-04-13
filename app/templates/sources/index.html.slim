@@ -1,0 +1,6 @@
+h1 Sources
+
+== render :form, source: new_source
+
+- sources.each do |source|
+  p= link_to source.title, source_path(source)

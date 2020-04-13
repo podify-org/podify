@@ -19,12 +19,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'sequel-rails'
 
+gem 'dry-rails'
 gem 'dry-monads'
+gem 'dry-view'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'dry-rails'
+gem 'slim-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

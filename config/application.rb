@@ -32,6 +32,11 @@ module Podify
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    config.autoload_paths << Rails.root.join('app/views')
+
+    # Remove heinous monkey patch
+    Dry::View::Part.undef_method :to_param
+
     config.sequel.skip_connect = true
     config.sequel.after_connect = proc do |conn|
       Sequel::Model.plugin :timestamps, update_on_create: true
