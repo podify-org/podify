@@ -1,3 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  before_action do
+    Dry::View.reset_cache! # TODO: only in development
+  end
 end

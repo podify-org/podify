@@ -1,7 +1,7 @@
 module Parts
   class Source < ApplicationPart
     def form
-      "no form yet"
+      render :form, source: self
     end
   end
 end
