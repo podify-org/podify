@@ -4,7 +4,7 @@ module Views
       config.template = "sources/index"
 
       expose(:sources) { Source.all }
-      expose(:new_source) { Source.new }
+      expose(:new_source, as: :source) { Source.new }
     end
   end
 end
