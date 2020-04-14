@@ -23,6 +23,7 @@ gem 'dry-rails'
 gem 'dry-monads'
 gem 'dry-view'
 gem 'dry-cli'
+gem 'dry-events'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

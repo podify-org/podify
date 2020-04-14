@@ -85,6 +85,10 @@ GEM
     dry-core (0.4.9)
       concurrent-ruby (~> 1.0)
     dry-equalizer (0.3.0)
+    dry-events (0.2.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.4)
+      dry-equalizer (~> 0.2)
     dry-inflector (0.2.0)
     dry-initializer (3.0.3)
     dry-logic (1.0.6)
@@ -277,6 +281,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   dry-cli
+  dry-events
   dry-monads
   dry-rails
   dry-view

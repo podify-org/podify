@@ -6,9 +6,15 @@ module CLI
       class Import < Dry::CLI::Command
         desc "Import existing files or directories as downloads"
 
-        include Podify::Import['downloads.import_file', 'downloads.import_directory']
+        include Podify::Import[
+          'events',
+          'downloads.import_file',
+          'downloads.import_directory'
+        ]
 
         def call(args: [])
+          subscribe_to_events
+
           args.each do |arg|
             path = Pathname(arg)
             if path.file?
@@ -20,9 +26,20 @@ module CLI
               next
             end
 
-            puts "Importing #{path}"
-            pp import.call(path)
-            puts
+            puts "Importing #{path}..."
+            import.call(path)
+          end
+
+          puts
+          puts "Imported #{@imported} files"
+        end
+
+        def subscribe_to_events
+          @imported = 0
+
+          events.subscribe('sources.created') do |event|
+            puts "Imported \"#{event[:source].title}\" from #{event[:source].url}"
+            @imported += 1
           end
         end
       end
