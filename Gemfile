@@ -25,6 +25,8 @@ gem 'dry-view'
 gem 'dry-cli'
 gem 'dry-events'
 
+gem 'youtube-dl.rb'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
