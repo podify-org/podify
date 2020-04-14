@@ -73,6 +73,8 @@ GEM
     debug_inspector (0.0.3)
     dry-auto_inject (0.7.0)
       dry-container (>= 0.3.4)
+    dry-cli (0.6.0)
+      concurrent-ruby (~> 1.0)
     dry-configurable (0.11.5)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.4, >= 0.4.7)
@@ -274,6 +276,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.4.2)
   byebug
+  dry-cli
   dry-monads
   dry-rails
   dry-view

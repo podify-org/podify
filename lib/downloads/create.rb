@@ -2,17 +2,12 @@ module Downloads
   class Create
     include Dry::Monads[:result, :do]
 
-    def call(attributes)
-      yield validate(attributes)
-      download = yield create_download(attributes)
-      Success(download)
-    end
+    include Podify::Import['downloads.contract']
 
-    def validate(attributes)
-      return Failure(:attributes_missing) unless attributes
-      return Failure(:path_missing) unless attributes[:path]
-      return Failure(:source_missing) unless attributes[:source_id]
-      Success()
+    def call(attrs)
+      attrs = yield(contract.call(attrs).to_monad).to_h
+      download = yield create_download(attrs)
+      Success(download)
     end
 
     def create_download(attrs)

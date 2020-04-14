@@ -1,6 +1,6 @@
 module Downloads
   class ImportFile
-    include Dry::Monads[:result, :do]
+    include Dry::Monads[:result, :do, :maybe]
 
     include Podify::Import[
       'expand_path',
@@ -13,8 +13,8 @@ module Downloads
         path = yield expand_path.call(path)
         yield assert_file(path)
         yield assert_not_yet_imported(path)
-        source ||= yield create_file_source(path)
-        create_download.call(path: path, source_id: source.id)
+        source ||= yield get_source(path)
+        create_download.call(path: path.to_s, source_id: source.id)
       end
     end
 
@@ -28,10 +28,16 @@ module Downloads
       Success()
     end
 
-    def create_file_source(path)
-      title = yield infer_title(path)
-      source = yield create_source.call(title: title, url: "file://#{path}")
-      Success(source)
+    def get_source(path)
+      find_existing_source(path).or do
+        title = yield infer_title(path)
+        source = yield create_source.call(title: title, url: "file://#{path}")
+        Success(source)
+      end
+    end
+
+    def find_existing_source(path)
+      Maybe(Source.by_file_path(path).first)
     end
 
     def infer_title(path)

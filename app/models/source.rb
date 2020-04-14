@@ -3,8 +3,8 @@ class Source < ApplicationModel
   # add_association_dependencies downloads: :destroy
 
   dataset_module do
-    def by_path(path)
-      where(path: path.to_s)
+    def by_file_path(path)
+      where(url: "file://#{path.to_s}")
     end
   end
 end
