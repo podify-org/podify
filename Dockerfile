@@ -9,9 +9,15 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 
 RUN mkdir /app
 WORKDIR /app
+
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
+
+COPY package.json /app/package.json
+COPY yarn.lock /app/yarn.lock
+RUN yarn install --production
+
 COPY . /app
 
 # Add a script to be executed every time the container starts.
