@@ -1,19 +1,14 @@
-default: &default
-  adapter: postgresql
-  host: localhost
+_default: &default
+  adapter: postgres
   encoding: unicode
   pool: 5
-  username: postgres
-  password: paaaaaasss
+  url: "<%= ENV.fetch('DATABASE_URL') %>"
 
 development:
   <<: *default
-  database: podify_development
 
 test:
   <<: *default
-  database: podify_test
 
 production:
   <<: *default
-  database: podify_production

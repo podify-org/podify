@@ -1,0 +1,5 @@
+**/node_modules
+/vendor/bundle
+/log
+/tmp
+/public/packs

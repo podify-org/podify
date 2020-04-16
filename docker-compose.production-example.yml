@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: paaaaaasss
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://postgres:paaaaaasss@db/podify_production
+    depends_on:
+      - db
