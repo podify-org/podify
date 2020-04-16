@@ -56,6 +56,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
+    amazing_print (1.0.0)
     better_errors (2.6.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -283,6 +284,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amazing_print
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.2)
