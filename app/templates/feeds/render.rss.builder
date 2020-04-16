@@ -20,7 +20,7 @@ xml.rss version: "2.0",
 
     sources.each do |source|
       xml.item do
-        xml.title source.title.presence || "Bla" # source.display_title
+        xml.title source.display_title
         xml.link source.url
         xml.pubDate I18n.l(source.created_at, format: :rss)
         xml.guid "podify-all--#{source.id}", isPermaLink: false
@@ -38,7 +38,7 @@ xml.rss version: "2.0",
         download = source.downloads.last
         if download
           file = Pathname(download.path)
-          xml.enclosure url: "https://example.com#{file.to_s}", length: file.size, type: MimeMagic.by_path(file)
+          xml.enclosure url: serve_source_download_url(source.id, download.id), length: file.size, type: MimeMagic.by_path(file)
         end
       end
     end

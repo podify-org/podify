@@ -47,8 +47,13 @@ module Podify
       Sequel::Model.db.extension :pg_enum
     end
 
-    Rails.application.routes.default_url_options[:host] = "http#{'s' if ENV.fetch('SSL')}://#{ENV.fetch('HOST')}:#{ENV.fetch('PORT')}"
-    config.hosts << ENV.fetch('HOST')
+    if ENV['URL_HOST']
+      Rails.application.routes.default_url_options[:host] = ENV['URL_HOST']
+    else
+      Rails.application.routes.default_url_options[:host] = "http#{'s' if ENV.fetch('SSL')}://#{ENV.fetch('HOST')}:#{ENV.fetch('PORT')}"
+      config.hosts << ENV.fetch('HOST')
+    end
+
     if ENV['EXTRA_HOSTS']
       config.hosts += ENV['EXTRA_HOSTS'].split(',')
     end
