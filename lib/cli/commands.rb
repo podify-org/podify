@@ -1,5 +1,6 @@
 require 'dry/cli'
 require 'cli/commands/downloads/import'
+require 'cli/commands/downloads/delete'
 require 'cli/commands/sources/list'
 require 'cli/commands/sources/add'
 require 'cli/commands/sources/fetch'
@@ -11,6 +12,7 @@ module CLI
 
     register "downloads", aliases: ["d"] do |prefix|
       prefix.register "import", Downloads::Import, aliases: ['i']
+      prefix.register "delete", Downloads::Delete, aliases: ['d']
     end
 
     register "sources", aliases: ["s"] do |prefix|
