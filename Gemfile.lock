@@ -75,6 +75,10 @@ GEM
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     debug_inspector (0.0.3)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     dry-auto_inject (0.7.0)
       dry-container (>= 0.3.4)
     dry-cli (0.6.0)
@@ -288,7 +292,9 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.2)
+  builder
   byebug
+  dotenv-rails
   dry-cli
   dry-events
   dry-monads
@@ -296,6 +302,7 @@ DEPENDENCIES
   dry-view
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
+  mimemagic
   pg
   pry-rails
   puma (~> 4.1)

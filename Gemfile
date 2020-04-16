@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 
+gem 'dotenv-rails', groups: [:development, :test], require: 'dotenv/rails-now'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use Puma as the app server
@@ -31,6 +33,8 @@ gem 'youtube-dl.rb'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'slim-rails'
+gem 'builder'
+gem 'mimemagic'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
