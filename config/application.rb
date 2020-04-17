@@ -49,13 +49,19 @@ module Podify
 
     if ENV['URL_HOST']
       Rails.application.routes.default_url_options[:host] = ENV['URL_HOST']
-    else
-      Rails.application.routes.default_url_options[:host] = "http#{'s' if ENV.fetch('SSL')}://#{ENV.fetch('HOST')}:#{ENV.fetch('PORT')}"
+    elsif ENV['HOST']
+      Rails.application.routes.default_url_options[:host] = "http#{'s' if ENV['SSL']}://#{ENV.fetch('HOST')}:#{ENV.fetch('PORT')}"
       config.hosts << ENV.fetch('HOST')
     end
 
     if ENV['EXTRA_HOSTS']
       config.hosts += ENV['EXTRA_HOSTS'].split(',')
+    end
+
+    if ENV['FIX_DOCKER_LOGS']
+      log_out = IO.new(IO.sysopen("/proc/1/fd/1", "w"),"w")
+      log_out.sync = true
+      config.logger = Logger.new(log_out)
     end
   end
 end

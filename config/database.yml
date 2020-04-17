@@ -2,7 +2,7 @@ _default: &default
   adapter: postgres
   encoding: unicode
   pool: 5
-  url: "<%= ENV.fetch('DATABASE_URL') %>"
+  url: "<%= ENV['DATABASE_URL'] %>"
 
 development:
   <<: *default

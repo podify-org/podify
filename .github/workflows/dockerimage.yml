@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag maxhollmann/podify:$(date +%s)
     - name: Publish to Docker Hub
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@master # https://github.com/marketplace/actions/publish-docker
       with:
         name: maxhollmann/podify
         username: ${{ secrets.DOCKER_USERNAME }}
