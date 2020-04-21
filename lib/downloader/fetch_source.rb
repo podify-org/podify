@@ -4,15 +4,15 @@ module Downloader
 
     include Podify::Import[
       'downloader.fetcher_factory',
-      'downloads.import_file',
       'events',
+      create_download: 'downloads.create',
     ]
 
     def call(source)
       fetcher = yield fetcher_factory.call(source)
       path = yield fetcher.call(source)
       events.publish('downloader.fetch_source.fetched', path: path)
-      download = yield import_file.call(path, source: source)
+      download = yield create_download.call(path: path, source_id: source.id)
       Success(download)
     end
   end

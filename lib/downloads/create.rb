@@ -9,10 +9,16 @@ module Downloads
 
     def call(attrs)
       attrs = yield(contract.call(attrs).to_monad).to_h
+      yield ensure_file(attrs[:path])
       yield ensure_unique_path(attrs[:path])
       download = yield create_download(attrs)
       events.publish('downloads.created', download: download)
       Success(download)
+    end
+
+    def ensure_file(path)
+      return Failure(:not_a_file) unless Pathname(path).file?
+      Success()
     end
 
     def ensure_unique_path(path)

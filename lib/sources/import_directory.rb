@@ -1,9 +1,9 @@
-module Downloads
+module Sources
   class ImportDirectory
     include Dry::Monads[:result, :do]
     include Dry::Monads::Do.for(:call)
 
-    include Podify::Import['expand_path', 'downloads.import_file']
+    include Podify::Import['expand_path', 'sources.import_file']
 
     def call(path)
       path = yield expand_path.call(path)

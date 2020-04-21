@@ -34,7 +34,7 @@ module CLI
               puts "There is no source with id #{id}"
             end
           else
-            puts "Don't know which sources to delete"
+            puts "Don't know which sources to fetch"
           end
         end
       end

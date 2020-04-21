@@ -4,7 +4,11 @@ class Source < ApplicationModel
 
   dataset_module do
     def by_file_path(path)
-      where(url: "file://#{path.to_s}")
+      by_url("file://#{path.to_s}")
+    end
+
+    def by_url(url)
+      where(url: url)
     end
   end
 end

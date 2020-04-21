@@ -2,14 +2,14 @@ require 'dry/cli'
 
 module CLI
   module Commands
-    module Downloads
+    module Sources
       class Import < Dry::CLI::Command
-        desc "Import existing files or directories as downloads"
+        desc "Import existing files or directories"
 
         include Podify::Import[
           'events',
-          'downloads.import_file',
-          'downloads.import_directory'
+          'sources.import_file',
+          'sources.import_directory'
         ]
 
         def call(args: [])
