@@ -1,10 +1,18 @@
 module Downloader
   class FetcherFactory
-    include Podify::Import['downloader.fetchers.youtube_dl']
+    include Dry::Monads[:result]
+
+    include Podify::Import[
+      'downloader.fetchers.file',
+      'downloader.fetchers.youtube_dl',
+    ]
 
     def call(source)
-      # We only have this one fetcher at the moment
-      youtube_dl
+      case source.url
+      when %r{\Afile://}i   then Success(file)
+      when %r{\Ahttps?://}i then Success(youtube_dl)
+      else Failure('downloader.fetcher_factory.no_fetcher_for_scheme')
+      end
     end
   end
 end

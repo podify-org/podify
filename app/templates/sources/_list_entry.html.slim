@@ -1,1 +1,5 @@
-p= link_to source.display_title, source_path(source.id)
+p
+  = link_to source.display_title, source_path(source.id)
+  ul
+    - source.downloads.each do |download|
+      li= download.path
