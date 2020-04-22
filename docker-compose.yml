@@ -9,12 +9,12 @@ services:
        POSTGRES_PASSWORD: paaaaaasss
     network_mode: host
 
-  # redis:
-  #   image: redis
-  #   network_mode: host
-  #   restart: always
-  #   ports:
-  #     - "6379:6379"
+  redis:
+    image: redis
+    network_mode: host
+    restart: always
+    ports:
+      - "6379:6379"
 
   # memcached:
   #   image: memcached

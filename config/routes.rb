@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root to: 'sources#index'
 
@@ -10,4 +12,6 @@ Rails.application.routes.draw do
   end
 
   get 'feed/:collection', to: 'feeds#show', constraints: { format: :rss }
+
+  mount Sidekiq::Web => '/sidekiq'
 end

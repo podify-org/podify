@@ -24,3 +24,8 @@ Dry::Rails.container do
   # enable auto-registration in the lib dir
   auto_register!('lib')
 end
+
+Dry::System.register_provider(
+  :podify,
+  boot_path: Rails.root.join('config', 'system').realpath
+)

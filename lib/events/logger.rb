@@ -6,6 +6,10 @@ module Events
       events.subscribe self
     end
 
+    def unsubscribe
+      events.unsubscribe self
+    end
+
     def respond_to_missing?(method, *)
       method.to_s.start_with?('on_')
     end

@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'sequel-rails'
 
+gem 'sidekiq'
+
 gem 'dry-rails'
 gem 'dry-monads'
 gem 'dry-view'
