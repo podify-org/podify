@@ -15,7 +15,8 @@ COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle config set clean true && \
     bundle config set deployment true && \
     bundle config set no-cache true && \
-    bundle install --without=development,test
+    bundle config set without 'development test' && \
+    bundle install
 
 COPY package.json /app/package.json
 COPY yarn.lock /app/yarn.lock
@@ -24,7 +25,7 @@ RUN yarn install --production
 COPY . /app
 
 # Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
+COPY docker/entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000

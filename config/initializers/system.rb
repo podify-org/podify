@@ -8,17 +8,21 @@ Dry::Rails.container do
   end
 
   register('logger', memoize: true) do
-    Logger.new(
-      STDOUT,
-      formatter: proc { |severity, datetime, progname, msg|
-        date_format = datetime.strftime("%Y-%m-%d %H:%M:%S")
-        out = "#{date_format.blue}"
-        out += " #{severity.red}"
-        out += " (#{progname})" if progname
-        out += "  #{msg}\n"
-        out
-      }
-    )
+    if Rails.env.development? || Rails.env.test?
+      Logger.new(
+        STDOUT,
+        formatter: proc { |severity, datetime, progname, msg|
+          date_format = datetime.strftime("%Y-%m-%d %H:%M:%S")
+          out = "#{date_format.blue}"
+          out += " #{severity.red}"
+          out += " (#{progname})" if progname
+          out += "  #{msg}\n"
+          out
+        }
+      )
+    else
+      Logger.new(STDOUT)
+    end
   end
 
   register('downloader.result') do
@@ -35,7 +39,7 @@ Dry::Rails.container do
   setting :env, ENV
   boot(:settings, from: :system) do
     settings do
-      key :storage_dir, Types::Coercible::Pathname.constrained(filled: true).default(Rails.root.join('tmp', 'storage'))
+      key :storage_dir, Types::Coercible::Pathname.constrained(filled: true).default(Rails.root.join('tmp', 'storage').freeze)
     end
   end
 end
