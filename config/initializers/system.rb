@@ -23,6 +23,16 @@ Dry::Rails.container do
 
   # enable auto-registration in the lib dir
   auto_register!('lib')
+
+  setting :env, ENV
+  boot(:settings, from: :system) do
+    settings do
+      key :database_url, Types::String.constrained(filled: true)
+      key :logger_level, Types::Symbol.constructor { |value| value.to_s.downcase.to_sym }
+        .default(:info)
+        .enum(:trace, :unknown, :error, :fatal, :warn, :info, :debug)
+    end
+  end
 end
 
 Dry::System.register_provider(
