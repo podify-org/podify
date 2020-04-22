@@ -27,10 +27,7 @@ Dry::Rails.container do
   setting :env, ENV
   boot(:settings, from: :system) do
     settings do
-      key :database_url, Types::String.constrained(filled: true)
-      key :logger_level, Types::Symbol.constructor { |value| value.to_s.downcase.to_sym }
-        .default(:info)
-        .enum(:trace, :unknown, :error, :fatal, :warn, :info, :debug)
+      key :storage_dir, Types::Coercible::Pathname.constrained(filled: true).default(Rails.root.join('tmp', 'storage'))
     end
   end
 end
