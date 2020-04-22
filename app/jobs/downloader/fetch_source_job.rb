@@ -1,6 +1,7 @@
 module Downloader
   class FetchSourceJob
     include Sidekiq::Worker
+    include Dry::Monads[:result]
 
     include Podify::Import['downloader.fetch_source']
 
@@ -9,7 +10,12 @@ module Downloader
       return unless source
 
       fetch_source.call(source).or do |failure|
-        raise "Failed (#{failure})"
+        case failure
+        when Dry::Validation::Result
+          ap failure.errors.to_h
+        else
+          raise "Failed (#{failure})"
+        end
       end
     end
   end

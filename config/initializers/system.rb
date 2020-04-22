@@ -21,7 +21,11 @@ Dry::Rails.container do
     )
   end
 
-  # enable auto-registration in the lib dir
+  register('downloader.result') do
+    require 'downloader/result'
+    Downloader::Result
+  end
+
   auto_register!('lib')
   auto_register!('app/jobs') do |config|
     config.memoize = true

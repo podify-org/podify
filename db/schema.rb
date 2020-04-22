@@ -21,6 +21,11 @@ Sequel.migration do
       primary_key :id
       foreign_key :source_id, :sources, :null=>false, :key=>[:id]
       column :path, "text"
+      column :fetcher, "text", :null=>false
+      column :author, "text"
+      column :title, "text"
+      column :thumbnail_url, "text"
+      column :fetcher_information, "jsonb", :null=>false
       column :created_at, "timestamp without time zone", :null=>false
       column :updated_at, "timestamp without time zone", :null=>false
       

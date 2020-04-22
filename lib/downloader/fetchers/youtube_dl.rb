@@ -3,11 +3,11 @@ module Downloader
     class YoutubeDl
       include Dry::Monads[:result, :do]
 
-      include Podify::Import['settings']
+      include Podify::Import['settings', 'downloader.result']
 
       def call(source)
         video = yield download(source)
-        Success(Pathname.new(video.filename))
+        Success(create_result(video))
       end
 
       def download(source)
@@ -44,6 +44,17 @@ module Downloader
 
       def handle_command_error(output)
         Failure(['downloads.fetcher.unknown_error', output: output])
+      end
+
+      def create_result(video)
+        result.new(
+          fetcher: 'youtube_dl',
+          path: Pathname.new(video.filename),
+          author: video.information[:uploader],
+          title: video.information[:title],
+          thumbnail_url: video.information[:thumbnail],
+          fetcher_information: video.information,
+        )
       end
     end
   end
