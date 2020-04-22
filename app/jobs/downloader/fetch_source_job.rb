@@ -9,7 +9,7 @@ module Downloader
       return unless source
 
       fetch_source.call(source).or do |failure|
-        raise failure.failure
+        raise "Failed (#{failure})"
       end
     end
   end

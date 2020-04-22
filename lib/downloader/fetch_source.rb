@@ -12,7 +12,7 @@ module Downloader
       fetcher = yield fetcher_factory.call(source)
       path = yield fetcher.call(source)
       events.publish('downloader.fetch_source.fetched', path: path)
-      download = yield create_download.call(path: path, source_id: source.id)
+      download = yield create_download.call(path: path.to_s, source_id: source.id)
       Success(download)
     end
   end
