@@ -64,5 +64,9 @@ module Podify
       log_out.sync = true
       config.logger = Logger.new(log_out)
     end
+
+    Raven.configure do |config|
+      config.dsn = ENV['SENTRY_DSN']
+    end
   end
 end

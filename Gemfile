@@ -21,6 +21,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'sequel-rails'
 
+gem 'lograge'
+gem 'logstash-event'
+gem 'sentry-raven'
+
 gem 'sidekiq'
 
 gem 'dry-rails'
