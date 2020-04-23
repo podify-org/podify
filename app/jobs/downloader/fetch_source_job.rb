@@ -14,9 +14,14 @@ module Downloader
         when Dry::Validation::Result
           ap failure.errors.to_h
         else
+          ap failure
           raise "Failed (#{failure})"
         end
       end
+    rescue => e
+      puts e
+      puts e.backtrace
+      raise
     end
   end
 end

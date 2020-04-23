@@ -5,9 +5,9 @@ module Downloads
       required(:source_id).value(:integer)
       required(:fetcher).filled(:string)
       required(:fetcher_information).value(:hash)
-      optional(:author).filled(:string)
-      optional(:title).filled(:string)
-      optional(:thumbnail_url).filled(:string)
+      optional(:author).value(:string)
+      optional(:title).value(:string)
+      optional(:thumbnail_url).value(:string)
     end
   end
 end
