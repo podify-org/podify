@@ -12,9 +12,9 @@ module Downloader
       fetch_source.call(source).or do |failure|
         case failure
         when Dry::Validation::Result
-          ap failure.errors.to_h
+          Rails.logger.error failure.errors.to_h
         else
-          ap failure
+          Rails.logger.error failure
           raise "Failed (#{failure})"
         end
       end

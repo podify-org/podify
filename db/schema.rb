@@ -9,7 +9,6 @@ Sequel.migration do
     create_table(:sources) do
       primary_key :id
       column :url, "text", :null=>false
-      column :title, "text"
       column :downloaded_at, "timestamp without time zone"
       column :created_at, "timestamp without time zone", :null=>false
       column :updated_at, "timestamp without time zone", :null=>false
@@ -33,9 +32,10 @@ Sequel.migration do
     end
   end
 end
-Sequel.migration do
-  change do
-    self << "SET search_path TO \"$user\", public"
-    self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200412191625_create_first_tables.rb')"
-  end
-end
+              Sequel.migration do
+                change do
+                  self << "SET search_path TO \"$user\", public"
+                  self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200412191625_create_first_tables.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200423145735_remove_title_from_sources.rb')"
+                end
+              end

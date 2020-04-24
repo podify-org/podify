@@ -1,7 +1,7 @@
 module Parts
   class Source < ApplicationPart
     def display_title
-      title.presence || url
+      downloads.last&.title || url
     end
 
     def render_form

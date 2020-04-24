@@ -43,7 +43,12 @@ module Downloader
       end
 
       def handle_command_error(output)
-        Failure(['downloads.fetcher.unknown_error', output: output])
+        case output
+        when /Unsupported URL:/
+          Failure(['downloads.fetcher.unsupported', output: output])
+        else
+          Failure(['downloads.fetcher.unknown_error', output: output])
+        end
       end
 
       def create_result(video)
