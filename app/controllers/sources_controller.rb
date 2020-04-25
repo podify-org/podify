@@ -1,4 +1,6 @@
 class SourcesController < ApplicationController
+  before_action :authenticate_user!
+
   schema(:show, :edit) do
     required(:id).value(:integer)
   end
@@ -8,11 +10,11 @@ class SourcesController < ApplicationController
   end
 
   def show
-    render html: Views::Sources::Show.new.call.to_s.html_safe
+    render html: render_view('sources.show')
   end
 
   def index
-    render html: Views::Sources::Index.new.call.to_s.html_safe
+    render html: render_view('sources.index')
   end
 
   def create

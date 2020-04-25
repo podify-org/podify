@@ -26,5 +26,11 @@ html
           li.nav-item
             a.nav-link href="/downloads" Downloads
 
+      .navbar-collapse.collapse.w-100.order-3.dual-collapse2
+        ul.navbar-nav.ml-auto
+          - if current_user
+            li.nav-item
+              = link_to 'Sign out', destroy_user_session_path, class: 'nav-link', method: :delete
+
     .container
       == yield

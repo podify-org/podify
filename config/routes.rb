@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   root to: 'sources#index'
+  devise_for :user, class_name: 'DeviseUser'
 
   resources :sources, only: %i[index show create] do
     resources :downloads, only: [] do

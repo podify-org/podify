@@ -1,6 +1,12 @@
 require "dry/view/context"
 
 class ApplicationViewContext < Dry::View::Context
+  include Devise::Controllers::Helpers
+
+  def request
+    _options[:request]
+  end
+
   def method_missing(name, *args, &block)
     if url_helpers.respond_to?(name)
       url_helpers.public_send(name, *args, &block)
@@ -24,6 +30,6 @@ class ApplicationViewContext < Dry::View::Context
   end
 
   def helpers
-    @helpers ||= ActionController::Base.helpers
+    @helpers ||= ApplicationController.helpers
   end
 end

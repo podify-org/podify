@@ -31,6 +31,7 @@ Dry::Rails.container do
   end
 
   auto_register!('lib')
+  auto_register!('app/views')
   auto_register!('app/jobs') do |config|
     config.memoize = true
     config.instance { |component| component.loader.constant }

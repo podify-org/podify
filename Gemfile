@@ -33,6 +33,10 @@ gem 'dry-view'
 gem 'dry-cli'
 gem 'dry-events'
 
+gem 'devise'
+gem 'sequel-devise'
+# gem 'devise-bootstrap-views', '~> 1.0'
+
 gem 'youtube-dl.rb'
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -50,6 +54,9 @@ group :development, :test do
 end
 
 group :development do
+  # Preview mail in the browser instead of sending
+  gem 'letter_opener'
+
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
