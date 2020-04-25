@@ -24,18 +24,13 @@ module Sources
     def get_source(path)
       url = "file://#{path}"
       find_existing_source(url).or do
-        title = yield infer_title(path)
-        source = yield create_source.call(title: title, url: url)
+        source = yield create_source.call(url: url)
         Success(source)
       end
     end
 
     def find_existing_source(url)
       Maybe(Source.by_url(url).first)
-    end
-
-    def infer_title(path)
-      Success(path.basename.sub_ext('').to_s)
     end
   end
 end

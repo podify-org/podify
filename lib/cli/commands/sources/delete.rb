@@ -27,7 +27,7 @@ module CLI
 
         def subscribe_to_events
           events.subscribe('sources.destroyed') do |event|
-            puts "Deleted source #{event[:source].title}"
+            puts "Deleted source #{event[:source].url}"
           end
           events.subscribe('downloads.destroyed') do |event|
             puts "Deleted download #{event[:download].path}"

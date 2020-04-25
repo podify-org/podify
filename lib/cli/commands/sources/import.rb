@@ -38,7 +38,7 @@ module CLI
           @imported = 0
 
           events.subscribe('sources.created') do |event|
-            puts "Imported \"#{event[:source].title}\" from #{event[:source].url}"
+            puts "Imported \"#{event[:source].url}\" from #{event[:source].url}"
             @imported += 1
           end
         end
