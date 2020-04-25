@@ -5,8 +5,10 @@ services:
     image: postgres
     restart: always
     environment:
-       POSTGRES_USER: postgres
-       POSTGRES_PASSWORD: paaaaaasss
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: DZKfAZ5SnvmkMrB
+    volumes:
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
     network_mode: host
 
   redis:
