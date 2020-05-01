@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root to: 'sources#index'
   devise_for :user, class_name: 'DeviseUser'
 
-  resources :sources, only: %i[index show create] do
+  resources :requests, only: %i[create]
+
+  resources :sources, only: %i[index show] do
     resources :downloads, only: [] do
       member do
         get 'download', action: :serve, as: :serve

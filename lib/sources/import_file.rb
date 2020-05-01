@@ -4,7 +4,7 @@ module Sources
 
     include Podify::Import[
       'expand_path',
-      create_source: 'sources.create',
+      find_or_create_source: 'sources.find_or_create',
     ]
 
     def call(path)
@@ -22,15 +22,8 @@ module Sources
     end
 
     def get_source(path)
-      url = "file://#{path}"
-      find_existing_source(url).or do
-        source = yield create_source.call(url: url)
-        Success(source)
-      end
-    end
-
-    def find_existing_source(url)
-      Maybe(Source.by_url(url).first)
+      source = yield find_or_create_source.call("file://#{path}")
+      Success(source)
     end
   end
 end
