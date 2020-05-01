@@ -13,10 +13,9 @@ module CLI
         ]
 
         option :url, type: :string, required: true, desc: 'URL of the media source'
-        option :title, type: :string, default: nil, desc: 'Title of the media'
 
-        def call(url:, title: nil, args: [])
-          case create.call({ url: url, title: title }.compact)
+        def call(url:)
+          case create.call(url: url)
           in Success(source)
             puts "Source created, id: #{source.id}"
           in Failure(failure)

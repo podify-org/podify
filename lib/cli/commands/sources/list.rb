@@ -1,4 +1,5 @@
 require 'dry/cli'
+require 'cli/commands/sources/selection'
 
 module CLI
   module Commands
@@ -6,8 +7,10 @@ module CLI
       class List < Dry::CLI::Command
         desc "List sources"
 
-        def call(args: [])
-          Source.paged_each do |source|
+        include Selection
+
+        def call(**args)
+          selected_sources(args).each do |source|
             print "#{source.id}: #{source.url}"
             print " (#{source.title})" if source.title
             download = source.downloads.last

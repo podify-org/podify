@@ -1,4 +1,5 @@
 require 'dry/cli'
+require 'cli/commands/sources/selection'
 
 module CLI
   module Commands
@@ -11,17 +12,13 @@ module CLI
           'sources.destroy'
         ]
 
-        option :all, type: :boolean, default: false, desc: 'Delete all sources'
+        include Selection
 
-        def call(all:, args: [])
+        def call(**args)
           subscribe_to_events
 
-          if all
-            Source.each do |source|
-              destroy.call(source)
-            end
-          else
-            puts "Don't know which sources to delete"
+          selected_sources(args).each do |source|
+            destroy.call(source)
           end
         end
 
