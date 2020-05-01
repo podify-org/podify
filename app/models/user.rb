@@ -2,8 +2,10 @@ class User < ApplicationModel
   one_to_many :requests
   many_to_many :sources, join_table: :requests
 
-  def before_validation
-    ensure_authentication_token
+  dataset_module do
+    def by_email(email)
+      first(email: email)
+    end
   end
 
   def ensure_authentication_token
@@ -18,6 +20,10 @@ class User < ApplicationModel
   end
 
   private
+
+  def before_validation
+    ensure_authentication_token
+  end
 
   def generate_authentication_token
     loop do

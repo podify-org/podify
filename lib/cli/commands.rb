@@ -5,6 +5,7 @@ require 'cli/commands/sources/add'
 require 'cli/commands/sources/import'
 require 'cli/commands/sources/fetch'
 require 'cli/commands/sources/delete'
+require 'cli/commands/sources/request'
 
 module CLI
   module Commands
@@ -20,6 +21,7 @@ module CLI
       prefix.register "import", Sources::Import, aliases: ['i']
       prefix.register "fetch", Sources::Fetch, aliases: ['f']
       prefix.register "delete", Sources::Delete, aliases: ['d']
+      prefix.register "request", Sources::Request, aliases: ['r']
     end
   end
 end
