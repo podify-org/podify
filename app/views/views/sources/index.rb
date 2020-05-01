@@ -3,7 +3,7 @@ module Views
     class Index < ApplicationView
       config.template = "sources/index"
 
-      expose(:sources) { Source.all }
+      expose(:sources) { |user:| user.sources }
       expose(:new_source, as: :source) { Source.new }
     end
   end

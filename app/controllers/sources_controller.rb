@@ -14,17 +14,6 @@ class SourcesController < ApplicationController
   end
 
   def index
-    render html: render_view('sources.index')
-  end
-
-  def create
-    case resolve('sources.create').call(safe_params[:source])
-    in Dry::Monads::Success(source)
-      puts "CREATED #{source.id}"
-      redirect_to root_path
-    in Dry::Monads::Failure(validation)
-      puts validation.errors(full: true).to_a.map(&:to_s).join(", ")
-      render html: Views::Sources::Index.new.call.to_s.html_safe
-    end
+    render html: render_view('sources.index', user: current_user)
   end
 end
