@@ -13,6 +13,8 @@ module Downloader
         case failure
         when Dry::Validation::Result
           Rails.logger.error failure.errors.to_h
+        when 'downloads.create.path_exists'
+          # already fetched, all good
         else
           Rails.logger.error failure
           raise "Failed (#{failure})"
