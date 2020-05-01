@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'feeds/:collection', to: 'feeds#show', constraints: { format: :rss }
+  get 'feeds/:collection', to: 'feeds#show', as: :feed, constraints: { format: :rss }
 
   mount Sidekiq::Web => '/sidekiq'
 end
