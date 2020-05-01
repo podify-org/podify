@@ -67,8 +67,6 @@ GEM
     bindex (0.8.1)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    bootsnap (1.4.6)
-      msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.1)
     climate_control (0.2.0)
@@ -201,7 +199,6 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
-    msgpack (1.3.3)
     multipart-post (2.1.1)
     nio4r (2.5.2)
     nokogiri (1.10.9)
@@ -298,10 +295,6 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (>= 3.0, < 5.0)
-    spring (2.1.0)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (4.0.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -342,7 +335,6 @@ DEPENDENCIES
   amazing_print
   better_errors
   binding_of_caller
-  bootsnap (>= 1.4.2)
   builder
   byebug
   devise
@@ -369,8 +361,6 @@ DEPENDENCIES
   sequel-rails
   sidekiq
   slim-rails
-  spring
-  spring-watcher-listen (~> 2.0.0)
   tzinfo-data
   web-console (>= 3.3.0)
   webpacker (~> 4.0)
