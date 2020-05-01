@@ -48,6 +48,16 @@ Sequel.migration do
       
       index [:path], :name=>:downloads_path_key, :unique=>true
     end
+    
+    create_table(:requests) do
+      primary_key :id
+      foreign_key :user_id, :users, :null=>false, :key=>[:id]
+      foreign_key :source_id, :sources, :null=>false, :key=>[:id]
+      column :created_at, "timestamp without time zone", :null=>false
+      column :updated_at, "timestamp without time zone", :null=>false
+      
+      index [:user_id, :source_id], :unique=>true
+    end
   end
 end
               Sequel.migration do
@@ -56,5 +66,6 @@ end
                   self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200412191625_create_first_tables.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200423145735_remove_title_from_sources.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200425113118_create_users.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200501124610_create_requests.rb')"
                 end
               end

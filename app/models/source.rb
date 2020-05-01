@@ -1,4 +1,7 @@
 class Source < ApplicationModel
+  one_to_many :requests
+  many_to_many :users, join_table: :requests
+
   one_to_many :downloads
   # add_association_dependencies downloads: :destroy
 
