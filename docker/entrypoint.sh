@@ -4,7 +4,8 @@ set -e
 # Remove a potentially pre-existing server.pid for Rails.
 rm -f /app/tmp/pids/server.pid
 
-rails db:migrate
+bundle exec sequel -m db/migrate "$DATABASE_URL"
+# rails db:migrate
 
 [[ ! -z "$PRECOMPILE_ASSETS" ]] && rails assets:precompile
 
