@@ -1,24 +1,30 @@
 class ApplicationController < ActionController::Base
   include Devise::Controllers::Helpers
 
+  # append_view_path "app/templates"
+
   skip_before_action :verify_authenticity_token
   before_action :set_raven_context
 
-  before_action do
-    Dry::View.reset_cache! # TODO: only in development
+  if Rails.env.development?
+    before_action do
+      Dry::View.reset_cache!
+    end
   end
 
   private
 
   ##### dry-view helpers
-  def render_view(identifier, with: {}, **input)
-    container["views.#{identifier}"].(
-      context: view_context(**with),
-      **input
+  def render_view(identifier, with: {}, **input, &block)
+    container["views.#{identifier}"].call(
+      context: dry_view_context(**with),
+      **input,
+      &block
     ).to_s.html_safe
   end
 
-  def view_context(**options)
+  # view_context is defined by ActionView
+  def dry_view_context(**options)
     container["application_view_context"].with(view_context_options(**options))
   end
 

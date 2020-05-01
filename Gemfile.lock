@@ -85,6 +85,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-bootstrap-views (1.1.0)
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
@@ -345,6 +346,7 @@ DEPENDENCIES
   builder
   byebug
   devise
+  devise-bootstrap-views (~> 1.0)
   dotenv-rails
   dry-cli
   dry-events
