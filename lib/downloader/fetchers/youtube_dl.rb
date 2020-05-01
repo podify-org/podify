@@ -18,7 +18,7 @@ module Downloader
 
       def arguments(source)
         {
-          format: 'mp4',
+          format: 'mp4,mp3',
           output: output_template(source),
         }
       end
@@ -52,14 +52,14 @@ module Downloader
       end
 
       def create_result(video)
-        result.new(
+        result.new(**{
           fetcher: 'youtube_dl',
           path: Pathname.new(video.filename),
           author: video.information[:uploader],
           title: video.information[:title],
           thumbnail_url: video.information[:thumbnail],
           fetcher_information: video.information,
-        )
+        }.compact)
       end
     end
   end

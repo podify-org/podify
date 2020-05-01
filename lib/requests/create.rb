@@ -14,6 +14,7 @@ module Requests
 
     def ensure_uniqueness(attrs)
       return Failure('requests.create.exists') if Request.where(attrs).count > 0
+      Success()
     end
 
     def create_request(attrs)

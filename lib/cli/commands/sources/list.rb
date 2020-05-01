@@ -12,7 +12,6 @@ module CLI
         def call(**args)
           selected_sources(args).each do |source|
             print "#{source.id}: #{source.url}"
-            print " (#{source.title})" if source.title
             download = source.downloads.last
             print ": '#{download.path}'" if download
             puts
