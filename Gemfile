@@ -36,6 +36,7 @@ gem 'dry-events'
 gem 'devise'
 gem 'sequel-devise'
 gem 'devise-bootstrap-views', '~> 1.0'
+gem 'devise-token_authenticatable'
 
 gem 'youtube-dl.rb'
 

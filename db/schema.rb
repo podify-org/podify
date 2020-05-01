@@ -32,6 +32,10 @@ Sequel.migration do
       column :confirmed_at, "timestamp without time zone"
       column :confirmation_sent_at, "timestamp without time zone"
       column :unconfirmed_email, "text"
+      column :authentication_token, "text"
+      column :authentication_token_created_at, "timestamp without time zone"
+      
+      index [:authentication_token], :name=>:users_authentication_token_key, :unique=>true
     end
     
     create_table(:downloads) do
@@ -67,5 +71,6 @@ end
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200423145735_remove_title_from_sources.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200425113118_create_users.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200501124610_create_requests.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200501175137_add_authentication_token_to_users.rb')"
                 end
               end
