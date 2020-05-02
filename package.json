@@ -8,6 +8,7 @@
     "apollo-client": "^2.6.8",
     "apollo-link-http": "^1.5.17",
     "bootstrap": "4.4.1",
+    "bootstrap-vue": "^2.13.0",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "jquery": "^3.5.0",

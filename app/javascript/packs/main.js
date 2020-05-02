@@ -6,6 +6,7 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import App from 'components/app';
 
 import ApolloClient from "apollo-client";
@@ -15,6 +16,8 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import VueApollo from "vue-apollo";
 
 Vue.use(VueApollo);
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 
 // Vue.config.productionTip = false;
 
