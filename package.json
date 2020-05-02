@@ -4,10 +4,16 @@
   "dependencies": {
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link-http": "^1.5.17",
     "bootstrap": "4.4.1",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
     "jquery": "^3.5.0",
     "popper.js": "^1.16.1",
     "vue": "^2.6.11",
+    "vue-apollo": "^3.0.3",
     "vue-loader": "^15.9.2",
     "vue-template-compiler": "^2.6.11"
   },

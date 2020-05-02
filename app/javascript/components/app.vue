@@ -1,16 +1,16 @@
 <template>
-<div id="app">
-  <p>{{ message }}</p>
+<div id="app" class="container">
+  <Requests></Requests>
 </div>
 </template>
 
 <script>
+import Requests from 'components/requests';
+
 export default {
-  data: function () {
-    return {
-      message: "Hello Vue!"
-    }
-  }
+  components: {
+    Requests,
+  },
 }
 </script>
 
