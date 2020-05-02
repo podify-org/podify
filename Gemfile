@@ -27,7 +27,7 @@ gem 'sentry-raven'
 
 gem 'sidekiq'
 
-gem 'dry-rails'
+gem 'dry-rails', git: 'https://github.com/dry-rb/dry-rails.git', branch: :master
 gem 'dry-monads'
 gem 'dry-view'
 gem 'dry-cli'

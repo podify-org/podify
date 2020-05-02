@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/dry-rb/dry-rails.git
+  revision: b225abeb1897d1be8fb2881656584a99e7c35515
+  branch: master
+  specs:
+    dry-rails (0.1.0)
+      dry-schema (~> 1.5)
+      dry-system (~> 0.17)
+      dry-validation (~> 1.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -119,10 +129,6 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.4, >= 0.4.4)
       dry-equalizer
-    dry-rails (0.1.0)
-      dry-schema (~> 1.5)
-      dry-system (~> 0.17)
-      dry-validation (~> 1.5)
     dry-schema (1.5.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.8, >= 0.8.3)
@@ -373,7 +379,7 @@ DEPENDENCIES
   dry-cli
   dry-events
   dry-monads
-  dry-rails
+  dry-rails!
   dry-view
   factory_bot_rails
   jbuilder (~> 2.7)
