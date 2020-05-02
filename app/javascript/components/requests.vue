@@ -1,14 +1,19 @@
 <template>
 <div id="requests">
-  <h3>Requests</h3>
-  <div class="row" v-for="request in requests" v-bind:key="request.id">
-    {{ request.id }}: {{ request.source.url }}
+  <NewRequest />
+  <div v-if="$apolloData.loading" class="d-flex mb-3 justify-content-center">
+    <b-spinner type="border" variant="primary"></b-spinner>
+  </div>
+  <div v-for="request in requests" :key="request.id">
+    <Request :request="request" />
   </div>
 </div>
 </template>
 
 <script>
 import gql from 'graphql-tag';
+import Request from 'components/request';
+import NewRequest from 'components/new_request';
 
 const GET_ALL_REQUESTS = gql`
   query {
@@ -32,6 +37,10 @@ export default {
       query: GET_ALL_REQUESTS,
     },
   },
+  components: {
+    Request,
+    NewRequest,
+  }
 }
 </script>
 
