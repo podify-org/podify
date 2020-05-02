@@ -6,7 +6,10 @@
     "@rails/webpacker": "4.2.2",
     "bootstrap": "4.4.1",
     "jquery": "^3.5.0",
-    "popper.js": "^1.16.1"
+    "popper.js": "^1.16.1",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.2",
+    "vue-template-compiler": "^2.6.11"
   },
   "version": "0.1.0",
   "devDependencies": {

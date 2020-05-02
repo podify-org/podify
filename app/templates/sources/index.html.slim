@@ -1,9 +1,10 @@
-p== new_source.render_form
+/
+  p== new_source.render_form
 
-p
-  ' Subscribe to the following URL with your favorite podcast app:
-  br/
-  code= feed_url('all', format: :rss, auth_token: current_user.authentication_token)
+  p
+    ' Subscribe to the following URL with your favorite podcast app:
+    br/
+    code= feed_url('all', format: :rss, auth_token: current_user.authentication_token)
 
-- sources.each do |source|
-  == source.render_list_entry
+  - sources.each do |source|
+    == source.render_list_entry

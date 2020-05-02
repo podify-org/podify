@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  root to: 'sources#index'
+  root to: 'vue_apps#main'
   devise_for :user, class_name: 'DeviseUser'
 
   resources :requests, only: %i[create]
