@@ -42,6 +42,7 @@ module Podify
     config.sequel.after_connect = proc do |conn|
       Sequel::Model.plugin :timestamps, update_on_create: true
       Sequel::Model.plugin :association_dependencies
+      Sequel::Model.plugin :tactical_eager_loading
 
       Sequel::Model.db.extension :pg_array
       Sequel::Model.db.extension :pg_json
