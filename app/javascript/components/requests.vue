@@ -1,7 +1,7 @@
 <template>
 <div id="requests">
   <NewRequest />
-  <div v-if="$apolloData.loading" class="d-flex mb-3 justify-content-center">
+  <div v-if="$apolloData.loading" class="d-flex mt-5 mb-3 justify-content-center">
     <b-spinner type="border" variant="primary"></b-spinner>
   </div>
   <div v-for="request in requests" :key="request.id">
@@ -12,29 +12,14 @@
 
 <script>
 import gql from 'graphql-tag';
+import queries from 'queries';
 import Request from 'components/request';
 import NewRequest from 'components/new_request';
-
-const GET_ALL_REQUESTS = gql`
-  query {
-    requests {
-      id
-      source {
-        id
-        url
-        downloads {
-          id
-          title
-        }
-      }
-    }
-  }
-`;
 
 export default {
   apollo: {
     requests: {
-      query: GET_ALL_REQUESTS,
+      query: queries.requests,
     },
   },
   components: {

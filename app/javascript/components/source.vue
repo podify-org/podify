@@ -3,7 +3,7 @@
   <div class="col">
     <b-card v-bind:title="source.title">
       <b-card-text>
-        <b-card-title>{{ source.downloads[0].title }}</b-card-title>
+        <b-card-title v-if="source.downloads.length > 0">{{ source.downloads[0].title }}</b-card-title>
         <b-card-sub-title>{{ source.url }}</b-card-sub-title>
       </b-card-text>
     </b-card>

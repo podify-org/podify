@@ -27,6 +27,28 @@
 </template>
 
 <script>
+import gql from 'graphql-tag';
+import queries from 'queries';
+
+const ADD_REQUEST = gql`
+  mutation request_for_url($url: String!) {
+    requestForUrl(input: {url: $url}) {
+      request {
+        id
+        source {
+          id
+          url
+          downloads {
+            id
+            title
+          }
+        }
+      }
+      errors
+    }
+  }
+`;
+
 export default {
   data() {
     return {
@@ -38,6 +60,21 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
+
+      this.$apollo.mutate({
+        mutation: ADD_REQUEST,
+        variables: { url: this.form.url },
+        update: (store, { data: { requestForUrl: { request, errors } } }) => {
+          if (errors.length > 0) {
+            alert(errors.join("\n"));
+          } else {
+            const data = store.readQuery({ query: queries.requests });
+            data.requests.unshift(request);
+            store.writeQuery({ query: queries.requests, data });
+          }
+        },
+      });
+
       this.form.url = '';
     },
   },
