@@ -66,15 +66,12 @@ class DownloadStatusPresenter < ApplicationPresenter
     end
 
     retry_at = Time.zone.at(retry_job.score)
-    # binding.pry
-    if retry_at.future?
-      if retry_at.today?
-        ap retry_at
-        ap Time.zone
-        out += " at " + I18n.l(retry_at, format: :time)
-      else
-        out += " " + I18n.l(retry_at, format: :short)
-      end
+    if retry_at.past?
+      out += " now"
+    elsif retry_at.today?
+      out += " at " + I18n.l(retry_at, format: :time)
+    else
+      out += " " + I18n.l(retry_at, format: :short)
     end
 
     if retry_job.item['error_message']

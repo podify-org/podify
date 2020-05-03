@@ -44,25 +44,7 @@
               <b-badge variant="success">{{ request.source.lastDownload.size }}</b-badge>
             </template>
 
-            <b-progress v-if="request.source.downloadStatus.status == 'downloading'"
-                        :value="45" :max="100" variant="info" show-progress animated></b-progress>
-
-            <b-progress v-else-if="request.source.downloadStatus.status == 'queued'"
-                        :max="100" variant="warning" label="Test" animated>
-              <b-progress-bar :value="100">{{ request.source.downloadStatus.placeInQueue }}</b-progress-bar>
-            </b-progress>
-
-            <b-badge v-else-if="request.source.downloadStatus.status == 'retrying'" variant="warning">
-              {{ request.source.downloadStatus.retryStatus }}
-            </b-badge>
-
-            <b-badge v-else-if="request.source.downloadStatus.status == 'dead'" variant="danger">
-              Failed
-            </b-badge>
-
-            <b-badge v-else-if="request.source.downloadStatus.status == 'unknown'" variant="danger">
-              Missing
-            </b-badge>
+            <DownloadStatus :status="request.source.downloadStatus"></DownloadStatus>
           </div>
         </b-media>
       </b-card-text>
@@ -73,6 +55,7 @@
 
 <script>
 import DestroyRequest from 'components/destroy_request';
+import DownloadStatus from 'components/download_status';
 import Loading from 'vue-loading-overlay';
 
 export default {
@@ -89,6 +72,7 @@ export default {
   },
   components: {
     DestroyRequest,
+    DownloadStatus,
     Loading,
   },
 }

@@ -787,6 +787,11 @@
     consola "^2.10.1"
     node-fetch "^2.6.0"
 
+"@rails/actioncable@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.2.tgz#bcba9bcd6ee09a47c6628336e07399a68ca87814"
+  integrity sha512-vN78gohsXPlC5jxBHlmiwkUI9bv6SulcZaE72kAIg/G4ou+wTdiMWPJK1bf2IxUNf+sfOjhl+tbRmY4AzJcgrw==
+
 "@rails/ujs@^6.0.0":
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.2.tgz#8d32452d51c5e115374a218fb5475803dc17f4c0"
@@ -1083,6 +1088,13 @@ acorn@^6.2.1:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.1.tgz#531e58ba3f51b9dacb9a6646ca4debf5b14ca474"
   integrity sha512-ZVA9k326Nwrj3Cj9jlh3wGFutC2ZornPNARZwsNYqQYgN0EsV2d53w5RN/co65Ohn4sUAUtb1rSUAOD6XN9idA==
+
+actioncable-vue@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/actioncable-vue/-/actioncable-vue-2.1.3.tgz#b18c7562d3e486c54bb68a7e11f9b76db9a120ad"
+  integrity sha512-1+8MyKxtUFM7lVpPQphheNaQEPfBGzI8tQOm4SK2T4zlqp1DbX5jNEBMT6qkQnliKRyY9C4Ui7sEeXBju50/4Q==
+  dependencies:
+    "@rails/actioncable" "^6.0.2"
 
 aggregate-error@^3.0.0:
   version "3.0.1"
