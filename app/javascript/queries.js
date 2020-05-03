@@ -15,6 +15,7 @@ export const queryPartials = {
         author
         thumbnailUrl
         format
+        size
       }
     }
   `,

@@ -6,6 +6,7 @@ module UserAPI
       field :author, String, null: true
       field :thumbnail_url, String, null: true
       field :format, String, null: true
+      field :size, String, null: true
     end
   end
 end

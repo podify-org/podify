@@ -40,7 +40,8 @@
               {{ request.source.author }}
             </b-card-sub-title>
             <div v-if="request.source.lastDownload" class="position-relative">
-              <b-badge class="fixed-bottom">{{ request.source.lastDownload.format }}</b-badge>
+              <b-badge>{{ request.source.lastDownload.format }}</b-badge>
+              <b-badge>{{ request.source.lastDownload.size }}</b-badge>
             </div>
           </div>
         </b-media>

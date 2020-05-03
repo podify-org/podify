@@ -1,5 +1,16 @@
 class DownloadPresenter < ApplicationPresenter
+  forward_or_nil(
+    :size,
+    to: :file
+  )
+
   def format
-    Pathname(path).extname[1..-1]
+    file.extension
+  end
+
+  private
+
+  def file
+    @file ||= FilePresenter.new(path)
   end
 end
