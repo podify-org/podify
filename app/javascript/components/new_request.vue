@@ -27,26 +27,8 @@
 <script>
 import gql from 'graphql-tag';
 import queries from 'queries';
+import mutations from 'mutations';
 import Loading from 'vue-loading-overlay';
-
-const ADD_REQUEST = gql`
-  mutation request_for_url($url: String!) {
-    requestForUrl(input: {url: $url}) {
-      request {
-        id
-        source {
-          id
-          url
-          downloads {
-            id
-            title
-          }
-        }
-      }
-      errors
-    }
-  }
-`;
 
 export default {
   data() {
@@ -63,7 +45,7 @@ export default {
       this.submitting = true;
 
       this.$apollo.mutate({
-        mutation: ADD_REQUEST,
+        mutation: mutations.requestForUrl,
         variables: { url: this.form.url },
         update: (store, { data: { requestForUrl: { request, errors } } }) => {
           if (errors.length > 0) {
