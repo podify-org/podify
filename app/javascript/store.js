@@ -22,11 +22,20 @@ export function updateSource(store, id, fn) {
   });
 };
 
+export function refreshSource(store, id) {
+  apollo.query({
+    query: queries.source,
+    variables: { id },
+  }).then(({ data: { source } }) => {
+    updateRequests(store, requests => {
+      const request = requests.find(request => request.source.id == id);
+      request.source = source;
+    });
+  });
+};
+
 export function updateDownloadStatus(store, source_id, changes) {
   updateSource(store, source_id, source => {
     Object.assign(source.downloadStatus, changes);
-    console.log(source_id);
-    console.log(source.id);
-    console.log(source.downloadStatus);
   });
 };

@@ -7,6 +7,13 @@ module UserAPI
           RequestPresenter.new(request)
         end
       end
+
+      field :source, SourceType, description: 'A source requested by the user', null: false do
+        argument :id, Integer, required: true
+      end
+      def source(id:)
+        SourcePresenter.new(context[:current_user].sources_dataset.with_pk!(id))
+      end
     end
   end
 end

@@ -23,19 +23,20 @@
 </template>
 
 <script>
-import { updateDownloadStatus } from 'store';
+import { updateDownloadStatus, refreshSource } from 'store';
 
 export default {
   props: ['status', 'source-id'],
   channels: {
     DownloadStatusChannel: {
-      connected() { console.log("connected"); },
-      rejected() { console.log("rejected"); },
-      disconnected() { console.log("disconnected"); },
+      connected() {},
+      rejected() {},
+      disconnected() {},
       received(data) {
-        console.log(this.sourceId);
-        console.log(data);
         // TODO: stop using global store
+        if (data.status.status == 'downloaded' && status.status != 'downloaded') {
+          refreshSource(store, this.sourceId);
+        }
         updateDownloadStatus(store, data.source_id, data.status);
       },
     }

@@ -53,6 +53,7 @@ const client = new ApolloClient({
   link: link,
   cache: store,
 });
+window.apollo = client;
 
 const apolloProvider = new VueApollo({
   defaultClient: client,

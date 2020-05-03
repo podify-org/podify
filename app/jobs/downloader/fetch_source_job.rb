@@ -8,15 +8,20 @@ module Downloader
 
     def perform(source_id)
       source = Source[source_id]
-      return unless source
+      raise "Source #{source_id} not found" unless source
 
       provide('downloader.fetch_source.progress_callback' => BroadcastProgressCallback.new(source)) do
         fetch_source.call(source).or do |failure|
+          ap failure
+
           case failure
           when Dry::Validation::Result
             Rails.logger.error failure.errors.to_h
           when 'downloads.create.path_exists'
+            broadcast.call
             # already fetched, all good
+          when 'downloader.fetcher_factory.no_fetcher_for_scheme'
+            # no need to retry
           else
             Rails.logger.error failure
             raise "Failed (#{failure})"
