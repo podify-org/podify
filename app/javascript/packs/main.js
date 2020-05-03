@@ -32,7 +32,7 @@ const getHeaders = () => {
 
 // Create an http link:
 const link = new HttpLink({
-  uri: 'http://podify.localhost:3000/graphql',
+  uri: 'http://podify.localhost:3000/api',
   fetch,
   headers: getHeaders()
 });

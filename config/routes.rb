@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
-  post "/graphql", to: "graphql#execute"
+  post "/api", to: "graphql#execute"
 
   root to: 'vue_apps#main'
   devise_for :user, class_name: 'DeviseUser'
