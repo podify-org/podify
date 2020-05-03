@@ -23,8 +23,22 @@
 </template>
 
 <script>
-  export default {
-  props: ['status'],
+export default {
+  props: ['status', 'source-id'],
+  channels: {
+    DownloadStatusChannel: {
+      connected() { console.log("connected"); },
+      rejected() { console.log("rejected"); },
+      received(data) { console.log(data); },
+      disconnected() { console.log("disconnected"); }
+    }
+  },
+  mounted() {
+    this.$cable.subscribe({
+      channel: 'DownloadStatusChannel',
+      source: this.sourceId,
+    });
+  },
 }
 </script>
 

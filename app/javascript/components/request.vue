@@ -44,7 +44,7 @@
               <b-badge variant="success">{{ request.source.lastDownload.size }}</b-badge>
             </template>
 
-            <DownloadStatus :status="request.source.downloadStatus"></DownloadStatus>
+            <DownloadStatus :status="request.source.downloadStatus" :source-id="request.source.id"></DownloadStatus>
           </div>
         </b-media>
       </b-card-text>

@@ -6,6 +6,7 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue';
+import ActionCableVue from 'actioncable-vue';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import App from 'components/app';
 
@@ -18,6 +19,12 @@ import VueApollo from "vue-apollo";
 Vue.use(VueApollo);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+Vue.use(ActionCableVue, {
+  debug: true,
+  debugLevel: 'error',
+  connectionUrl: 'ws://podify.localhost:3000/api/cable',
+  connectImmediately: true,
+});
 
 // Vue.config.productionTip = false;
 
@@ -52,8 +59,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     apolloProvider,
     render: h => h(App),
-  }).$mount();
-  document.getElementById("main").appendChild(app.$el);
-
-  console.log(app);
+  }).$mount("#main");
 });

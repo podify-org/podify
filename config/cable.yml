@@ -1,0 +1,9 @@
+development:
+  adapter: redis
+  url: "<%= ENV['REDIS_URL'] %>"
+  channel_prefix: podify_development
+
+production:
+  adapter: redis
+  url: "<%= ENV['REDIS_URL'] %>"
+  channel_prefix: podify_production
