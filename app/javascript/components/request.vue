@@ -1,13 +1,46 @@
 <template>
 <div class="source row mb-3">
   <div class="col">
-    <b-card v-bind:title="request.source.title" class="vld-parent">
+    <b-card v-bind:title="request.source.title" class="vld-parent overflow-hidden" no-body>
       <Loading :active="destroying" :is-full-page="false" loader="dots"></Loading>
 
-      <b-card-text>
+      <template v-slot:header>
         <DestroyRequest :id="request.id" @destroy="onDestroy" />
-        <b-card-title v-if="request.source.downloads.length > 0">{{ request.source.downloads[0].title }}</b-card-title>
-        <b-card-sub-title>{{ request.source.url }}</b-card-sub-title>
+        <span class="text-muted">{{ request.source.url }}</span>
+      </template>
+
+      <!-- <template v-slot:footer> -->
+      <!--   Foot -->
+      <!-- </template> -->
+
+      <b-card-text>
+        <b-media>
+          <template v-slot:aside>
+            <div class="source-thumbnail d-flex flex-wrap align-items-center">
+              <b-img
+                v-if="request.source.downloads.length > 0 && request.source.downloads[0].thumbnailUrl"
+                :src="request.source.downloads[0].thumbnailUrl"
+                fluid
+                ></b-img>
+              <b-img
+                v-else
+                blank blank-color="#ccc"
+                class="w-100 h-100"
+                width="90"
+                alt="placeholder"
+                ></b-img>
+            </div>
+          </template>
+
+          <div class="source-body py-2 pr-3">
+            <b-card-title v-if="request.source.downloads.length > 0">
+              {{ request.source.downloads[0].title }}
+            </b-card-title>
+            <b-card-sub-title v-if="request.source.downloads.length > 0">
+              {{ request.source.downloads[0].author }}
+            </b-card-sub-title>
+          </div>
+        </b-media>
       </b-card-text>
     </b-card>
   </div>
@@ -37,5 +70,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  .source-thumbnail {
+    width: 150px;
+    height: 150px;
+    background-color: #000000;
+
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .card-text {
+    margin-bottom: 0;
+  }
 </style>

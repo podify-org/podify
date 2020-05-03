@@ -11,6 +11,8 @@ export default {
           downloads {
             id
             title
+            author
+            thumbnailUrl
           }
         }
       }
