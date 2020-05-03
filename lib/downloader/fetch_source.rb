@@ -8,16 +8,17 @@ module Downloader
       create_download: 'downloads.create',
     ]
 
+    include Dry::Effects.Resolve(progress_callback: 'downloader.fetch_source.progress_callback')
+
     def call(source)
-      broadcast = download_status_broadcast(source)
-      broadcast.progress(10)
+      progress_callback.start_download
 
       fetcher = yield fetcher_factory.call(source)
       result = yield fetcher.call(source)
       events.publish('downloader.fetch_source.fetched', result: result)
       download = yield create_download_from_result(result: result, source: source)
 
-      broadcast.call
+      progress_callback.complete
 
       Success(download)
     end
@@ -25,12 +26,6 @@ module Downloader
     def create_download_from_result(result:, source:)
       download = yield create_download.call(**result.to_h, path: result[:path].to_s, source_id: source.id)
       Success(download)
-    end
-
-    private
-
-    def download_status_broadcast(source)
-      Broadcasts::DownloadStatus.new(source: source)
     end
   end
 end

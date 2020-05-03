@@ -34,6 +34,7 @@ gem 'dry-monads'
 gem 'dry-view'
 gem 'dry-cli'
 gem 'dry-events'
+gem 'dry-effects'
 
 gem 'devise'
 gem 'sequel-devise'
