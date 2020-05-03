@@ -44,11 +44,14 @@ const link = new HttpLink({
   headers: getHeaders()
 });
 
+const store = new InMemoryCache({
+  addTypename: true
+});
+window.store = store;
+
 const client = new ApolloClient({
   link: link,
-  cache: new InMemoryCache({
-    addTypename: true
-  })
+  cache: store,
 });
 
 const apolloProvider = new VueApollo({

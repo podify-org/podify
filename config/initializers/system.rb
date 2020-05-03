@@ -30,6 +30,10 @@ Dry::Rails.container do
     Downloader::Result
   end
 
+  register('action_cable.server') do
+    ActionCable.server
+  end
+
   auto_register!('lib')
   auto_register!('app/views')
   auto_register!('app/jobs') do |config|

@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-progress v-if="status.status == 'downloading'"
-                :value="45" :max="100" variant="info" show-progress animated></b-progress>
+                :value="status.progress" :max="100" variant="info" animated></b-progress>
 
     <b-progress v-else-if="status.status == 'queued'"
                 :max="100" variant="warning" label="Test" animated>
@@ -23,14 +23,21 @@
 </template>
 
 <script>
+import { updateDownloadStatus } from 'store';
+
 export default {
   props: ['status', 'source-id'],
   channels: {
     DownloadStatusChannel: {
       connected() { console.log("connected"); },
       rejected() { console.log("rejected"); },
-      received(data) { console.log(data); },
-      disconnected() { console.log("disconnected"); }
+      disconnected() { console.log("disconnected"); },
+      received(data) {
+        console.log(this.sourceId);
+        console.log(data);
+        // TODO: stop using global store
+        updateDownloadStatus(store, data.source_id, data.status);
+      },
     }
   },
   mounted() {

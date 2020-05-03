@@ -13,6 +13,7 @@ export const queryPartials = {
         status
         placeInQueue
         retryStatus
+        progress
       }
       lastDownload {
         id

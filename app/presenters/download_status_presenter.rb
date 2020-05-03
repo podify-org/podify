@@ -82,6 +82,16 @@ class DownloadStatusPresenter < ApplicationPresenter
     out
   end
 
+  def progress
+    nil
+  end
+
+  def for_broadcast
+    %i[status place_in_queue retry_status].to_h do |attr|
+      [attr, send(attr)]
+    end
+  end
+
   private
 
   def index_of_job(queue)
