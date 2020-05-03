@@ -19,4 +19,11 @@ export default {
       }
     }
   `,
+  destroyRequest: gql`
+    mutation destroy_request($id: Int!) {
+      destroyRequest(input: {id: $id}) {
+        errors
+      }
+    }
+  `,
 };

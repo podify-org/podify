@@ -28,6 +28,7 @@
 import gql from 'graphql-tag';
 import queries from 'queries';
 import mutations from 'mutations';
+import { updateRequests } from 'store';
 import Loading from 'vue-loading-overlay';
 
 export default {
@@ -51,13 +52,12 @@ export default {
           if (errors.length > 0) {
             alert(errors.join("\n"));
           } else {
-            const data = store.readQuery({ query: queries.requests });
-            data.requests.unshift(request);
-            store.writeQuery({ query: queries.requests, data });
+            updateRequests(store, requests => {
+              requests.unshift(request);
+            })
+            this.form.url = '';
           }
-
           this.submitting = false;
-          this.form.url = '';
         },
       });
     },
