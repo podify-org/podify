@@ -40,7 +40,7 @@ Dry::Rails.container do
   setting :env, ENV
   boot(:settings, from: :system) do
     settings do
-      key :storage_dir, DryTypes::Coercible::Pathname.constrained(filled: true).default(Rails.root.join('tmp', 'storage').freeze)
+      key :storage_dir, Types::Coercible::Pathname.constrained(filled: true).default(Rails.root.join('tmp', 'storage').freeze)
     end
   end
 end

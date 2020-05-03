@@ -1,10 +1,10 @@
 module Downloader
   class Result < Dry::Struct
-    attribute :fetcher, DryTypes::String
-    attribute :path, DryTypes::Pathname
-    attribute :author, DryTypes::String.meta(omittable: true)
-    attribute :title, DryTypes::String.meta(omittable: true)
-    attribute :thumbnail_url, DryTypes::String.meta(omittable: true)
-    attribute :fetcher_information, DryTypes::Hash
+    attribute :fetcher, Types::String
+    attribute :path, Types::Pathname
+    attribute :author, Types::String.meta(omittable: true)
+    attribute :title, Types::String.meta(omittable: true)
+    attribute :thumbnail_url, Types::String.meta(omittable: true)
+    attribute :fetcher_information, Types::Hash
   end
 end
