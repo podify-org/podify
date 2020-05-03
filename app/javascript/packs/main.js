@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     apolloProvider,
     render: h => h(App),
   }).$mount();
-  document.body.appendChild(app.$el);
+  document.getElementById("main").appendChild(app.$el);
 
   console.log(app);
 });
