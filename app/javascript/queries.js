@@ -11,6 +11,8 @@ export const queryPartials = {
       thumbnailUrl
       downloadStatus {
         status
+        placeInQueue
+        retryStatus
       }
       lastDownload {
         id

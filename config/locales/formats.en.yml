@@ -1,0 +1,4 @@
+en:
+  time:
+    formats:
+      time: "%l:%M%P UTC"

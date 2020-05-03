@@ -1,4 +1,4 @@
-class ApplicationPresenter < Delegator
+class ApplicationPresenter
   extend Dry::Initializer
 
   param :object
@@ -11,7 +11,17 @@ class ApplicationPresenter < Delegator
     end
   end
 
-  def __getobj__
-    object
+  def respond_to_missing?(method, *a, &b)
+    object.respond_to?(method, *a, &b)
+  end
+
+  private
+
+  def method_missing(method, *a, &b)
+    if object.respond_to?(method)
+      object.send(method, *a, &b)
+    else
+      super
+    end
   end
 end

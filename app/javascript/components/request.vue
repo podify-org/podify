@@ -10,8 +10,8 @@
       </template>
 
       <!-- <template v-slot:footer> -->
-      <!--   Foot -->
-      <!-- </template> -->
+        <!--   Foot -->
+        <!-- </template> -->
 
       <b-card-text>
         <b-media>
@@ -40,10 +40,29 @@
               {{ request.source.author }}
             </b-card-sub-title>
             <template v-if="request.source.lastDownload">
-              <b-badge>{{ request.source.lastDownload.format }}</b-badge>
-              <b-badge>{{ request.source.lastDownload.size }}</b-badge>
+              <b-badge variant="success">{{ request.source.lastDownload.format }}</b-badge>
+              <b-badge variant="success">{{ request.source.lastDownload.size }}</b-badge>
             </template>
-            <b-badge>{{ request.source.downloadStatus.status }}</b-badge>
+
+            <b-progress v-if="request.source.downloadStatus.status == 'downloading'"
+                        :value="45" :max="100" variant="info" show-progress animated></b-progress>
+
+            <b-progress v-else-if="request.source.downloadStatus.status == 'queued'"
+                        :max="100" variant="warning" label="Test" animated>
+              <b-progress-bar :value="100">{{ request.source.downloadStatus.placeInQueue }}</b-progress-bar>
+            </b-progress>
+
+            <b-badge v-else-if="request.source.downloadStatus.status == 'retrying'" variant="warning">
+              {{ request.source.downloadStatus.retryStatus }}
+            </b-badge>
+
+            <b-badge v-else-if="request.source.downloadStatus.status == 'dead'" variant="danger">
+              Failed
+            </b-badge>
+
+            <b-badge v-else-if="request.source.downloadStatus.status == 'unknown'" variant="danger">
+              Missing
+            </b-badge>
           </div>
         </b-media>
       </b-card-text>
