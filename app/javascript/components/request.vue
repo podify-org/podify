@@ -1,7 +1,7 @@
 <template>
 <div class="source row mb-3">
   <div class="col">
-    <b-card v-bind:title="request.source.title" class="vld-parent overflow-hidden" no-body>
+    <b-card class="vld-parent overflow-hidden" no-body>
       <Loading :active="destroying" :is-full-page="false" loader="dots"></Loading>
 
       <template v-slot:header>
@@ -18,8 +18,8 @@
           <template v-slot:aside>
             <div class="source-thumbnail d-flex flex-wrap align-items-center">
               <b-img
-                v-if="request.source.downloads.length > 0 && request.source.downloads[0].thumbnailUrl"
-                :src="request.source.downloads[0].thumbnailUrl"
+                v-if="request.source.thumbnailUrl"
+                :src="request.source.thumbnailUrl"
                 fluid
                 ></b-img>
               <b-img
@@ -33,12 +33,15 @@
           </template>
 
           <div class="source-body py-2 pr-3">
-            <b-card-title v-if="request.source.downloads.length > 0">
-              {{ request.source.downloads[0].title }}
+            <b-card-title v-if="request.source.title">
+              {{ request.source.title }}
             </b-card-title>
-            <b-card-sub-title v-if="request.source.downloads.length > 0">
-              {{ request.source.downloads[0].author }}
+            <b-card-sub-title v-if="request.source.author">
+              {{ request.source.author }}
             </b-card-sub-title>
+            <div v-if="request.source.lastDownload" class="position-relative">
+              <b-badge class="fixed-bottom">{{ request.source.lastDownload.format }}</b-badge>
+            </div>
           </div>
         </b-media>
       </b-card-text>

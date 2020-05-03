@@ -1,19 +1,12 @@
 import gql from 'graphql-tag';
+import { queryPartials } from 'queries';
 
 export default {
   requestForUrl: gql`
     mutation request_for_url($url: String!) {
       requestForUrl(input: {url: $url}) {
         request {
-          id
-          source {
-            id
-            url
-            downloads {
-              id
-              title
-            }
-          }
+          ${queryPartials.fullRequest}
         }
         errors
       }

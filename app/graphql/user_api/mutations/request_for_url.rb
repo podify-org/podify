@@ -16,7 +16,7 @@ module UserAPI
       case create_request_for_url.call(user: context[:current_user], url: url)
         in Success(request)
         {
-          request: request,
+          request: RequestPresenter.new(request),
           errors: [],
         }
         in Failure(failure)
