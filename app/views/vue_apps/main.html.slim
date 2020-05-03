@@ -1,3 +1,6 @@
-= javascript_pack_tag 'main'
+- content_for :html_head do
+  meta name="api-url" content=api_url
+  = action_cable_meta_tag
+  = javascript_pack_tag 'main'
 
 #main

@@ -16,13 +16,16 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 import VueApollo from "vue-apollo";
 
+const apiUrl = document.querySelector('meta[name="api-url"]').content;
+const actionCableUrl = document.querySelector('meta[name="action-cable-url"]').content;
+
 Vue.use(VueApollo);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(ActionCableVue, {
   debug: true,
   debugLevel: 'error',
-  connectionUrl: 'ws://podify.localhost:3000/api/cable',
+  connectionUrl: actionCableUrl,
   connectImmediately: true,
 });
 
@@ -39,7 +42,7 @@ const getHeaders = () => {
 
 // Create an http link:
 const link = new HttpLink({
-  uri: 'http://podify.localhost:3000/api',
+  uri: apiUrl,
   fetch,
   headers: getHeaders()
 });

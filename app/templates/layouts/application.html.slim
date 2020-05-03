@@ -13,6 +13,8 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
+    = yield :html_head
+
   body
     .navbar.navbar-expand-lg.navbar-light.bg-light
       a.navbar-brand href=root_path Podify
