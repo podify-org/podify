@@ -9,6 +9,9 @@ export const queryPartials = {
       title
       author
       thumbnailUrl
+      downloadStatus {
+        status
+      }
       lastDownload {
         id
         title

@@ -7,6 +7,10 @@ class SourcePresenter < ApplicationPresenter
     to: :last_download
   )
 
+  def download_status
+    @download_status ||= DownloadStatusPresenter.new(object)
+  end
+
   def last_download
     return @last_download if defined?(@last_download)
 

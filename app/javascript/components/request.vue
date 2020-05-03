@@ -39,10 +39,11 @@
             <b-card-sub-title v-if="request.source.author">
               {{ request.source.author }}
             </b-card-sub-title>
-            <div v-if="request.source.lastDownload" class="position-relative">
+            <template v-if="request.source.lastDownload">
               <b-badge>{{ request.source.lastDownload.format }}</b-badge>
               <b-badge>{{ request.source.lastDownload.size }}</b-badge>
-            </div>
+            </template>
+            <b-badge>{{ request.source.downloadStatus.status }}</b-badge>
           </div>
         </b-media>
       </b-card-text>

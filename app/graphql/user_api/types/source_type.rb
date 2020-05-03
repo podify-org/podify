@@ -7,6 +7,7 @@ module UserAPI
       field :author, String, null: true
       field :thumbnail_url, String, null: true
 
+      field :download_status, Types::DownloadStatusType, null: true
       field :last_download, Types::DownloadType, null: true
       field :downloads, [Types::DownloadType], null: false
     end
