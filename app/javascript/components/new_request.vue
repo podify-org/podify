@@ -1,25 +1,23 @@
 <template>
 <div id="new-request" class="mb-4">
-  <b-form @submit="onSubmit">
+  <b-form @submit="onSubmit" class="vld-parent">
+    <loading :active="submitting" :is-full-page="false" loader="dots"></loading>
+
     <label class="sr-only" for="url">URL</label>
     <b-input-group class="flex-fill">
-      <!--
-          <div class="input-group-prepend">
-            <b-input-group-text size="lg">
-              <b-icon icon="download" />
-            </b-input-group-text>
-          </div>
-      -->
       <b-form-input
         id="url"
         v-model="form.url"
         size="lg"
         required
         autofocus
+        :disabled="submitting"
         placeholder="https://..."
         ></b-form-input>
       <div class="input-group-append">
-        <b-button type="submit" size="lg" variant="primary">Add</b-button>
+        <b-button type="submit" size="lg" variant="primary" :disabled="submitting">
+          Add
+        </b-button>
       </div>
     </b-input-group>
   </b-form>
@@ -29,6 +27,7 @@
 <script>
 import gql from 'graphql-tag';
 import queries from 'queries';
+import Loading from 'vue-loading-overlay';
 
 const ADD_REQUEST = gql`
   mutation request_for_url($url: String!) {
@@ -55,11 +54,13 @@ export default {
       form: {
         url: '',
       },
+      submitting: false,
     };
   },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
+      this.submitting = true;
 
       this.$apollo.mutate({
         mutation: ADD_REQUEST,
@@ -72,11 +73,15 @@ export default {
             data.requests.unshift(request);
             store.writeQuery({ query: queries.requests, data });
           }
+
+          this.submitting = false;
+          this.form.url = '';
         },
       });
-
-      this.form.url = '';
     },
+  },
+  components: {
+    Loading,
   },
 }
 </script>
