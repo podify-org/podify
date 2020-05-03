@@ -28,6 +28,7 @@ gem 'sentry-raven'
 gem 'sidekiq'
 
 gem 'graphql'
+gem 'graphiql-rails'
 
 gem 'dry-rails', git: 'https://github.com/dry-rb/dry-rails.git', branch: :master
 gem 'dry-monads'
@@ -62,8 +63,6 @@ end
 group :development do
   # Preview mail in the browser instead of sending
   gem 'letter_opener'
-
-  gem 'graphiql-rails'
 
   # Debug I18n keys
   # gem 'i18n-debug'
