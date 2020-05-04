@@ -10,6 +10,8 @@ class DownloadStatusPresenter < ApplicationPresenter
       'downloading'
     elsif dead?
       'dead'
+    elsif new?
+      'pending'
     else
       'unknown'
     end
@@ -23,6 +25,10 @@ class DownloadStatusPresenter < ApplicationPresenter
   end
   def dead?
     !!index_of_job(Sidekiq::DeadSet.new)
+  end
+
+  def new?
+    created_at >= 10.seconds.ago
   end
 
   def retry_job

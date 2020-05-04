@@ -16,6 +16,10 @@
       Failed
     </b-badge>
 
+    <b-badge v-else-if="status.status == 'pending'" variant="info">
+      Pending
+    </b-badge>
+
     <b-badge v-else-if="status.status == 'unknown'" variant="danger">
       Missing
     </b-badge>
