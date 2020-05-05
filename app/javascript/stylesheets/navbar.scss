@@ -1,0 +1,9 @@
+.navbar {
+  @extend .mb-3;
+
+  .navbar-brand {
+    .logo {
+      height: 40px;
+    }
+  }
+}

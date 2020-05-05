@@ -1,7 +1,9 @@
 @import "bootstrap-variables.scss";
+@import "bootstrap-customization.scss";
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~bootstrap-vue/src/index.scss";
 @import 'vue-loading-overlay/dist/vue-loading.css';
 
 @import "layout.scss";
+@import "navbar.scss";
 @import "sources.scss";

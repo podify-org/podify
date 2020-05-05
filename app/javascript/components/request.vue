@@ -9,9 +9,7 @@
         <span class="text-muted">{{ request.source.url }}</span>
       </template>
 
-      <b-card-text class="vld-parent source-card-body">
-        <Loading :active="request.source.downloadStatus.status == 'pending'" :is-full-page="false"></Loading>
-
+      <b-card-text class="source-card-body">
         <div class="source-thumbnail d-flex flex-wrap align-items-center">
           <b-img
             v-if="request.source.thumbnailUrl"
@@ -20,14 +18,16 @@
             ></b-img>
           <b-img
             v-else
-            blank blank-color="#ccc"
+            blank blank-color="#000000"
             class="w-100 h-100"
             width="90"
             alt="placeholder"
             ></b-img>
         </div>
 
-        <div class="source-body">
+        <div class="vld-parent source-body">
+          <Loading :active="request.source.downloadStatus.status == 'pending'" :is-full-page="false"></Loading>
+
           <div class="source-text">
             <b-card-title v-if="request.source.title" class="source-title">
               {{ request.source.title }}
@@ -35,6 +35,9 @@
             <b-card-sub-title v-if="request.source.author" class="source-author">
               {{ request.source.author }}
             </b-card-sub-title>
+            <p v-if="request.source.description" class="source-description">
+              {{ request.source.description }}
+            </p>
           </div>
 
 

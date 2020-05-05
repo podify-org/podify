@@ -4,6 +4,8 @@
   .source-thumbnail {
     width: 150px;
     height: 150px;
+    flex-grow: 0;
+    flex-shrink: 0;
     background-color: #000000;
 
     img {
@@ -24,6 +26,11 @@
 
     .source-text {
       @extend .pl-3;
+
+      .source-description {
+        max-height: 52px;
+        overflow: hidden;
+      }
     }
 
     .source-status {

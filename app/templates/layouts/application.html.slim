@@ -19,8 +19,9 @@ html
     = yield :html_head
 
   body
-    .navbar.navbar-expand-lg.navbar-light.bg-light
-      a.navbar-brand href=root_path Podify
+    .navbar.navbar-expand-lg.navbar-light.bg-dark
+      a.navbar-brand href=root_path
+        = image_pack_tag "media/logo/navbar.png", class: 'logo'
 
       ul.navbar-nav.ml-auto
         - if current_user
