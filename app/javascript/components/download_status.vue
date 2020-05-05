@@ -37,10 +37,6 @@ export default {
       rejected() {},
       disconnected() {},
       received(data) {
-        // TODO: stop using global store
-        if (data.status.status == 'downloaded' && status.status != 'downloaded') {
-          refreshSource(store, this.sourceId);
-        }
         updateDownloadStatus(store, data.source_id, data.status);
       },
     }
@@ -50,6 +46,30 @@ export default {
       channel: 'DownloadStatusChannel',
       source: this.sourceId,
     });
+    // this.poll();
+  },
+  methods: {
+    poll() {
+      if (['pending', 'retrying', 'queued'].includes(this.status.status)) {
+        console.log("polling!");
+        // TODO: stop using global store
+        refreshSource(store, this.sourceId);
+      }
+      setTimeout(() => {
+        this.poll();
+      }, 1000);
+    },
+  },
+  watch: {
+    'status.status': {
+      handler(val, oldVal) {
+        console.log("status watch", val, oldVal);
+        if (val == 'downloaded') {
+          // TODO: stop using global store
+          refreshSource(store, this.sourceId);
+        }
+      },
+    },
   },
 }
 </script>
