@@ -5,6 +5,7 @@ const fullSource = `
   url
   title
   author
+  description
   thumbnailUrl
   downloadStatus {
     status

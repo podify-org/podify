@@ -4,6 +4,7 @@ class SourcePresenter < ApplicationPresenter
     :author,
     :thumbnail_url,
     :format,
+    :description,
     to: :last_download
   )
 

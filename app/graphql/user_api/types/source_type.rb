@@ -5,6 +5,7 @@ module UserAPI
       field :url, String, null: false
       field :title, String, null: true
       field :author, String, null: true
+      field :description, String, null: true
       field :thumbnail_url, String, null: true
 
       field :download_status, Types::DownloadStatusType, null: true

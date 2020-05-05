@@ -8,6 +8,10 @@ class DownloadPresenter < ApplicationPresenter
     file.extension
   end
 
+  def description
+    fetcher_information['description']
+  end
+
   private
 
   def file
