@@ -1,0 +1,46 @@
+.source-card-body {
+  display: flex;
+
+  .source-thumbnail {
+    width: 150px;
+    height: 150px;
+    background-color: #000000;
+
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .source-body {
+    @extend .pt-2;
+    @extend .pr-3;
+
+    flex-grow: 1;
+    align-self: stretch;
+    position: relative;
+
+    .source-text {
+      @extend .pl-3;
+    }
+
+    .source-status {
+      @extend .w-100;
+      position: absolute;
+      bottom: 0;
+
+      .source-download-status {
+        @extend .pl-3;
+        @extend .pb-2;
+      }
+
+      .source-download-progress {
+        .progress {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}

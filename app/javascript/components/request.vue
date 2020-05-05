@@ -9,44 +9,37 @@
         <span class="text-muted">{{ request.source.url }}</span>
       </template>
 
-      <!-- <template v-slot:footer> -->
-        <!--   Foot -->
-        <!-- </template> -->
+      <b-card-text class="vld-parent source-card-body">
+        <Loading :active="request.source.downloadStatus.status == 'pending'" :is-full-page="false"></Loading>
 
-      <b-card-text>
-        <b-media>
-          <template v-slot:aside>
-            <div class="source-thumbnail d-flex flex-wrap align-items-center">
-              <b-img
-                v-if="request.source.thumbnailUrl"
-                :src="request.source.thumbnailUrl"
-                fluid
-                ></b-img>
-              <b-img
-                v-else
-                blank blank-color="#ccc"
-                class="w-100 h-100"
-                width="90"
-                alt="placeholder"
-                ></b-img>
-            </div>
-          </template>
+        <div class="source-thumbnail d-flex flex-wrap align-items-center">
+          <b-img
+            v-if="request.source.thumbnailUrl"
+            :src="request.source.thumbnailUrl"
+            fluid
+            ></b-img>
+          <b-img
+            v-else
+            blank blank-color="#ccc"
+            class="w-100 h-100"
+            width="90"
+            alt="placeholder"
+            ></b-img>
+        </div>
 
-          <div class="source-body py-2 pr-3">
-            <b-card-title v-if="request.source.title">
+        <div class="source-body">
+          <div class="source-text">
+            <b-card-title v-if="request.source.title" class="source-title">
               {{ request.source.title }}
             </b-card-title>
-            <b-card-sub-title v-if="request.source.author">
+            <b-card-sub-title v-if="request.source.author" class="source-author">
               {{ request.source.author }}
             </b-card-sub-title>
-            <template v-if="request.source.lastDownload">
-              <b-badge variant="success">{{ request.source.lastDownload.format }}</b-badge>
-              <b-badge variant="success">{{ request.source.lastDownload.size }}</b-badge>
-            </template>
-
-            <DownloadStatus :status="request.source.downloadStatus" :source-id="request.source.id"></DownloadStatus>
           </div>
-        </b-media>
+
+
+          <SourceStatus :source="request.source"></SourceStatus>
+        </div>
       </b-card-text>
     </b-card>
   </div>
@@ -55,7 +48,7 @@
 
 <script>
 import DestroyRequest from 'components/destroy_request';
-import DownloadStatus from 'components/download_status';
+import SourceStatus from 'components/source_status';
 import Loading from 'vue-loading-overlay';
 
 export default {
@@ -72,27 +65,8 @@ export default {
   },
   components: {
     DestroyRequest,
-    DownloadStatus,
+    SourceStatus,
     Loading,
   },
 }
 </script>
-
-<style lang="scss" scoped>
-  .source-thumbnail {
-    width: 150px;
-    height: 150px;
-    background-color: #000000;
-
-    img {
-      max-height: 100%;
-      max-width: 100%;
-      display: block;
-      margin: 0 auto;
-    }
-  }
-
-  .card-text {
-    margin-bottom: 0;
-  }
-</style>
