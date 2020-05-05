@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  base:
+    image: maxhollmann/podify-base
+    build:
+      context: ..
+      dockerfile: docker/base.dockerfile
+
+  web:
+    image: maxhollmann/podify-web
+    build:
+      context: ..
+      dockerfile: docker/web.dockerfile
+
+  worker:
+    image: maxhollmann/podify-worker
+    build:
+      context: ..
+      dockerfile: docker/worker.dockerfile

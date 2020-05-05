@@ -4,10 +4,12 @@ set -e
 # Remove a potentially pre-existing server.pid for Rails.
 rm -f /app/tmp/pids/server.pid
 
-bundle exec sequel -m db/migrate "$DATABASE_URL"
-# rails db:migrate
+if [ "$RUN_MIGRATIONS" = "yes" ]; then
+    bundle exec sequel -m db/migrate "$DATABASE_URL"
+fi
 
-[[ ! -z "$PRECOMPILE_ASSETS" ]] && rails assets:precompile
+if [ "$PRECOMPILE_ASSETS" = "yes" ]; then
+    rails assets:precompile
+fi
 
-# Then exec the container's main process (what's set as CMD in the Dockerfile).
 exec "$@"

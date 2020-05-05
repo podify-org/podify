@@ -24,7 +24,6 @@ RUN yarn install --production
 
 COPY . /app
 
-# Add a script to be executed every time the container starts.
 COPY docker/entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
@@ -36,6 +35,3 @@ ENV RAILS_ENV=production
 # RUN rake assets:precompile
 
 RUN pip3 install youtube-dl
-
-# Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
