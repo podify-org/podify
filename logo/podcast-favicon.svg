@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   aria-hidden="true"
+   focusable="false"
+   data-prefix="fas"
+   data-icon="podcast"
+   class="svg-inline--fa fa-podcast fa-w-14"
+   role="img"
+   viewBox="0 0 448 448"
+   version="1.1"
+   id="svg1541"
+   sodipodi:docname="podcast-favicon.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   width="448"
+   height="448"
+   inkscape:export-filename="/home/max/dev/podify/app/assets/images/favicon/16.png"
+   inkscape:export-xdpi="3.4200001"
+   inkscape:export-ydpi="3.4200001">
+  <metadata
+     id="metadata1547">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs1545" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1278"
+     inkscape:window-height="1398"
+     id="namedview1543"
+     showgrid="false"
+     inkscape:zoom="0.921875"
+     inkscape:cx="171.65233"
+     inkscape:cy="259.75392"
+     inkscape:window-x="1280"
+     inkscape:window-y="20"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer4">
+    <sodipodi:guide
+       position="0,0"
+       orientation="0,448"
+       id="guide3295"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="448,0"
+       orientation="-512,0"
+       id="guide3297"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="519.59322,-47.728814"
+       orientation="0,-448"
+       id="guide3299"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0,512"
+       orientation="512,0"
+       id="guide3301"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0,0"
+       orientation="0,448"
+       id="guide3357"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="448,0"
+       orientation="-448,0"
+       id="guide3359"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="448,448"
+       orientation="0,-448"
+       id="guide3361"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0,448"
+       orientation="448,0"
+       id="guide3363"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Background"
+     style="display:inline"
+     transform="translate(0,-64)">
+    <rect
+       style="display:inline;opacity:1;fill:#202b3a;fill-opacity:1;stroke:#36485e;stroke-width:0.93541437;stroke-opacity:1"
+       id="rect3303"
+       width="448"
+       height="448"
+       x="0"
+       y="64"
+       rx="50"
+       ry="50" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Podcast"
+     style="display:inline"
+     transform="translate(0,-64)">
+    <path
+       d="M 259.07278,475.81531 C 254.91935,491.16757 239.2295,494.74276 224,494.74276 c -15.2287,0 -30.91935,-3.57519 -35.07197,-18.92745 -6.17402,-22.95896 -16.61372,-80.48836 -16.61372,-107.25832 0,-28.39159 25.14994,-35.33202 51.68569,-35.33202 26.53575,0 51.68569,6.94043 51.68569,35.33202 0,26.60926 -10.39448,84.13382 -16.61291,107.25832 z M 169.78413,314.29025 c -15.09626,-14.78533 -24.19375,-35.67362 -23.24564,-58.63015 1.65879,-40.15655 34.23773,-72.64747 74.39833,-74.20208 44.13877,-1.70886 80.59172,33.70311 80.59172,77.46877 0,21.66519 -8.93517,41.28073 -23.31187,55.36184 -2.1603,2.11589 -1.93902,5.64183 0.50718,7.41932 7.52026,5.46335 13.2929,12.39084 17.14834,20.48287 1.406,2.95094 5.2469,3.76338 7.63089,1.52716 23.27957,-21.83963 37.5957,-53.12562 36.7542,-87.67589 -1.49809,-61.54313 -51.35863,-111.61524 -112.8953,-113.36044 -65.65213,-1.8623 -119.65479,51.00408 -119.65479,116.24514 0,33.40269 14.15864,63.55725 36.78567,84.78796 2.38482,2.23783 6.22732,1.42943 7.63414,-1.52393 3.85543,-8.09284 9.62889,-15.01952 17.14916,-20.48287 2.44618,-1.77669 2.66827,-5.30263 0.50797,-7.4177 z M 224,81.257237 c -99.97628,0 -180.899924,80.908293 -180.899924,180.899923 0,72.67654 42.480793,133.77468 101.545414,162.65486 3.4993,1.71048 7.48393,-1.24692 6.89278,-5.09588 -1.92367,-12.52731 -3.50655,-24.99165 -4.36582,-35.80769 -0.11791,-1.48272 -0.92792,-2.81525 -2.16273,-3.64383 C 106.73001,354.57844 81.562307,310.79905 81.866768,261.2688 82.344861,183.54887 145.90049,120.22502 223.62205,120.02232 c 78.54691,-0.20514 142.5136,63.63476 142.5136,142.13484 0,50.01558 -25.97044,94.07603 -65.13204,119.41575 -0.80679,11.33612 -2.4785,24.70252 -4.54189,38.14242 -0.59116,3.84977 3.39429,6.80717 6.89278,5.09589 C 362.28103,395.99645 404.89992,334.99117 404.89992,262.15716 404.89992,162.18168 323.99161,81.257237 224,81.257237 Z m 0,129.214233 c -28.54504,0 -51.68569,23.14064 -51.68569,51.68569 0,28.54504 23.14065,51.68569 51.68569,51.68569 28.54504,0 51.68569,-23.14065 51.68569,-51.68569 0,-28.54505 -23.14065,-51.68569 -51.68569,-51.68569 z"
+       id="path1539"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.80758893"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

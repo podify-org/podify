@@ -7,6 +7,7 @@ import 'stylesheets/application';
 import 'bootstrap';
 
 require("@rails/ujs").start();
+require.context('../../assets/images', true);
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

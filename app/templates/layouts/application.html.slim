@@ -13,6 +13,9 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
+    - %w[16 32].each do |size|
+      = favicon_pack_tag "media/favicon/#{size}.png", rel: 'icon', sizes: "#{size}x#{size}"
+
     = yield :html_head
 
   body
