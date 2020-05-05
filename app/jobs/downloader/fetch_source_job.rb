@@ -37,6 +37,8 @@ module Downloader
     private
 
     class BroadcastProgressCallback
+      BROADCAST_THROTTLE = 0.2.seconds
+
       extend Dry::Initializer
       param :source
 
@@ -45,8 +47,10 @@ module Downloader
       end
 
       def progress(progress)
-        # TODO: throttle this to a reasonable level
+        return if @last_progress_broadcast && @last_progress_broadcast > BROADCAST_THROTTLE.ago
+
         broadcast.progress(progress)
+        @last_progress_broadcast = Time.now
       end
 
       def complete
