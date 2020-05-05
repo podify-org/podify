@@ -3,17 +3,32 @@ module Downloader
     class YoutubeDl
       include Dry::Monads[:result, :do]
 
-      include Podify::Import['settings', 'downloader.result']
+      include Podify::Import[
+        'settings',
+        'downloader.result',
+      ]
+
+      include Dry::Effects.Resolve(progress_callback: 'downloader.fetch_source.progress_callback')
 
       def call(source)
-        video = yield download(source)
-        Success(create_result(video))
+        download_state = yield download(source)
+        Success(create_result(download_state))
       end
 
       def download(source)
-        Success(YoutubeDL.download(source.url, arguments(source)))
-      rescue Terrapin::ExitStatusError => e
-        handle_youtube_dl_error(e.message)
+        YoutubeDL.download(source.url, arguments(source))
+          .on_progress do |state:, **|
+            progress_callback.progress(state.progress)
+          end
+          .on_complete do |state:, **|
+            return Success(state)
+          end
+          .on_error do |state:, **|
+            return handle_youtube_dl_error(state.error)
+          end
+          .call
+
+        raise 'YoutubeDL finished without error but not complete either'
       end
 
       def arguments(source)
@@ -51,14 +66,14 @@ module Downloader
         end
       end
 
-      def create_result(video)
+      def create_result(download_state)
         result.new(**{
           fetcher: 'youtube_dl',
-          path: Pathname.new(video.filename),
-          author: video.information[:uploader],
-          title: video.information[:title],
-          thumbnail_url: video.information[:thumbnail],
-          fetcher_information: video.information,
+          path: download_state.destination,
+          author: download_state.info['uploader'],
+          title: download_state.info['title'],
+          thumbnail_url: download_state.info['thumbnail'],
+          fetcher_information: download_state.info,
         }.compact)
       end
     end

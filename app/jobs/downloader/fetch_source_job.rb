@@ -41,7 +41,12 @@ module Downloader
       param :source
 
       def start_download
-        broadcast.progress(1)
+        progress(0)
+      end
+
+      def progress(progress)
+        # TODO: throttle this to a reasonable level
+        broadcast.progress(progress)
       end
 
       def complete
