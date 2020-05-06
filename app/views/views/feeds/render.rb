@@ -5,7 +5,7 @@ module Views
       config.layout = nil
       config.default_format = :rss
 
-      expose(:sources) { |user:| user.sources_dataset.eager(:downloads).all }
+      expose(:sources) { |user:| user.sources.map { |s| SourcePresenter.new(s) } }
     end
   end
 end

@@ -27,12 +27,12 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="481.29208"
-     inkscape:cy="733.02532"
+     inkscape:cx="574.55212"
+     inkscape:cy="637.27037"
      inkscape:document-units="mm"
      inkscape:current-layer="layer6"
      showgrid="false"
-     inkscape:window-width="2560"
+     inkscape:window-width="1278"
      inkscape:window-height="1398"
      inkscape:window-x="0"
      inkscape:window-y="20"
@@ -66,16 +66,17 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <rect
-       style="fill:#202b3a;fill-opacity:1;stroke-width:0.34234893"
+       style="fill:#202b3a;fill-opacity:1;stroke-width:0.19140364"
        id="rect4926-3"
-       width="149.16368"
-       height="149.16368"
-       x="27.156342"
-       y="112.0538"
-       rx="3.9180696"
-       ry="3.9180696"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96" />
+       width="83.395821"
+       height="83.395821"
+       x="14.305151"
+       y="92.39904"
+       rx="2.190551"
+       ry="2.190551"
+       inkscape:export-xdpi="38.985165"
+       inkscape:export-ydpi="38.985165"
+       inkscape:export-filename="/home/max/dev/podify/app/assets/images/favicon/128.png" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -97,7 +98,7 @@
      inkscape:groupmode="layer"
      id="layer6"
      inkscape:label="Divider"
-     style="display:inline">
+     style="display:none">
     <rect
        style="opacity:1;fill:#cccccc;fill-opacity:1;stroke-width:0.27218181"
        id="rect51"
@@ -113,31 +114,28 @@
      id="layer5"
      inkscape:label="Podcast"
      style="display:inline">
-    <g
-       id="g908"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
-      <text
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         id="text4924"
-         y="54.719978"
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:31.28580666px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.78214508"
+       x="71.830055"
+       y="54.719978"
+       id="text4924"
+       inkscape:export-xdpi="61.59082"
+       inkscape:export-ydpi="61.59082"
+       inkscape:export-filename="/home/max/dev/podify/app/assets/images/logo/navbar.png"><tspan
+         sodipodi:role="line"
+         id="tspan4922"
          x="71.830055"
-         style="display:inline;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:31.28580666px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.78214508"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';fill:#ffffff;stroke-width:0.78214508"
-           y="54.719978"
-           x="71.830055"
-           id="tspan4922"
-           sodipodi:role="line">P   DIFY</tspan></text>
-      <path
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         style="display:inline;fill:#ffffff;stroke-width:0.05154989"
-         inkscape:connector-curvature="0"
-         d="m 108.5446,55.304902 c -0.26512,0.979962 -1.26663,1.208172 -2.23876,1.208172 -0.97207,0 -1.97365,-0.22821 -2.23872,-1.208172 -0.39411,-1.46552 -1.06049,-5.13773 -1.06049,-6.8465 0,-1.81229 1.60537,-2.2553 3.29921,-2.2553 1.69382,0 3.29919,0.44301 3.29919,2.2553 0,1.69852 -0.6635,5.37042 -1.06043,6.8465 z m -5.69948,-10.31045 c -0.96362,-0.94377 -1.54434,-2.27711 -1.48382,-3.74246 0.10588,-2.56327 2.18547,-4.63723 4.74901,-4.73646 2.81746,-0.10908 5.14431,2.15133 5.14431,4.94498 0,1.38292 -0.57034,2.63501 -1.48803,3.53384 -0.1379,0.13506 -0.12378,0.36013 0.0324,0.47358 0.48003,0.34874 0.84851,0.79094 1.0946,1.30747 0.0897,0.18836 0.33492,0.24022 0.4871,0.0975 1.48597,-1.39407 2.3998,-3.39111 2.34608,-5.59651 -0.0956,-3.92842 -3.27831,-7.12461 -7.2063,-7.23601 -4.19072,-0.11887 -7.637823,3.25569 -7.637823,7.42015 0,2.13215 0.903766,4.05697 2.348103,5.41216 0.15222,0.14284 0.39751,0.0913 0.48731,-0.0973 0.2461,-0.51658 0.61463,-0.95873 1.09466,-1.30747 0.15615,-0.1134 0.17032,-0.33847 0.0324,-0.47348 z m 3.46072,-14.87492 c -6.381707,0 -11.547203,5.16453 -11.547203,11.54718 0,4.63907 2.71162,8.53908 6.481833,10.38256 0.22336,0.10918 0.47772,-0.0796 0.43999,-0.32528 -0.12281,-0.79964 -0.22384,-1.59527 -0.27869,-2.28568 -0.008,-0.0947 -0.0592,-0.1797 -0.13805,-0.23259 -2.443473,-1.6396 -4.049973,-4.43412 -4.030533,-7.59572 0.0305,-4.96101 4.087393,-9.00309 9.048533,-9.01602 5.01378,-0.0131 9.0969,4.06192 9.0969,9.07273 0,3.19258 -1.65774,6.00503 -4.1575,7.62251 -0.0515,0.72362 -0.15821,1.57682 -0.28991,2.43471 -0.0377,0.24574 0.21666,0.43452 0.43997,0.32528 3.76139,-1.83929 6.48183,-5.73338 6.48183,-10.3825 0,-6.38162 -5.16452,-11.54718 -11.54717,-11.54718 z m 0,8.24798 c -1.82209,0 -3.29921,1.47711 -3.29921,3.2992 0,1.82208 1.47712,3.29918 3.29921,3.29918 1.82209,0 3.29919,-1.4771 3.29919,-3.29918 0,-1.82209 -1.4771,-3.2992 -3.29919,-3.2992 z"
-         id="path4683" />
-    </g>
+         y="54.719978"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';fill:#ffffff;stroke-width:0.78214508">P   DIFY</tspan></text>
+    <path
+       id="path4683"
+       d="m 108.5446,55.304902 c -0.26512,0.979962 -1.26663,1.208172 -2.23876,1.208172 -0.97207,0 -1.97365,-0.22821 -2.23872,-1.208172 -0.39411,-1.46552 -1.06049,-5.13773 -1.06049,-6.8465 0,-1.81229 1.60537,-2.2553 3.29921,-2.2553 1.69382,0 3.29919,0.44301 3.29919,2.2553 0,1.69852 -0.6635,5.37042 -1.06043,6.8465 z m -5.69948,-10.31045 c -0.96362,-0.94377 -1.54434,-2.27711 -1.48382,-3.74246 0.10588,-2.56327 2.18547,-4.63723 4.74901,-4.73646 2.81746,-0.10908 5.14431,2.15133 5.14431,4.94498 0,1.38292 -0.57034,2.63501 -1.48803,3.53384 -0.1379,0.13506 -0.12378,0.36013 0.0324,0.47358 0.48003,0.34874 0.84851,0.79094 1.0946,1.30747 0.0897,0.18836 0.33492,0.24022 0.4871,0.0975 1.48597,-1.39407 2.3998,-3.39111 2.34608,-5.59651 -0.0956,-3.92842 -3.27831,-7.12461 -7.2063,-7.23601 -4.19072,-0.11887 -7.637823,3.25569 -7.637823,7.42015 0,2.13215 0.903766,4.05697 2.348103,5.41216 0.15222,0.14284 0.39751,0.0913 0.48731,-0.0973 0.2461,-0.51658 0.61463,-0.95873 1.09466,-1.30747 0.15615,-0.1134 0.17032,-0.33847 0.0324,-0.47348 z m 3.46072,-14.87492 c -6.381707,0 -11.547203,5.16453 -11.547203,11.54718 0,4.63907 2.71162,8.53908 6.481833,10.38256 0.22336,0.10918 0.47772,-0.0796 0.43999,-0.32528 -0.12281,-0.79964 -0.22384,-1.59527 -0.27869,-2.28568 -0.008,-0.0947 -0.0592,-0.1797 -0.13805,-0.23259 -2.443473,-1.6396 -4.049973,-4.43412 -4.030533,-7.59572 0.0305,-4.96101 4.087393,-9.00309 9.048533,-9.01602 5.01378,-0.0131 9.0969,4.06192 9.0969,9.07273 0,3.19258 -1.65774,6.00503 -4.1575,7.62251 -0.0515,0.72362 -0.15821,1.57682 -0.28991,2.43471 -0.0377,0.24574 0.21666,0.43452 0.43997,0.32528 3.76139,-1.83929 6.48183,-5.73338 6.48183,-10.3825 0,-6.38162 -5.16452,-11.54718 -11.54717,-11.54718 z m 0,8.24798 c -1.82209,0 -3.29921,1.47711 -3.29921,3.2992 0,1.82208 1.47712,3.29918 3.29921,3.29918 1.82209,0 3.29919,-1.4771 3.29919,-3.29918 0,-1.82209 -1.4771,-3.2992 -3.29919,-3.2992 z"
+       inkscape:connector-curvature="0"
+       style="display:inline;fill:#ffffff;stroke-width:0.05154989"
+       inkscape:export-xdpi="61.59082"
+       inkscape:export-ydpi="61.59082"
+       inkscape:export-filename="/home/max/dev/podify/app/assets/images/logo/navbar.png" />
   </g>
   <g
      inkscape:label="Youtube"
@@ -146,8 +144,9 @@
      style="display:inline">
     <g
        id="g899"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
+       inkscape:export-xdpi="61.59082"
+       inkscape:export-ydpi="61.59082"
+       inkscape:export-filename="/home/max/dev/podify/app/assets/images/logo/navbar.png">
       <rect
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
@@ -179,22 +178,80 @@
          style="fill:#202b3a;fill-opacity:1;stroke-width:0.26458332"
          sodipodi:type="star" />
     </g>
-    <use
-       style="display:inline"
-       x="0"
-       y="0"
-       xlink:href="#g908"
+    <g
+       inkscape:export-ydpi="38.985165"
+       inkscape:export-xdpi="38.985165"
        id="use910"
-       transform="translate(-30.735995,184.68324)"
-       width="100%"
-       height="100%" />
+       transform="matrix(0.55908934,0,0,0.55908934,-18.061837,133.00539)"
+       inkscape:export-filename="/home/max/dev/podify/app/assets/images/favicon/128.png">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:31.28580666px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.78214508"
+         x="71.830055"
+         y="54.719978"
+         id="text865"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96"><tspan
+           sodipodi:role="line"
+           id="tspan863"
+           x="71.830055"
+           y="54.719978"
+           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';fill:#ffffff;stroke-width:0.78214508">P   DIFY</tspan></text>
+      <path
+         id="path867"
+         d="m 108.5446,55.304902 c -0.26512,0.979962 -1.26663,1.208172 -2.23876,1.208172 -0.97207,0 -1.97365,-0.22821 -2.23872,-1.208172 -0.39411,-1.46552 -1.06049,-5.13773 -1.06049,-6.8465 0,-1.81229 1.60537,-2.2553 3.29921,-2.2553 1.69382,0 3.29919,0.44301 3.29919,2.2553 0,1.69852 -0.6635,5.37042 -1.06043,6.8465 z m -5.69948,-10.31045 c -0.96362,-0.94377 -1.54434,-2.27711 -1.48382,-3.74246 0.10588,-2.56327 2.18547,-4.63723 4.74901,-4.73646 2.81746,-0.10908 5.14431,2.15133 5.14431,4.94498 0,1.38292 -0.57034,2.63501 -1.48803,3.53384 -0.1379,0.13506 -0.12378,0.36013 0.0324,0.47358 0.48003,0.34874 0.84851,0.79094 1.0946,1.30747 0.0897,0.18836 0.33492,0.24022 0.4871,0.0975 1.48597,-1.39407 2.3998,-3.39111 2.34608,-5.59651 -0.0956,-3.92842 -3.27831,-7.12461 -7.2063,-7.23601 -4.19072,-0.11887 -7.637823,3.25569 -7.637823,7.42015 0,2.13215 0.903766,4.05697 2.348103,5.41216 0.15222,0.14284 0.39751,0.0913 0.48731,-0.0973 0.2461,-0.51658 0.61463,-0.95873 1.09466,-1.30747 0.15615,-0.1134 0.17032,-0.33847 0.0324,-0.47348 z m 3.46072,-14.87492 c -6.381707,0 -11.547203,5.16453 -11.547203,11.54718 0,4.63907 2.71162,8.53908 6.481833,10.38256 0.22336,0.10918 0.47772,-0.0796 0.43999,-0.32528 -0.12281,-0.79964 -0.22384,-1.59527 -0.27869,-2.28568 -0.008,-0.0947 -0.0592,-0.1797 -0.13805,-0.23259 -2.443473,-1.6396 -4.049973,-4.43412 -4.030533,-7.59572 0.0305,-4.96101 4.087393,-9.00309 9.048533,-9.01602 5.01378,-0.0131 9.0969,4.06192 9.0969,9.07273 0,3.19258 -1.65774,6.00503 -4.1575,7.62251 -0.0515,0.72362 -0.15821,1.57682 -0.28991,2.43471 -0.0377,0.24574 0.21666,0.43452 0.43997,0.32528 3.76139,-1.83929 6.48183,-5.73338 6.48183,-10.3825 0,-6.38162 -5.16452,-11.54718 -11.54717,-11.54718 z m 0,8.24798 c -1.82209,0 -3.29921,1.47711 -3.29921,3.2992 0,1.82208 1.47712,3.29918 3.29921,3.29918 1.82209,0 3.29919,-1.4771 3.29919,-3.29918 0,-1.82209 -1.4771,-3.2992 -3.29919,-3.2992 z"
+         inkscape:connector-curvature="0"
+         style="display:inline;fill:#ffffff;stroke-width:0.05154989"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
     <use
        x="0"
        y="0"
        xlink:href="#g899"
        id="use901"
-       transform="matrix(2.9083982,0,0,2.9083982,-18.670562,40.223019)"
+       transform="matrix(1.6260544,0,0,1.6260544,-11.316182,52.239215)"
        width="100%"
-       height="100%" />
+       height="100%"
+       inkscape:export-filename="/home/max/dev/podify/app/assets/images/favicon/128.png"
+       inkscape:export-xdpi="38.985165"
+       inkscape:export-ydpi="38.985165" />
+    <g
+       transform="translate(115.86612,89.264048)"
+       style="display:inline"
+       id="g899-3"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         ry="5.4004407"
+         rx="5.4004407"
+         style="fill:#f16755;fill-opacity:1;stroke-width:0.05715466"
+         y="31.581627"
+         x="21.267397"
+         height="23.469364"
+         width="40.20916"
+         id="rect3713-5" />
+      <path
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         transform="matrix(1.0116941,0,0,0.81992766,7.5152623,11.926932)"
+         inkscape:transform-center-x="-1.9268604"
+         d="m 40.225234,38.283096 -5.713766,3.298844 -5.713764,3.298844 0,-6.597688 0,-6.597687 5.713765,3.298844 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="false"
+         sodipodi:arg2="1.0471976"
+         sodipodi:arg1="0"
+         sodipodi:r2="3.8091767"
+         sodipodi:r1="7.6183534"
+         sodipodi:cy="38.283096"
+         sodipodi:cx="32.60688"
+         sodipodi:sides="3"
+         id="path4741-6"
+         style="fill:#202b3a;fill-opacity:1;stroke-width:0.26458332"
+         sodipodi:type="star" />
+    </g>
   </g>
 </svg>

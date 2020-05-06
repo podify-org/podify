@@ -53,8 +53,11 @@ module Podify
 
     if ENV['URL_HOST']
       Rails.application.routes.default_url_options[:host] = ENV['URL_HOST']
+      config.action_controller.asset_host = ENV['URL_HOST']
     elsif ENV['HOST']
-      Rails.application.routes.default_url_options[:host] = "http#{'s' if ENV['SSL']}://#{ENV.fetch('HOST')}:#{ENV.fetch('PORT')}"
+      host = "http#{'s' if ENV['SSL']}://#{ENV.fetch('HOST')}:#{ENV.fetch('PORT')}"
+      Rails.application.routes.default_url_options[:host] = host
+      config.action_controller.asset_host = host
       config.hosts << ENV.fetch('HOST')
     end
 

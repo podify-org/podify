@@ -10,10 +10,11 @@ xml.rss version: "2.0",
   "xmlns:rawvoice" => "http://www.rawvoice.com/rawvoiceRssModule/" do
 
   xml.channel do
-    xml.title "Podify: All"
+    xml.title "Podify"
     xml.atom :link, href: "bla", rel: "self", type: "application/rss+xml"
     # xml.link request.url
     xml.description "All your downloads on Podify"
+    xml.itunes :image, asset_pack_url('media/logo/square.png')
     xml.lastBuildDate Time.now
     xml.language "en-US"
     xml.generator root_url
@@ -26,13 +27,14 @@ xml.rss version: "2.0",
         xml.guid "podify-all--#{source.id}", isPermaLink: false
 
         desc = <<~EOF
-          <p>Source: #{link_to source.url, source_url(source.id)}</p>
+          <p>From #{link_to source.url, source.url}</p>
+          <p>#{source.description}</p>
         EOF
         xml.description { xml.cdata! desc }
-        #xml.itunes :summary, desc
+        xml.itunes :summary, desc
 
-        # xml.itunes :author, 'Podify'
-        # xml.itunes :image, href: item.image || item.feed.image
+        xml.itunes :author, source.author
+        xml.itunes :image, href: source.thumbnail_url
         # xml.itunes :duration, item.duration
 
         download = source.downloads.last

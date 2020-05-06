@@ -46,14 +46,14 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1278"
+     inkscape:window-width="851"
      inkscape:window-height="1398"
      id="namedview1543"
      showgrid="false"
      inkscape:zoom="0.921875"
      inkscape:cx="171.65233"
      inkscape:cy="259.75392"
-     inkscape:window-x="1280"
+     inkscape:window-x="1707"
      inkscape:window-y="20"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer4">
@@ -112,7 +112,10 @@
        x="0"
        y="64"
        rx="50"
-       ry="50" />
+       ry="50"
+       inkscape:export-filename="/home/max/dev/podify/app/assets/images/favicon/32.png"
+       inkscape:export-xdpi="6.8400002"
+       inkscape:export-ydpi="6.8400002" />
   </g>
   <g
      inkscape:groupmode="layer"
