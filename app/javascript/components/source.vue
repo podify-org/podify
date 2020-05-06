@@ -1,61 +1,45 @@
 <template>
-<div class="source row mb-3">
-  <div class="col">
-    <b-card class="vld-parent overflow-hidden" no-body>
-      <slot name="body-start"></slot>
+  <div class="source-wrapper">
+    <div class="source card">
+      <Thumbnail :image="source.thumbnailUrl">
+        <template v-slot:actions>
+          <slot name="thumbnail-actions"></slot>
+        </template>
+      </Thumbnail>
 
-      <template v-slot:header>
-        <slot name="header"></slot>
-        <span class="text-muted">{{ source.url }}</span>
-      </template>
+      <div class="source-body vld-parent">
+        <slot name="body-start"></slot>
+        <Loading :active="source.downloadStatus.status == 'pending'" :is-full-page="false"></Loading>
 
-      <b-card-text class="source-body">
-        <div class="source-thumbnail d-flex flex-wrap align-items-center">
-          <b-img
-            v-if="source.thumbnailUrl"
-            :src="source.thumbnailUrl"
-            fluid
-            ></b-img>
-          <b-img
-            v-else
-            blank blank-color="#000000"
-            class="w-100 h-100"
-            width="90"
-            alt="placeholder"
-            ></b-img>
-        </div>
+        <b-card-title v-if="source.title" class="source-title">
+          {{ source.title }}
+        </b-card-title>
+        <b-card-title v-else class="source-title">
+          {{ source.url }}
+        </b-card-title>
 
-        <div class="vld-parent source-body">
-          <Loading :active="source.downloadStatus.status == 'pending'" :is-full-page="false"></Loading>
+        <b-card-sub-title v-if="source.author" class="source-author">
+          {{ source.author }}
+        </b-card-sub-title>
 
-          <div class="source-text">
-            <b-card-title v-if="source.title" class="source-title">
-              {{ source.title }}
-            </b-card-title>
-            <b-card-sub-title v-if="source.author" class="source-author">
-              {{ source.author }}
-            </b-card-sub-title>
-            <b-card-text v-if="source.description" class="source-description">
-              {{ source.description }}
-            </b-card-text>
-          </div>
-
+        <p class="card-text">
           <SourceStatus :source="source"></SourceStatus>
-        </div>
-      </b-card-text>
-    </b-card>
+        </p>
+      </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 import SourceStatus from 'components/source_status';
+import Thumbnail from 'components/thumbnail';
 import Loading from 'vue-loading-overlay';
 
 export default {
   props: ['source'],
   components: {
     SourceStatus,
+    Thumbnail,
     Loading,
   },
 }

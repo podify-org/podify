@@ -1,57 +1,79 @@
-.source-body {
-  display: flex;
+.source-wrapper {
+  @extend .col-sm-6;
+  @extend .col-md-4;
+  @extend .col-lg-3;
+}
 
-  .source-thumbnail {
-    width: 150px;
-    height: 150px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    background-color: #000000;
-
-    img {
-      max-height: 100%;
-      max-width: 100%;
-      display: block;
-      margin: 0 auto;
-    }
-  }
-
-  .source-body {
-    @extend .pt-2;
-    @extend .pr-3;
-
-    flex-grow: 1;
-    align-self: stretch;
-    position: relative;
-
-    .source-text {
-      @extend .pl-3;
-
-      .source-description {
-        max-height: 52px;
-        overflow: hidden;
-      }
-    }
-
-    .source-status {
-      @extend .w-100;
-      position: absolute;
-      bottom: 0;
-
-      .source-download-status {
-        @extend .pl-3;
-        @extend .pb-2;
-      }
-
-      .source-download-progress {
-        .progress {
-          border-radius: 0;
-        }
-      }
-    }
-  }
+.source {
+  @extend .mb-3;
+  border: none;
 
   .source-title {
-    @extend .card-title;
+    font-size: 1rem;
+    font-weight: bold;
+
+    max-height: 2.4rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+  }
+
+  .source-author {
+    font-size: .9rem;
+  }
+}
+
+.source-thumbnail-wrapper {
+  @extend .mb-2;
+
+  position: relative;
+  width: 100%;
+  background-color: #000000;
+
+  @include media-breakpoint-down(lg) { height: 118px; }
+  @include media-breakpoint-down(sm) { height: 135px; }
+  @include media-breakpoint-down(xs) { height: 170px; }
+  height: 144px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .source-thumbnail {
+
+    max-width: 100%;
+    max-height: 100%;
+
+    &.placeholder {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &:hover .actions {
+    display: flex;
+  }
+
+  .actions {
+    display: none;
+
+    position: absolute;
+    top: .5em;
+    right: .5em;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    background: black;
+    align-items: center;
+    justify-content: center;
+
+    .close {
+      float: none;
+      color: white;
+    }
   }
 }

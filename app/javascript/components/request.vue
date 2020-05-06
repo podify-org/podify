@@ -1,6 +1,6 @@
 <template>
 <Source :source="request.source">
-  <template v-slot:header>
+  <template v-slot:thumbnail-actions>
     <DestroyRequest :id="request.id" @destroy="onDestroy" />
   </template>
   <template v-slot:body-start>
