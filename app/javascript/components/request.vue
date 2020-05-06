@@ -1,57 +1,17 @@
 <template>
-<div class="source row mb-3">
-  <div class="col">
-    <b-card class="vld-parent overflow-hidden" no-body>
-      <Loading :active="destroying" :is-full-page="false" loader="dots"></Loading>
-
-      <template v-slot:header>
-        <DestroyRequest :id="request.id" @destroy="onDestroy" />
-        <span class="text-muted">{{ request.source.url }}</span>
-      </template>
-
-      <b-card-text class="source-card-body">
-        <div class="source-thumbnail d-flex flex-wrap align-items-center">
-          <b-img
-            v-if="request.source.thumbnailUrl"
-            :src="request.source.thumbnailUrl"
-            fluid
-            ></b-img>
-          <b-img
-            v-else
-            blank blank-color="#000000"
-            class="w-100 h-100"
-            width="90"
-            alt="placeholder"
-            ></b-img>
-        </div>
-
-        <div class="vld-parent source-body">
-          <Loading :active="request.source.downloadStatus.status == 'pending'" :is-full-page="false"></Loading>
-
-          <div class="source-text">
-            <b-card-title v-if="request.source.title" class="source-title">
-              {{ request.source.title }}
-            </b-card-title>
-            <b-card-sub-title v-if="request.source.author" class="source-author">
-              {{ request.source.author }}
-            </b-card-sub-title>
-            <p v-if="request.source.description" class="source-description">
-              {{ request.source.description }}
-            </p>
-          </div>
-
-
-          <SourceStatus :source="request.source"></SourceStatus>
-        </div>
-      </b-card-text>
-    </b-card>
-  </div>
-</div>
+<Source :source="request.source">
+  <template v-slot:header>
+    <DestroyRequest :id="request.id" @destroy="onDestroy" />
+  </template>
+  <template v-slot:body-start>
+    <Loading :active="destroying" :is-full-page="false" loader="dots"></Loading>
+  </template>
+</Source>
 </template>
 
 <script>
 import DestroyRequest from 'components/destroy_request';
-import SourceStatus from 'components/source_status';
+import Source from 'components/source';
 import Loading from 'vue-loading-overlay';
 
 export default {
@@ -68,7 +28,7 @@ export default {
   },
   components: {
     DestroyRequest,
-    SourceStatus,
+    Source,
     Loading,
   },
 }

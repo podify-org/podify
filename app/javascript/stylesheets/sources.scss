@@ -1,4 +1,4 @@
-.source-card-body {
+.source-body {
   display: flex;
 
   .source-thumbnail {
@@ -49,5 +49,9 @@
         }
       }
     }
+  }
+
+  .source-title {
+    @extend .card-title;
   }
 }
