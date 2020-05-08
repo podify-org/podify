@@ -1,0 +1,29 @@
+$sidebar-width: 300px;
+
+.sidebar {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: lighten($dark, 6%);
+
+  color: #FFF;
+  a {
+    color: #FFF;
+  }
+
+  height: 100%;
+
+  padding-top: $navbar-height-lg + 15px;
+  @include media-breakpoint-down(sm) { padding-top: $navbar-height-sm; }
+
+  width: $sidebar-width;
+
+  left: -$sidebar-width;
+  transition: left 0.3s;
+  &.active {
+    left: 0;
+    box-shadow: 2px 0px 15px #000;
+  }
+}
