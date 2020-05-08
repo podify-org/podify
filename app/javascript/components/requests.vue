@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="container">
   <NewRequest />
   <div v-if="$apolloData.loading" class="d-flex mt-5 mb-3 justify-content-center">
     <b-spinner type="border" variant="primary"></b-spinner>

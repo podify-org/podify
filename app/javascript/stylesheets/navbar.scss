@@ -1,9 +1,15 @@
 .navbar {
   @extend .mb-3;
 
+  display: flex;
+
   .navbar-brand {
     .logo {
       height: 40px;
     }
   }
+}
+
+body {
+  padding-top: 80px;
 }
