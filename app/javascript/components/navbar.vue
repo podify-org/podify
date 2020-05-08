@@ -16,7 +16,20 @@
   </div>
 
   <aside class="sidebar" :class="{ active: active }">
-    <ul class="nav flex-column">
+    <ul class="top nav">
+      <li class="nav-item">
+        <a class="nav-link disabled">
+          <strong>Feeds</strong>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          All downloads
+        </a>
+      </li>
+    </ul>
+
+    <ul class="bottom nav">
       <li class="nav-item">
         <a class="nav-link" data-method="delete" href="/user/sign_out">
           Sign out
@@ -32,7 +45,7 @@
 export default {
   data () {
     return {
-      active: false,
+      active: true,
     };
   },
   methods: {

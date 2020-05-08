@@ -1,7 +1,10 @@
 $sidebar-width: 300px;
 
 .sidebar {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   position: absolute;
   top: 0;
   left: 0;
@@ -18,6 +21,8 @@ $sidebar-width: 300px;
   padding-top: $navbar-height-lg + 15px;
   @include media-breakpoint-down(sm) { padding-top: $navbar-height-sm; }
 
+  padding-bottom: 15px;
+
   width: $sidebar-width;
 
   left: -$sidebar-width;
@@ -25,5 +30,16 @@ $sidebar-width: 300px;
   &.active {
     left: 0;
     box-shadow: 2px 0px 15px #000;
+  }
+
+  .nav {
+    display: block;
+    width: 100%;
+  }
+  .top {
+    align-self: start;
+  }
+  .bottom {
+    align-self: end;
   }
 }
