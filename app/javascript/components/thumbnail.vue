@@ -13,8 +13,11 @@
       alt="placeholder"
       ></b-img>
 
-    <div class="actions">
-      <slot name="actions"></slot>
+    <div class="actions top right">
+      <slot name="actions-top-right"></slot>
+    </div>
+    <div class="actions bottom right">
+      <slot name="actions-bottom-right"></slot>
     </div>
   </div>
 </template>

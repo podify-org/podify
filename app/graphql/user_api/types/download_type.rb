@@ -7,6 +7,7 @@ module UserAPI
       field :thumbnail_url, String, null: true
       field :format, String, null: true
       field :size, String, null: true
+      field :download_url, String, null: true
     end
   end
 end

@@ -12,6 +12,10 @@ class DownloadPresenter < ApplicationPresenter
     fetcher_information['description']
   end
 
+  def download_url
+    Rails.application.routes.url_helpers.serve_source_download_url(object.source, object)
+  end
+
   private
 
   def file

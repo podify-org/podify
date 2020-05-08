@@ -2,7 +2,12 @@
   <div class="source-wrapper">
     <div class="source card">
       <Thumbnail :image="source.thumbnailUrl">
-        <template v-slot:actions>
+        <template v-slot:actions-bottom-right>
+          <b-button v-if="source.lastDownload && source.lastDownload.downloadUrl" class="action">
+            <a :href="source.lastDownload.downloadUrl"><b-icon-download></b-icon-download></a>
+          </b-button>
+        </template>
+        <template v-slot:actions-top-right>
           <slot name="thumbnail-actions"></slot>
         </template>
       </Thumbnail>

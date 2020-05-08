@@ -1,5 +1,5 @@
 <template>
-  <b-button-close @click="onClick" :disabled="submitting"></b-button-close>
+  <b-button-close @click="onClick" :disabled="submitting" class="action"></b-button-close>
   <!-- <a @click="onClick" :disabled="submitting" class="card-link">Delete</a> -->
 </template>
 

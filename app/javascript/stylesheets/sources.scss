@@ -62,18 +62,31 @@
     display: none;
 
     position: absolute;
-    top: .5em;
-    right: .5em;
-    width: 30px;
-    height: 30px;
-    border-radius: 3px;
-    background: black;
-    align-items: center;
-    justify-content: center;
 
-    .close {
+    &.top { top: .5em; }
+    &.bottom { bottom: .5em; }
+    &.right { right: .5em; }
+    &.left { left: .5em; }
+
+    .action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 5px;
       float: none;
+      background: black;
       color: white;
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 3px;
+
+      opacity: .6;
+      &:hover {
+        opacity: .8;
+      }
+
+      a { color: white; }
     }
   }
 }

@@ -20,6 +20,7 @@ const fullSource = `
     thumbnailUrl
     format
     size
+    downloadUrl
   }
 `;
 

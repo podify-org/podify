@@ -19,7 +19,7 @@ $sidebar-width: 300px;
   height: 100%;
 
   padding-top: $navbar-height-lg + 15px;
-  @include media-breakpoint-down(sm) { padding-top: $navbar-height-sm; }
+  @include media-breakpoint-down(sm) { padding-top: $navbar-height-sm + 15px; }
 
   padding-bottom: 15px;
 
