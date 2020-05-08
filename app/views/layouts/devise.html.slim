@@ -1,4 +1,8 @@
+= content_for :body_classes, 'body-authentication'
+
 = render layout: 'layouts/application' do
-  .row.justify-content-center
-    .col-md-3.col-sm-4
+  .authentication
+    .logo
+      img src= asset_pack_path('media/logo/navbar.png')
+    .form
       == yield

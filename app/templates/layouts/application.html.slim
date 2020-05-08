@@ -15,4 +15,5 @@ html
 
     = yield :html_head
 
-  body== yield
+  body class=yield(:body_classes)
+    == yield

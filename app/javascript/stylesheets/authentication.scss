@@ -1,0 +1,31 @@
+html {
+  height: 100%;
+}
+
+.body-authentication {
+  background-color: $dark;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.authentication {
+  max-width: 500px;
+  padding: 1em;
+  color: #FFF;
+
+  .logo {
+    margin-bottom: 3em;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .form {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
