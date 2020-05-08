@@ -12,7 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <img class="logo" src="http://podify.localhost:3000/packs/media/logo/navbar-9431a977.png">
+    <img class="logo" src="../../assets/images/logo/navbar.png">
   </div>
 
   <aside class="sidebar" :class="{ active: active }">
