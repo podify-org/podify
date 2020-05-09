@@ -34,6 +34,9 @@ Vue.use(ActionCableVue, {
 VueClipboard.config.autoSetContainer = true;
 Vue.use(VueClipboard);
 
+import VueQrcode from '@chenfengyuan/vue-qrcode';
+Vue.component(VueQrcode.name, VueQrcode);
+
 // Vue.config.productionTip = false;
 
 const getHeaders = () => {
