@@ -16,6 +16,8 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 import VueApollo from "vue-apollo";
 
+import VueClipboard from 'vue-clipboard2';
+
 const apiUrl = document.querySelector('meta[name="api-url"]').content;
 const actionCableUrl = document.querySelector('meta[name="action-cable-url"]').content;
 
@@ -28,6 +30,9 @@ Vue.use(ActionCableVue, {
   connectionUrl: actionCableUrl,
   connectImmediately: true,
 });
+
+VueClipboard.config.autoSetContainer = true;
+Vue.use(VueClipboard);
 
 // Vue.config.productionTip = false;
 

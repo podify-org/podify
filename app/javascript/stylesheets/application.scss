@@ -4,6 +4,12 @@
 @import "~bootstrap-vue/src/index.scss";
 @import 'vue-loading-overlay/dist/vue-loading.css';
 
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+// @import '~@fortawesome/fontawesome-free/scss/regular';
+// @import '~@fortawesome/fontawesome-free/scss/brands';
+
 @import "layout.scss";
 @import "authentication.scss";
 @import "navbar.scss";

@@ -46,7 +46,7 @@ export default {
   props: ['feeds'],
   data () {
     return {
-      active: true,
+      active: false,
     };
   },
   methods: {
