@@ -1,18 +1,34 @@
 <template>
 <div id="app">
-  <Navbar></Navbar>
-  <Requests></Requests>
+  <div class="container">
+    <div v-if="$apolloData.loading" class="d-flex mt-5 mb-3 justify-content-center">
+      <b-spinner type="border" variant="primary"></b-spinner>
+    </div>
+    <template v-else>
+      <Navbar :feeds="data.feeds"></Navbar>
+      <Requests :requests="data.requests"></Requests>
+      <Subscribe :feed="data.feeds[0]"></Subscribe>
+    </template>
+  </div>
 </div>
 </template>
 
 <script>
-import Requests from 'components/requests';
+import queries from 'queries';
 import Navbar from 'components/navbar';
+import Requests from 'components/requests';
+import Subscribe from 'components/subscribe';
 
 export default {
+  apollo: {
+    data: {
+      query: queries.data,
+    },
+  },
   components: {
-    Requests,
     Navbar,
+    Requests,
+    Subscribe,
   },
 }
 </script>

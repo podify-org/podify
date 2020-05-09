@@ -53,6 +53,18 @@ Sequel.migration do
       index [:path], :name=>:downloads_path_key, :unique=>true
     end
     
+    create_table(:feeds) do
+      primary_key :id
+      foreign_key :user_id, :users, :null=>false, :key=>[:id]
+      column :type, "text", :default=>"all", :null=>false
+      column :name, "text", :null=>false
+      column :token, "text", :null=>false
+      column :created_at, "timestamp without time zone", :null=>false
+      column :updated_at, "timestamp without time zone", :null=>false
+      
+      index [:token], :name=>:feeds_token_key, :unique=>true
+    end
+    
     create_table(:requests) do
       primary_key :id
       foreign_key :user_id, :users, :null=>false, :key=>[:id]
@@ -72,5 +84,6 @@ self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('2020042314573
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200425113118_create_users.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200501124610_create_requests.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200501175137_add_authentication_token_to_users.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200508224831_create_feeds.rb')"
                 end
               end

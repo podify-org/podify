@@ -22,9 +22,9 @@
           <strong>Feeds</strong>
         </a>
       </li>
-      <li class="nav-item">
+      <li v-for="feed in feeds" :key="feed.id">
         <a class="nav-link">
-          All downloads
+          {{ feed.name }}
         </a>
       </li>
     </ul>
@@ -43,6 +43,7 @@
 
 <script>
 export default {
+  props: ['feeds'],
   data () {
     return {
       active: true,

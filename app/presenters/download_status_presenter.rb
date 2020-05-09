@@ -80,11 +80,10 @@ class DownloadStatusPresenter < ApplicationPresenter
       out += " " + I18n.l(retry_at, format: :short)
     end
 
-    if retry_job.item['error_message']
-      out += " (#{retry_job.item['error_message']})"
-    end
+    # if retry_job.item['error_message']
+    #   out += " (#{retry_job.item['error_message']})"
+    # end
 
-    ap retry_job.item['retry_count']
     out
   end
 

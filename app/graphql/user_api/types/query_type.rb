@@ -1,6 +1,18 @@
 module UserAPI
   module Types
     class QueryType < Types::BaseObject
+      field :data, DataType, description: 'All requests of the current user', null: false
+      def data
+        OpenStruct.new(
+          requests: context[:current_user].requests_dataset.order { created_at.desc }.all.map do |request|
+            RequestPresenter.new(request)
+          end,
+          feeds: [context[:current_user].all_feed].map do |feed|
+            FeedPresenter.new(feed)
+          end
+        )
+      end
+
       field :requests, [RequestType], description: 'All requests of the current user', null: false
       def requests
         context[:current_user].requests_dataset.order { created_at.desc }.all.map do |request|

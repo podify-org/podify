@@ -1,9 +1,15 @@
 import queries from 'queries';
 
+export function updateData(store, fn) {
+  const data = store.readQuery({ query: queries.data });
+  fn(data.data);
+  store.writeQuery({ query: queries.data, data });
+};
+
 export function updateRequests(store, fn) {
-  const data = store.readQuery({ query: queries.requests });
-  fn(data.requests);
-  store.writeQuery({ query: queries.requests, data });
+  updateData(store, data => {
+    fn(data.requests);
+  });
 };
 
 export function removeRequest(store, id) {

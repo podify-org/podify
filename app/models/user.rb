@@ -1,11 +1,20 @@
 class User < ApplicationModel
   one_to_many :requests
   many_to_many :sources, join_table: :requests
+  one_to_many :feeds
 
   dataset_module do
     def by_email(email)
       first(email: email)
     end
+  end
+
+  def all_feed
+    feeds_dataset.by_type(:all).first || Feed.create(
+      user: self,
+      name: 'All',
+      type: 'all',
+    )
   end
 
   def ensure_authentication_token

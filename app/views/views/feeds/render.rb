@@ -5,7 +5,7 @@ module Views
       config.layout = nil
       config.default_format = :rss
 
-      expose(:sources) { |user:| user.sources.map { |s| SourcePresenter.new(s) } }
+      expose(:sources) { |feed:| feed.requests.map { |request| SourcePresenter.new(request.source) } }
     end
   end
 end

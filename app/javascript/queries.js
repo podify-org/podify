@@ -31,16 +31,28 @@ const fullRequest = `
   }
 `;
 
+const fullFeed = `
+  id
+  token
+  name
+  rssUrl
+`;
+
 export const queryPartials = {
   fullSource,
   fullRequest,
 };
 
 export default {
-  requests: gql`
+  data: gql`
     query {
-      requests {
-        ${fullRequest}
+      data {
+        requests {
+          ${fullRequest}
+        }
+        feeds {
+          ${fullFeed}
+        }
       }
     }
   `,
