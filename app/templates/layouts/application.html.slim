@@ -18,7 +18,7 @@ html
   body class=yield(:body_classes)
     == yield
 
-    - if Rails.env.development?
+    - if false && Rails.env.development?
       .container
         p= link_to 'Graphiql', graphiql_rails_path
         p= link_to 'Sidekiq', sidekiq_web_path

@@ -8,8 +8,10 @@
   .subscribe-icon {
     cursor: pointer;
     font-size: 4rem;
-    opacity: 0.2;
     margin: 1rem;
+
+    color: lighten($secondary, 30%);
+    &:hover { color: $secondary; }
   }
 }
 

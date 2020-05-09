@@ -46,7 +46,7 @@ export default {
   props: ['feeds'],
   data () {
     return {
-      active: false,
+      active: Math.max(document.documentElement.clientWidth, window.innerWidth || 0) >= 1780,
     };
   },
   methods: {

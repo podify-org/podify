@@ -10,6 +10,11 @@
         <template v-slot:actions-top-right>
           <slot name="thumbnail-actions"></slot>
         </template>
+        <template v-slot:placeholder>
+          <i v-if="source.downloadStatus.status != 'downloaded'" class="fas fa-cloud-download-alt"></i>
+          <i v-else-if="!source.thumbnailUrl && source.format == 'mp3'" class="fa fa-headphones"></i>
+          <i v-else-if="!source.thumbnailUrl && source.format == 'mp4'" class="fa fa-play"></i>
+        </template>
       </Thumbnail>
 
       <div class="source-body vld-parent">

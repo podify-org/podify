@@ -6,12 +6,17 @@
       :src="image"
       fluid
       ></b-img>
-    <b-img
-      v-else
-      class="source-thumbnail placeholder"
-      blank blank-color="#000000"
-      alt="placeholder"
-      ></b-img>
+
+    <template v-else>
+      <b-img
+        class="source-thumbnail placeholder"
+        blank blank-color="#000000"
+        alt="placeholder"
+        ></b-img>
+      <div class="placeholder-icon">
+        <slot name="placeholder"></slot>
+      </div>
+    </template>
 
     <div class="actions top right">
       <slot name="actions-top-right"></slot>

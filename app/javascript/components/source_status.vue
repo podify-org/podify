@@ -60,7 +60,6 @@ export default {
   methods: {
     poll() {
       if (['pending', 'retrying', 'queued'].includes(this.source.downloadStatus.status)) {
-        console.log("polling!");
         // TODO: stop using global store
         refreshSource(store, this.source.id);
       }
@@ -72,7 +71,6 @@ export default {
   watch: {
     'source.downloadStatus.status': {
       handler(val, oldVal) {
-        console.log("status watch", val, oldVal);
         if (val == 'downloaded') {
           // TODO: stop using global store
           refreshSource(store, this.source.id);
