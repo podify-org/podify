@@ -2,3 +2,7 @@
   garbage_collect:
     cron: '* * * * *'
     class: GarbageCollectionJob
+
+  upgrade_youtube_dl:
+    cron: '6 * * * *'
+    class: UpgradeYoutubeDlJob
