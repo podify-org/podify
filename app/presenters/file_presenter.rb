@@ -7,15 +7,11 @@ class FilePresenter < ApplicationPresenter
     { unit: :TB, exp: 4 },
   ]
 
-  def initialize(object)
-    @object = Pathname(object)
-  end
-
   def extension
-    extname[1..-1]
+    object.extension
   end
 
-  def size(units = %i[KB MB GB], decimals: 1)
+  def human_size(units = %i[KB MB GB], decimals: 1)
     conv = SIZE_UNITS.reverse.find { |unit:, exp:| units.include?(unit) && object.size.fdiv(1024 ** exp) >= 1 }
     conv ||= SIZE_UNITS.last
 

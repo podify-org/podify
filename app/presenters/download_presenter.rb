@@ -1,6 +1,9 @@
 class DownloadPresenter < ApplicationPresenter
   forward_or_nil(
     :size,
+    :human_size,
+    :download_url,
+    :mime_type,
     to: :file
   )
 
@@ -12,13 +15,7 @@ class DownloadPresenter < ApplicationPresenter
     fetcher_information['description']
   end
 
-  def download_url
-    Rails.application.routes.url_helpers.serve_source_download_url(object.source, object)
-  end
-
-  private
-
   def file
-    @file ||= FilePresenter.new(path)
+    @file ||= FilePresenter.new(object.file)
   end
 end

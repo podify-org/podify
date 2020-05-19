@@ -21,5 +21,6 @@ Rails.application.routes.draw do
 
   get 'feeds/:token', to: 'feeds#show', as: :feed, constraints: { format: :rss }
 
+  mount Downloads::FileUploader.download_endpoint => '/download'
   mount Sidekiq::Web => '/sidekiq'
 end

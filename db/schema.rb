@@ -49,6 +49,7 @@ Sequel.migration do
       column :fetcher_information, "jsonb", :null=>false
       column :created_at, "timestamp without time zone", :null=>false
       column :updated_at, "timestamp without time zone", :null=>false
+      column :file_data, "jsonb"
       
       index [:path], :name=>:downloads_path_key, :unique=>true
     end
@@ -85,5 +86,6 @@ self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('2020042511311
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200501124610_create_requests.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200501175137_add_authentication_token_to_users.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200508224831_create_feeds.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200519161740_add_file_data_to_downloads.rb')"
                 end
               end

@@ -43,6 +43,8 @@ gem 'sequel-devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise-token_authenticatable'
 
+gem 'shrine', '~> 3.0'
+
 gem 'ytdl'
 
 gem 'slim-rails'

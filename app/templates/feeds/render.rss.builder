@@ -37,10 +37,9 @@ xml.rss version: "2.0",
         xml.itunes :image, href: source.thumbnail_url
         # xml.itunes :duration, item.duration
 
-        download = source.downloads.last
-        if download
-          file = Pathname(download.path)
-          xml.enclosure url: serve_source_download_url(source.id, download.id), length: file.size, type: MimeMagic.by_path(file)
+        if source.last_download
+          file = source.last_download.file
+          xml.enclosure url: file.download_url, length: file.size, type: file.mime_type
         end
       end
     end
