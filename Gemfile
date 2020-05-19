@@ -26,6 +26,7 @@ gem 'logstash-event'
 gem 'sentry-raven'
 
 gem 'sidekiq'
+gem 'sidekiq-scheduler'
 
 gem 'graphql'
 gem 'graphiql-rails'

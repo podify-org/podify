@@ -13,5 +13,9 @@ class Source < ApplicationModel
     def by_url(url)
       where(url: url)
     end
+
+    def without_requests
+      exclude(id: Request.distinct.select(:source_id))
+    end
   end
 end

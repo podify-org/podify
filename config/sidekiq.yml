@@ -1,0 +1,4 @@
+:schedule:
+  garbage_collect:
+    cron: '* * * * *'
+    class: GarbageCollectionJob
