@@ -1,0 +1,24 @@
+$hamburger-padding-x           : 22px;
+$hamburger-padding-y           : 24px;
+$hamburger-layer-color         : #FFF;
+$hamburger-layer-width         : 30px !default;
+$hamburger-layer-height        : 2px !default;
+$hamburger-layer-spacing       : 6px !default;
+$hamburger-layer-border-radius : 4px !default;
+$hamburger-hover-opacity       : 0.7 !default;
+$hamburger-active-layer-color  : $hamburger-layer-color !default;
+$hamburger-active-hover-opacity: $hamburger-hover-opacity;
+
+@import "~hamburgers/_sass/hamburgers/hamburgers.scss";
+
+.navbar-toggler {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  @include media-breakpoint-down(sm) {
+    top: -7px;
+  }
+
+  // margin: auto 0;
+}
