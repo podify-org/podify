@@ -1,6 +1,8 @@
 <template>
   <div class="source-wrapper">
-    <div class="source card">
+    <div class="source card vld-parent">
+      <slot name="body-start"></slot>
+
       <Thumbnail :image="source.thumbnailUrl">
         <template v-slot:actions-bottom-right>
           <b-button v-if="source.lastDownload && source.lastDownload.downloadUrl" class="action">
@@ -12,14 +14,13 @@
         </template>
         <template v-slot:placeholder>
           <i v-if="source.downloadStatus.status != 'downloaded'" class="fas fa-cloud-download-alt"></i>
-          <i v-else-if="!source.thumbnailUrl && source.format == 'mp3'" class="fa fa-headphones"></i>
-          <i v-else-if="!source.thumbnailUrl && source.format == 'mp4'" class="fa fa-play"></i>
+          <i v-else-if="!source.thumbnailUrl && source.lastDownload && source.lastDownload.format == 'mp3'" class="fa fa-headphones"></i>
+          <i v-else-if="!source.thumbnailUrl && source.lastDownload && source.lastDownload.format == 'mp4'" class="fa fa-video"></i>
         </template>
       </Thumbnail>
 
       <div class="source-body vld-parent">
-        <slot name="body-start"></slot>
-        <Loading :active="source.downloadStatus.status == 'pending'" :is-full-page="false"></Loading>
+        <Loading :active="source.downloadStatus.status == 'pending'" :is-full-page="false" loader="dots"></Loading>
 
         <b-card-title v-if="source.title" class="source-title">
           {{ source.title }}

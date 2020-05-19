@@ -10,7 +10,7 @@ xml.rss version: "2.0",
   "xmlns:rawvoice" => "http://www.rawvoice.com/rawvoiceRssModule/" do
 
   xml.channel do
-    xml.title "Podify"
+    xml.title "Podify: #{feed.name}"
     xml.atom :link, href: "bla", rel: "self", type: "application/rss+xml"
     # xml.link request.url
     xml.description "All your downloads on Podify"
