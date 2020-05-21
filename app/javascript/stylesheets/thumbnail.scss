@@ -31,39 +31,6 @@
     font-size: 6rem;
   }
 
-  &:hover .actions {
-    display: flex;
-  }
-
-  .actions {
-    display: none;
-
-    position: absolute;
-
-    &.top { top: .5em; }
-    &.bottom { bottom: .5em; }
-    &.right { right: .5em; }
-    &.left { left: .5em; }
-
-    .action {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 5px;
-      float: none;
-      background: black;
-      color: white;
-      width: 30px;
-      height: 30px;
-      border: none;
-      border-radius: 3px;
-
-      opacity: .6;
-      &:hover {
-        opacity: .8;
-      }
-
-      a { color: white; }
-    }
-  }
+          .actions { display: none; }
+  &:hover .actions { display: flex; }
 }

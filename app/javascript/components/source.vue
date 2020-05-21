@@ -5,9 +5,14 @@
 
       <Thumbnail :image="source.thumbnailUrl">
         <template v-slot:actions-bottom-right>
-          <b-button v-if="source.lastDownload && source.lastDownload.downloadUrl" class="action">
-            <a :href="source.lastDownload.downloadUrl"><b-icon-download></b-icon-download></a>
-          </b-button>
+          <template v-if="source.lastDownload && source.lastDownload.downloadUrl">
+            <b-button class="action">
+              <a :href="source.lastDownload.downloadUrl"><b-icon-download></b-icon-download></a>
+            </b-button>
+            <b-button class="action" @click="playSource(source)">
+              <i class="fas fa-play"></i>
+            </b-button>
+          </template>
         </template>
         <template v-slot:actions-top-right>
           <slot name="thumbnail-actions"></slot>
@@ -45,6 +50,7 @@
 import SourceStatus from 'components/source_status';
 import Thumbnail from 'components/thumbnail';
 import Loading from 'vue-loading-overlay';
+import { state as playerState } from 'components/player';
 
 export default {
   props: ['source'],
@@ -52,6 +58,11 @@ export default {
     SourceStatus,
     Thumbnail,
     Loading,
+  },
+  methods: {
+    playSource(source) {
+      playerState.source = source;
+    },
   },
 }
 </script>

@@ -1,0 +1,32 @@
+.actions {
+  display: flex;
+
+  position: absolute;
+
+  &.top { top: .5em; }
+  &.bottom { bottom: .5em; }
+  &.right { right: .5em; }
+  &.left { left: .5em; }
+
+  .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    float: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+
+    opacity: .6;
+    background: #000000;
+    &:hover {
+      background: $brand-orange;
+      opacity: 1;
+    }
+
+    a { color: white; }
+  }
+}

@@ -1,0 +1,20 @@
+:root {
+  --plyr-color-main: #F06959;
+}
+
+$player-small-width: 320px;
+
+.player-container {
+  display: none;
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999999;
+
+  width: $player-small-width;
+  height: 10/16 * $player-small-width;
+
+          .actions { display: none; }
+  &:hover .actions { display: flex; }
+}

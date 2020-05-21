@@ -3,6 +3,7 @@
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~bootstrap-vue/src/index.scss";
 @import 'vue-loading-overlay/dist/vue-loading.css';
+@import "~plyr/src/sass/plyr.scss";
 
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
@@ -12,9 +13,11 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
 @import "layout.scss";
 @import "authentication.scss";
+@import "actions.scss";
 @import "navbar.scss";
 @import "sidebar.scss";
 @import "sources.scss";
 @import "thumbnail.scss";
 @import "subscribe.scss";
 @import "hamburger.scss";
+@import "player.scss";

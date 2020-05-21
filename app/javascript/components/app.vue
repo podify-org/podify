@@ -8,6 +8,7 @@
       <Navbar :feeds="data.feeds"></Navbar>
       <Requests :requests="data.requests"></Requests>
       <Subscribe :feed="data.feeds[0]"></Subscribe>
+      <Player></Player>
     </template>
   </div>
 </div>
@@ -18,6 +19,7 @@ import queries from 'queries';
 import Navbar from 'components/navbar';
 import Requests from 'components/requests';
 import Subscribe from 'components/subscribe';
+import Player from 'components/player';
 
 export default {
   apollo: {
@@ -29,6 +31,7 @@ export default {
     Navbar,
     Requests,
     Subscribe,
+    Player,
   },
 }
 </script>

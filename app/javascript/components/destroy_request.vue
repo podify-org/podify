@@ -1,6 +1,5 @@
 <template>
-  <b-button-close @click="onClick" :disabled="submitting" class="action"></b-button-close>
-  <!-- <a @click="onClick" :disabled="submitting" class="card-link">Delete</a> -->
+  <button @click="onClick" :disabled="submitting" class="action"><i class="fas fa-times"></i></button>
 </template>
 
 <script>

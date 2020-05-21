@@ -7,7 +7,6 @@
 
 import Vue from 'vue';
 import ActionCableVue from 'actioncable-vue';
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import App from 'components/app';
 
 import ApolloClient from "apollo-client";
@@ -16,14 +15,10 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 import VueApollo from "vue-apollo";
 
-import VueClipboard from 'vue-clipboard2';
-
 const apiUrl = document.querySelector('meta[name="api-url"]').content;
 const actionCableUrl = document.querySelector('meta[name="action-cable-url"]').content;
 
 Vue.use(VueApollo);
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
 Vue.use(ActionCableVue, {
   debug: true,
   debugLevel: 'error',
@@ -31,6 +26,11 @@ Vue.use(ActionCableVue, {
   connectImmediately: true,
 });
 
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+
+import VueClipboard from 'vue-clipboard2';
 VueClipboard.config.autoSetContainer = true;
 Vue.use(VueClipboard);
 
