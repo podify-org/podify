@@ -69,6 +69,7 @@ Sequel.migration do
       foreign_key :source_id, :sources, :null=>false, :key=>[:id]
       column :created_at, "timestamp without time zone", :null=>false
       column :updated_at, "timestamp without time zone", :null=>false
+      foreign_key :feed_id, :feeds, :key=>[:id]
       
       index [:user_id, :source_id], :unique=>true
     end
@@ -85,5 +86,6 @@ self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('2020050117513
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200508224831_create_feeds.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200519161740_add_file_data_to_downloads.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200522123751_remove_path_from_downloads.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200522131956_add_feed_id_to_requests.rb')"
                 end
               end
