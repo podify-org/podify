@@ -7,7 +7,11 @@
     <template v-else>
       <Navbar :feeds="data.feeds"></Navbar>
       <Requests :requests="data.requests"></Requests>
-      <Subscribe :feed="data.feeds[0]"></Subscribe>
+
+      <div class="big-subscribe">
+        <Subscribe :feed="data.feeds[0]" scope="big"></Subscribe>
+      </div>
+
       <Player></Player>
     </template>
   </div>

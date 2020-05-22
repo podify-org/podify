@@ -7,7 +7,7 @@ module UserAPI
           requests: context[:current_user].requests_dataset.order { created_at.desc }.all.map do |request|
             RequestPresenter.new(request)
           end,
-          feeds: context[:current_user].feeds.map do |feed|
+          feeds: context[:current_user].feeds_dataset.ordered.all.map do |feed|
             FeedPresenter.new(feed)
           end
         )

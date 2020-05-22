@@ -14,6 +14,10 @@ class Feed < ApplicationModel
     def with_token!(token)
       first!(token: token)
     end
+
+    def ordered
+      order { id.asc }
+    end
   end
 
   def before_validation

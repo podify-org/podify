@@ -17,9 +17,11 @@
   .feed-actions {
     flex-grow: 0;
     display: none;
+    white-space: nowrap;
 
     .feed-action {
       @extend .px-2;
+      @extend .py-1;
       cursor: pointer;
 
       opacity: 0.5;

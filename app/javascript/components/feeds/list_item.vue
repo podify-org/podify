@@ -5,6 +5,7 @@
       {{ feed.name }}
     </span>
     <div class="feed-actions">
+      <Subscribe :feed="feed" scope="sidebar"></Subscribe>
       <i class="feed-action fas fa-trash" @click="destroy"></i>
     </div>
   </a>
@@ -16,6 +17,7 @@
 <script>
 import mutations from 'mutations';
 import { removeFeed } from 'store';
+import Subscribe from 'components/subscribe';
 
 export default {
   props: ['feed'],
@@ -42,6 +44,9 @@ export default {
         },
       });
     },
+  },
+  components: {
+    Subscribe,
   },
 }
 </script>

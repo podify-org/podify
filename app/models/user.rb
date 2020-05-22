@@ -12,7 +12,7 @@ class User < ApplicationModel
   def all_feed
     feeds_dataset.by_type(:all).first || Feed.create(
       user: self,
-      name: 'All',
+      name: 'All Downloads',
       type: 'all',
     )
   end
