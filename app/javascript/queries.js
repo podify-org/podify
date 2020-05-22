@@ -26,6 +26,7 @@ const fullSource = `
 
 const fullRequest = `
   id
+  feedId
   source {
     ${fullSource}
   }

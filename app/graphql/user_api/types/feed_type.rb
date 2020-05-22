@@ -5,6 +5,7 @@ module UserAPI
       field :token, String, null: false
       field :name, String, null: false
       field :rss_url, String, null: false
+      field :requests, [Types::RequestType], null: false
     end
   end
 end
