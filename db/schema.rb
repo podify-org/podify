@@ -41,7 +41,6 @@ Sequel.migration do
     create_table(:downloads) do
       primary_key :id
       foreign_key :source_id, :sources, :null=>false, :key=>[:id]
-      column :path, "text"
       column :fetcher, "text", :null=>false
       column :author, "text"
       column :title, "text"
@@ -50,8 +49,6 @@ Sequel.migration do
       column :created_at, "timestamp without time zone", :null=>false
       column :updated_at, "timestamp without time zone", :null=>false
       column :file_data, "jsonb"
-      
-      index [:path], :name=>:downloads_path_key, :unique=>true
     end
     
     create_table(:feeds) do
@@ -87,5 +84,6 @@ self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('2020050112461
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200501175137_add_authentication_token_to_users.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200508224831_create_feeds.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200519161740_add_file_data_to_downloads.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200522123751_remove_path_from_downloads.rb')"
                 end
               end

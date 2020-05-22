@@ -8,8 +8,10 @@ module Downloads
     ]
 
     def call(attrs)
+      attrs = attrs.dup
+
       attrs = yield validate(attrs)
-      file = yield get_file(attrs[:path])
+      file = yield get_file(attrs.delete(:path))
       download = yield create_download(attrs: attrs, file: file)
       events.publish('downloads.created', download: download)
       Success(download)
