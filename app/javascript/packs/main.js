@@ -70,6 +70,10 @@ const apolloProvider = new VueApollo({
   defaultClient: client,
 });
 
+Vue.directive('visible', (el, binding) => {
+  el.style.visibility = !!binding.value ? 'visible' : 'hidden';
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     apolloProvider,

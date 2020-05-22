@@ -1,13 +1,20 @@
 <template>
-  <div ref="container" class="player-container">
-    <video id="player"
-           playsinline
-           controls
-           >
-    </video>
-    <div class="actions top right">
-      <button @click="close" class="action"><i class="fas fa-times"></i></button>
+  <div>
+    <div ref="container" class="player-container" :class="{ big: big, small: !big }" v-visible="visible">
+      <video id="player"
+             playsinline
+             controls
+             >
+      </video>
+
+      <div class="actions top right">
+        <button v-if="big" @click="big = false" class="action"><i class="fas fa-chevron-down"></i></button>
+        <button v-if="!big" @click="big = true" class="action"><i class="fas fa-chevron-up"></i></button>
+        <button @click="close" class="action"><i class="fas fa-times"></i></button>
+      </div>
     </div>
+
+    <div v-show="visible && big" class="player-backdrop" @click="big = false"></div>
   </div>
 </template>
 
@@ -20,6 +27,12 @@ export const state = Vue.observable({
 });
 
 export default {
+  data() {
+    return {
+      visible: false,
+      big: false,
+    };
+  },
   computed: {
     source() {
       return state.source;
@@ -33,13 +46,17 @@ export default {
         'play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'
       ],
     });
-    player.on('canplay',        this.updateAspectRatio);
+    player.on('loadedmetadata', this.updateAspectRatio);
     player.on('exitfullscreen', this.updateAspectRatio);
+    window.addEventListener('resize', this.updateAspectRatio);
     window.player = player;
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.updateAspectRatio);
   },
   methods: {
     playSource(source) {
-      this.hidePlayer();
+      this.visible = false;
       player.poster = this.source.thumbnailUrl;
       player.source = {
         type: 'video',
@@ -50,14 +67,9 @@ export default {
           },
         ],
       };
-      this.showPlayer();
+      this.big = true;
+      this.visible = true;
       player.play();
-    },
-    showPlayer() {
-      this.$refs.container.style.display = "block";
-    },
-    hidePlayer() {
-      this.$refs.container.style.display = "none";
     },
     updateAspectRatio() {
       let ratio = player.ratio;
@@ -71,16 +83,37 @@ export default {
         height = dims[1] / dims[0] * this.$refs.container.clientWidth;
       }
       this.$refs.container.style.height = height + "px";
+      this.updatePosition();
+    },
+    updatePosition() {
+      if (!this.visible || !this.big) return;
+
+      let w = this.$refs.container.clientWidth;
+      let h = this.$refs.container.clientHeight;
+
+      this.$refs.container.style.marginLeft = `-${w / 2}px`;
+      this.$refs.container.style.marginTop = `-${h / 2}px`;
     },
     close() {
       player.stop();
-      this.hidePlayer();
+      this.visible = false;
+      state.source = null;
     },
   },
   watch: {
     'source': {
       handler(val, oldVal) {
         this.playSource(val);
+      }
+    },
+    'visible': {
+      handler(val, oldVal) {
+        this.updatePosition();
+      }
+    },
+    'big': {
+      handler(val, oldVal) {
+        this.$nextTick(this.updateAspectRatio);
       }
     },
   },

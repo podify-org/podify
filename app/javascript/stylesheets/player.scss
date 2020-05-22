@@ -5,16 +5,44 @@
 $player-small-width: 320px;
 
 .player-container {
-  display: none;
+  visibility: hidden;
 
   position: fixed;
-  bottom: 20px;
-  right: 20px;
   z-index: 999999;
 
-  width: $player-small-width;
-  height: 10/16 * $player-small-width;
+  &.small {
+    bottom: 20px;
+    right: 20px;
+    width: $player-small-width;
+    height: 10/16 * $player-small-width;
+  }
+  &.big {
+    top: 50%;
+    left: 50%;
+    margin-left: -35%;
+    margin-top: 0;
+
+    height: 53px; // will be adjusted via JS
+
+    width: 100%;
+    max-width: 1150px;
+  }
 
           .actions { display: none; }
   &:hover .actions { display: flex; }
+}
+
+.player-backdrop {
+  z-index: 999998;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #000000;
+  opacity: 0.8;
+}
+
+.body-app {
+  padding-bottom: 180px;
 }
