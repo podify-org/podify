@@ -18,7 +18,11 @@ export default {
   props: ['data'],
   computed: {
     requests() {
-      return this.data.requests.filter(request => request.feedId == this.$route.params.feedId);
+      if (this.feed.type == 'all') {
+        return this.data.requests;
+      } else {
+        return this.data.requests.filter(request => request.feedId == this.$route.params.feedId);
+      }
     },
     feed() {
       return this.data.feeds.find(feed => feed.id == this.$route.params.feedId);
