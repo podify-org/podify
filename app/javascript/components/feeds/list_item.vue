@@ -9,7 +9,9 @@
 
     <div class="feed-actions">
       <Subscribe :feed="feed" scope="sidebar"></Subscribe>
-      <i class="feed-action fas fa-trash" @click="destroy"></i>
+      <i v-if="feed.type != 'all'"
+         class="feed-action fas fa-trash"
+         @click="destroy"></i>
     </div>
   </div>
 </li>

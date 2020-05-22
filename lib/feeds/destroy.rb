@@ -8,12 +8,21 @@ module Feeds
     ]
 
     def call(feed)
+      yield ensure_may_destroy(feed)
       DB.transaction do
         yield destroy_requests(feed.requests)
         feed.destroy
       end
       events.publish('feeds.destroyed', feed: feed)
       Success()
+    end
+
+    def ensure_may_destroy(feed)
+      if feed.type == 'all'
+        Failure('feeds.destroy.special_feed')
+      else
+        Success()
+      end
     end
 
     def destroy_requests(requests)

@@ -37,6 +37,7 @@ const fullFeed = `
   token
   name
   rssUrl
+  type
 `;
 
 export const queryPartials = {
