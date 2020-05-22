@@ -9,6 +9,7 @@
     cursor: pointer;
     font-size: 4rem;
     margin: 1rem;
+    outline: none;
 
     color: lighten($secondary, 30%);
     &:hover { color: $secondary; }

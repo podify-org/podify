@@ -1,14 +1,17 @@
 <template>
 <li>
-  <a class="feeds-list-item nav-link">
-    <span class="feed-name">
+  <div class="feeds-list-item nav-link">
+    <router-link class="feed-name"
+                 :to="{ name: 'feedRequests', params: { feedId: feed.id }}"
+                 >
       {{ feed.name }}
-    </span>
+    </router-link>
+
     <div class="feed-actions">
       <Subscribe :feed="feed" scope="sidebar"></Subscribe>
       <i class="feed-action fas fa-trash" @click="destroy"></i>
     </div>
-  </a>
+  </div>
 </li>
 </div>
 

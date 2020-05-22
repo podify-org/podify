@@ -11,6 +11,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    text-decoration: none;
+    outline: none;
   }
 
   &:hover .feed-actions { display: inline; }
@@ -26,6 +29,8 @@
 
       opacity: 0.5;
       &:hover { opacity: 1; }
+
+      outline: none;
     }
   }
 }

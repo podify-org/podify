@@ -20,5 +20,5 @@ $hamburger-active-hover-opacity: $hamburger-hover-opacity;
     top: -7px;
   }
 
-  // margin: auto 0;
+  &:focus { outline: none; }
 }

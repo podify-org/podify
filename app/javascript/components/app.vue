@@ -37,6 +37,10 @@ export default {
     Subscribe,
     Player,
   },
+  mounted() {
+    window.route = this.$route;
+    window.router = this.$router;
+  }
 }
 </script>
 

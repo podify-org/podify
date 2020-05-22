@@ -74,9 +74,15 @@ Vue.directive('visible', (el, binding) => {
   el.style.visibility = !!binding.value ? 'visible' : 'hidden';
 });
 
+
+import VueRouter from 'vue-router';
+import router from 'router';
+Vue.use(VueRouter);
+
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     apolloProvider,
+    router,
     render: h => h(App),
   }).$mount("#main");
 });
