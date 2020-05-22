@@ -95,8 +95,8 @@ export default {
       this.$refs.container.style.marginTop = `-${h / 2}px`;
     },
     close() {
-      player.stop();
       this.visible = false;
+      player.stop();
       state.source = null;
     },
   },

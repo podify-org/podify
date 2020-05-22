@@ -7,6 +7,7 @@
 .source {
   @extend .mb-4;
   border: none;
+  background-color: inherit;
 
   .source-title {
     font-size: 1rem;
