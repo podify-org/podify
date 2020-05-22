@@ -63,3 +63,11 @@ export function addFeed(store, feed) {
     feeds.push(feed);
   });
 };
+
+export function removeFeed(store, id) {
+  updateFeeds(store, feeds => {
+    const index = feeds.findIndex(feed => feed.id == id);
+    if (index > -1)
+      feeds.splice(index, 1);
+  });
+};

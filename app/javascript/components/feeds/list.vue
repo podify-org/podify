@@ -6,11 +6,7 @@
         <strong>Feeds</strong>
       </a>
     </li>
-    <li v-for="feed in feeds" :key="feed.id">
-      <a class="nav-link">
-        {{ feed.name }}
-      </a>
-    </li>
+    <ListItem v-for="feed in feeds" :key="feed.id" :feed="feed"></ListItem>
   </ul>
   <NewFeed></NewFeed>
 </div>
@@ -20,11 +16,13 @@
 
 <script>
 import NewFeed from 'components/feeds/new';
+import ListItem from 'components/feeds/list_item';
 
 export default {
   props: ['feeds'],
   components: {
     NewFeed,
+    ListItem,
   },
 }
 </script>

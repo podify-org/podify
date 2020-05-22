@@ -4,6 +4,7 @@ module UserAPI
       field :request_for_url, mutation: Mutations::RequestForUrl
       field :destroy_request, mutation: Mutations::DestroyRequest
       field :create_feed, mutation: Mutations::CreateFeed
+      field :destroy_feed, mutation: Mutations::DestroyFeed
     end
   end
 end

@@ -29,4 +29,11 @@ export default {
       }
     }
   `,
+  destroyFeed: gql`
+    mutation destroy_feed($id: Int!) {
+      destroyFeed(input: {id: $id}) {
+        errors
+      }
+    }
+  `,
 };
