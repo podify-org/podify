@@ -12,7 +12,7 @@ module UserAPI
     ]
 
     def resolve(id:)
-      request = Request[id]
+      request = context[:current_user].requests_dataset[id]
       return { errors: ['Request does not exist'] } unless request
 
       case destroy_request.call(request)

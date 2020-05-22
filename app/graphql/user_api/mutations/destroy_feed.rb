@@ -12,7 +12,7 @@ module UserAPI
     ]
 
     def resolve(id:)
-      feed = Feed[id]
+      feed = context[:current_user].feeds_dataset[id]
       return { errors: ['Feed does not exist'] } unless feed
 
       case destroy_feed.call(feed)
