@@ -47,7 +47,10 @@ export default {
 
       this.$apollo.mutate({
         mutation: mutations.requestForUrl,
-        variables: this.form,
+        variables: {
+          url: this.form.url,
+          feedId: this.$route.params.feedId,
+        },
         update: (store, { data: { requestForUrl: { request, errors } } }) => {
           if (errors.length > 0) {
             alert(errors.join("\n"));

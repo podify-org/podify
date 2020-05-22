@@ -3,8 +3,8 @@ import { queryPartials } from 'queries';
 
 export default {
   requestForUrl: gql`
-    mutation request_for_url($url: String!) {
-      requestForUrl(input: {url: $url}) {
+    mutation request_for_url($url: String!, $feedId: Int!) {
+      requestForUrl(input: {url: $url, feedId: $feedId}) {
         request {
           ${queryPartials.fullRequest}
         }
