@@ -19,18 +19,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar" :class="{ active: active }">
-    <ul class="top nav">
-      <li class="nav-item">
-        <a class="nav-link disabled">
-          <strong>Feeds</strong>
-        </a>
-      </li>
-      <li v-for="feed in feeds" :key="feed.id">
-        <a class="nav-link">
-          {{ feed.name }}
-        </a>
-      </li>
-    </ul>
+    <FeedList :feeds="feeds"></FeedList>
 
     <ul class="bottom nav">
       <li class="nav-item">
@@ -45,6 +34,8 @@
 </template>
 
 <script>
+import FeedList from 'components/feeds/list';
+
 export default {
   props: ['feeds'],
   data () {
@@ -56,6 +47,9 @@ export default {
     toggleSidebar() {
       this.active = !this.active;
     }
-  }
+  },
+  components: {
+    FeedList
+  },
 }
 </script>

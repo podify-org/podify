@@ -19,4 +19,14 @@ export default {
       }
     }
   `,
+  createFeed: gql`
+    mutation create_feed($name: String!) {
+      createFeed(input: {name: $name}) {
+        feed {
+          ${queryPartials.fullFeed}
+        }
+        errors
+      }
+    }
+  `,
 };

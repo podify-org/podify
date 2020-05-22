@@ -12,6 +12,12 @@ export function updateRequests(store, fn) {
   });
 };
 
+export function addRequest(store, request) {
+  updateRequests(store, requests => {
+    requests.unshift(request);
+  });
+};
+
 export function removeRequest(store, id) {
   updateRequests(store, requests => {
     const index = requests.findIndex(request => request.id == id);
@@ -43,5 +49,17 @@ export function refreshSource(store, id) {
 export function updateDownloadStatus(store, source_id, changes) {
   updateSource(store, source_id, source => {
     Object.assign(source.downloadStatus, changes);
+  });
+};
+
+export function updateFeeds(store, fn) {
+  updateData(store, data => {
+    fn(data.feeds);
+  });
+};
+
+export function addFeed(store, feed) {
+  updateFeeds(store, feeds => {
+    feeds.push(feed);
   });
 };

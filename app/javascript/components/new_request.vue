@@ -28,7 +28,7 @@
 import gql from 'graphql-tag';
 import queries from 'queries';
 import mutations from 'mutations';
-import { updateRequests } from 'store';
+import { addRequest } from 'store';
 import Loading from 'vue-loading-overlay';
 
 export default {
@@ -47,14 +47,12 @@ export default {
 
       this.$apollo.mutate({
         mutation: mutations.requestForUrl,
-        variables: { url: this.form.url },
+        variables: this.form,
         update: (store, { data: { requestForUrl: { request, errors } } }) => {
           if (errors.length > 0) {
             alert(errors.join("\n"));
           } else {
-            updateRequests(store, requests => {
-              requests.unshift(request);
-            })
+            addRequest(store, request);
             this.form.url = '';
           }
           this.submitting = false;

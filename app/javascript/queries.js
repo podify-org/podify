@@ -42,6 +42,7 @@ const fullFeed = `
 export const queryPartials = {
   fullSource,
   fullRequest,
+  fullFeed,
 };
 
 export default {
