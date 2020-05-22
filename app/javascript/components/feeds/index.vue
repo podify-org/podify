@@ -32,6 +32,6 @@ export default {
     Requests,
     NewRequest,
     Subscribe,
-  }
+  },
 }
 </script>

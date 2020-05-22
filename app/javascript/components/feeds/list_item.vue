@@ -2,7 +2,7 @@
 <li>
   <div class="feeds-list-item nav-link">
     <router-link class="feed-name"
-                 :to="{ name: 'feedRequests', params: { feedId: feed.id }}"
+                 :to="{ name: 'feedIndex', params: { feedId: feed.id }}"
                  >
       {{ feed.name }}
     </router-link>

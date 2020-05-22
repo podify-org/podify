@@ -7,7 +7,7 @@
     <template v-else>
       <Navbar :feeds="data.feeds"></Navbar>
 
-      <router-view v-bind="{ data }"></router-view>
+      <router-view :data="data"></router-view>
 
       <Player></Player>
     </template>
@@ -30,10 +30,12 @@ export default {
     Navbar,
     Player,
   },
-  mounted() {
-    window.route = this.$route;
-    window.router = this.$router;
-  }
+  updated() {
+    if (this.$route.params.feedId === undefined && this.data) {
+      let allFeed = this.data.feeds.find(feed => feed.type == 'all');
+      this.$router.replace({ name: 'feedIndex', params: { feedId: allFeed.id } });
+    }
+  },
 }
 </script>
 

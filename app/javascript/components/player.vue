@@ -41,7 +41,7 @@ export default {
   mounted() {
     const player = new Plyr('#player', {
       disableContextMenu: false,
-      debug: true,
+      debug: false,
       controls: [
         'play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'
       ],

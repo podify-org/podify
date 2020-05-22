@@ -5,7 +5,7 @@ import FeedIndex from 'components/feeds/index';
 const routes = [
   {
     path: '/feeds/:feedId',
-    name: 'feedRequests',
+    name: 'feedIndex',
     component: FeedIndex,
   },
 ];
