@@ -19,8 +19,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'feeds/:token', to: 'feeds#show', as: :feed, constraints: { format: :rss }
+  get 'rss/:token', to: 'feeds#show', as: :feed, constraints: { format: :rss }
 
   mount Downloads::FileUploader.download_endpoint => '/download'
   mount Sidekiq::Web => '/sidekiq'
+
+  get '*path', to: 'vue_apps#main'
 end

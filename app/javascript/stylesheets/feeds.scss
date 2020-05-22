@@ -14,6 +14,10 @@
 
     text-decoration: none;
     outline: none;
+
+    &.router-link-active {
+      font-weight: bold;
+    }
   }
 
   &:hover .feed-actions { display: inline; }

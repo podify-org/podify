@@ -6,11 +6,8 @@
     </div>
     <template v-else>
       <Navbar :feeds="data.feeds"></Navbar>
-      <Requests :requests="data.requests"></Requests>
 
-      <div class="big-subscribe">
-        <Subscribe :feed="data.feeds[0]" scope="big"></Subscribe>
-      </div>
+      <router-view v-bind="{ data }"></router-view>
 
       <Player></Player>
     </template>
@@ -21,8 +18,6 @@
 <script>
 import queries from 'queries';
 import Navbar from 'components/navbar';
-import Requests from 'components/requests';
-import Subscribe from 'components/subscribe';
 import Player from 'components/player';
 
 export default {
@@ -33,8 +28,6 @@ export default {
   },
   components: {
     Navbar,
-    Requests,
-    Subscribe,
     Player,
   },
   mounted() {

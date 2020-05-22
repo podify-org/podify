@@ -1,15 +1,12 @@
 import VueRouter from 'vue-router';
 
-const Foo = { template: '<div>foo</div>' };
-const Bar = { template: '<div>bar</div>' };
-
+import FeedRequests from 'components/feeds/requests';
 
 const routes = [
-  { path: '/foo', component: Foo },
-  { path: '/bar', component: Bar },
   {
-    path: '/feeds/:feedId/downloads',
+    path: '/feeds/:feedId',
     name: 'feedRequests',
+    component: FeedRequests,
   },
 ];
 
@@ -17,5 +14,6 @@ const routes = [
 // You can pass in additional options here, but let's
 // keep it simple for now.
 export default new VueRouter({
-  routes
+  routes,
+  mode: 'history',
 });
