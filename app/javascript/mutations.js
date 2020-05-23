@@ -19,6 +19,16 @@ export default {
       }
     }
   `,
+  updateRequest: gql`
+    mutation update_request($id: Int!, $feedId: Int) {
+      updateRequest(input: {id: $id, feedId: $feedId}) {
+        request {
+          ${queryPartials.fullRequest}
+        }
+        errors
+      }
+    }
+  `,
   createFeed: gql`
     mutation create_feed($name: String!) {
       createFeed(input: {name: $name}) {

@@ -2,7 +2,10 @@ module Requests
   class Create
     include Dry::Monads[:result, :do]
 
-    include Podify::Import['events', 'requests.contract']
+    include Podify::Import[
+      'events',
+      'requests.contract',
+    ]
 
     def call(attrs)
       attrs = yield(contract.call(attrs).to_monad).to_h

@@ -1,7 +1,7 @@
 import queries from 'queries';
 
 export function updateData(store, fn) {
-  const data = getData(store);
+  const data = readData(store);
   fn(data);
   store.writeQuery({ query: queries.data, data });
 };
@@ -19,6 +19,13 @@ export function updateRequests(store, fn) {
 export function addRequest(store, request) {
   updateRequests(store, requests => {
     requests.unshift(request);
+  });
+};
+
+export function updateRequest(store, id, request) {
+  updateRequests(store, requests => {
+    const index = requests.findIndex(request => request.id == id);
+    requests[index] = request;
   });
 };
 

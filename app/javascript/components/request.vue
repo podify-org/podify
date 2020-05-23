@@ -5,7 +5,7 @@
   </template>
 
   <template v-slot:thumbnail-actions-bottom-left>
-    <ChangeFeed :request="request" />
+    <ChangeFeed :request="request" @submit="onChangeFeed" />
   </template>
 
   <template v-slot:body-start>
@@ -31,7 +31,10 @@ export default {
   methods: {
     onDestroy(evt) {
       this.destroying = true;
-    }
+    },
+    onChangeFeed(submitting) {
+      this.changingFeed = submitting;
+    },
   },
   components: {
     DestroyRequest,

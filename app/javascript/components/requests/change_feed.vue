@@ -18,7 +18,7 @@
 
 <script>
 import mutations from 'mutations';
-import { readFeeds, removeRequest } from 'store';
+import { readFeeds, updateRequest } from 'store';
 
 export default {
   props: ['request'],
@@ -29,13 +29,27 @@ export default {
   },
   computed: {
     feeds() {
-      return readFeeds(window.apollo.cache)
+      return readFeeds(window.store)
         .filter(feed => feed.id != this.request.feedId);
     },
   },
   methods: {
     onSelect(feedId) {
-      console.log(feedId);
+      this.$emit('submit', true);
+
+      this.$apollo.mutate({
+        mutation: mutations.updateRequest,
+        variables: { id: this.request.id, feedId },
+        update: (store, { data: { updateRequest: { request, errors } } }) => {
+          if (errors.length > 0) {
+            alert(errors.join("\n"));
+          } else {
+            updateRequest(store, this.id, request);
+          }
+
+          this.$emit('submit', false);
+        },
+      });
     },
   },
 }

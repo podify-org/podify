@@ -3,6 +3,7 @@ module Events
     include Dry::Events::Publisher[:podify]
 
     register_event('requests.created')
+    register_event('requests.updated')
     register_event('requests.destroyed')
 
     register_event('sources.created')
