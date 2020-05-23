@@ -8,7 +8,7 @@ module Broadcasts
     end
 
     def call
-      broadcast(DownloadStatusPresenter.new(source).for_broadcast)
+      broadcast(DownloadStatusPresenter.wrap(source).for_broadcast)
     end
 
     def progress(progress)

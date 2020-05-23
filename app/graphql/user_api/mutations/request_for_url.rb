@@ -30,7 +30,7 @@ module UserAPI
       case result
       in Success(request)
         {
-          request: RequestPresenter.new(request),
+          request: RequestPresenter.wrap(request),
           errors: [],
         }
       in Failure(failure)

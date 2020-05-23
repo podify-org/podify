@@ -21,7 +21,7 @@ module UserAPI
       in Success()
         {
           errors: [],
-          request: RequestPresenter.new(request),
+          request: RequestPresenter.wrap(request),
         }
       in Failure(failure)
         {

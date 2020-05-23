@@ -3,6 +3,14 @@ class ApplicationPresenter
 
   param :object
 
+  def self.wrap(object)
+    new(object)
+  end
+
+  def self.wrap_all(objects)
+    objects.map { |object| wrap(object) }
+  end
+
   def self.forward_or_nil(*methods, to:)
     methods.each do |method|
       define_method method do

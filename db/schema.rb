@@ -59,6 +59,7 @@ Sequel.migration do
       column :token, "text", :null=>false
       column :created_at, "timestamp without time zone", :null=>false
       column :updated_at, "timestamp without time zone", :null=>false
+      column :position, "integer", :default=>9999999, :null=>false
       
       index [:token], :name=>:feeds_token_key, :unique=>true
     end
@@ -87,5 +88,6 @@ self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('2020050822483
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200519161740_add_file_data_to_downloads.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200522123751_remove_path_from_downloads.rb')"
 self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200522131956_add_feed_id_to_requests.rb')"
+self << "INSERT INTO \"schema_migrations\" (\"filename\") VALUES ('20200523151156_add_position_to_feeds.rb')"
                 end
               end

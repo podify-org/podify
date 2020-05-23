@@ -16,7 +16,7 @@ module UserAPI
       case create_feed.call(user_id: context[:current_user].id, name: name)
       in Success(feed)
         {
-          feed: FeedPresenter.new(feed),
+          feed: FeedPresenter.wrap(feed),
           errors: [],
         }
       in Failure(failure)

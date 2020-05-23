@@ -4,6 +4,6 @@ class FeedPresenter < ApplicationPresenter
   end
 
   def requests
-    object.requests.map { |req| RequestPresenter.new(req) }
+    RequestPresenter.wrap_all(object.requests)
   end
 end

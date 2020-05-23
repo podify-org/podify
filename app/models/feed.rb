@@ -16,7 +16,7 @@ class Feed < ApplicationModel
     end
 
     def ordered
-      order { id.asc }
+      order { [position.asc, id.asc] }
     end
   end
 

@@ -6,6 +6,9 @@
 .feeds-list-item {
   display: flex;
 
+  // Set explicitly because sortable.js wraps it in a div with a different background
+  background-color: $sidebar-bg;
+
   .feed-name {
     flex-grow: 1;
     white-space: nowrap;

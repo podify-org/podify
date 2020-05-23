@@ -28,7 +28,8 @@
     "vue-loader": "^15.9.2",
     "vue-loading-overlay": "^3.3.2",
     "vue-router": "^3.2.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuedraggable": "^2.23.2"
   },
   "version": "0.1.0",
   "devDependencies": {

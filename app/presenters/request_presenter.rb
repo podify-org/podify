@@ -1,5 +1,5 @@
 class RequestPresenter < ApplicationPresenter
   def source
-    @source ||= SourcePresenter.new(object.source)
+    @source ||= SourcePresenter.wrap(object.source)
   end
 end

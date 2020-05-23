@@ -9,14 +9,6 @@ class User < ApplicationModel
     end
   end
 
-  def all_feed
-    feeds_dataset.by_type(:all).first || Feed.create(
-      user: self,
-      name: 'All Downloads',
-      type: 'all',
-    )
-  end
-
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
@@ -29,6 +21,18 @@ class User < ApplicationModel
   end
 
   private
+
+  def after_create
+    ensure_all_feed
+  end
+
+  def ensure_all_feed
+    feeds_dataset.by_type(:all).first || Feed.create(
+      user: self,
+      name: 'All Downloads',
+      type: 'all',
+    )
+  end
 
   def before_validation
     ensure_authentication_token

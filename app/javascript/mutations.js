@@ -39,6 +39,15 @@ export default {
       }
     }
   `,
+  orderFeeds: gql`
+    mutation order_feed($feedIds: [Int!]) {
+      orderFeeds(input: {feedIds: $feedIds}) {
+        feeds {
+          ${queryPartials.fullFeed}
+        }
+      }
+    }
+  `,
   destroyFeed: gql`
     mutation destroy_feed($id: Int!) {
       destroyFeed(input: {id: $id}) {

@@ -32,8 +32,7 @@ export default {
   },
   updated() {
     if (this.$route.params.feedId === undefined && this.data) {
-      let allFeed = this.data.feeds.find(feed => feed.type == 'all');
-      this.$router.replace({ name: 'feedIndex', params: { feedId: allFeed.id } });
+      this.$router.replace({ name: 'feedIndex', params: { feedId: this.data.feeds[0].id } });
     }
   },
 }

@@ -16,6 +16,6 @@ class DownloadPresenter < ApplicationPresenter
   end
 
   def file
-    @file ||= FilePresenter.new(object.file)
+    @file ||= FilePresenter.wrap(object.file)
   end
 end

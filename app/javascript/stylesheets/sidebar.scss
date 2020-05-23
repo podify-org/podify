@@ -1,4 +1,5 @@
 $sidebar-width: 300px;
+$sidebar-bg: lighten($dark, 6%);
 
 .sidebar {
   display: flex;
@@ -9,7 +10,7 @@ $sidebar-width: 300px;
   top: 0;
   left: 0;
   z-index: 1000;
-  background-color: lighten($dark, 6%);
+  background-color: $sidebar-bg;
 
   color: #FFF;
   a {

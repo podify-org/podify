@@ -9,13 +9,13 @@ class SourcePresenter < ApplicationPresenter
   )
 
   def download_status
-    @download_status ||= DownloadStatusPresenter.new(object)
+    @download_status ||= DownloadStatusPresenter.wrap(object)
   end
 
   def last_download
     return @last_download if defined?(@last_download)
 
     last = downloads_dataset.last
-    @last_download = last && DownloadPresenter.new(last)
+    @last_download = last && DownloadPresenter.wrap(last)
   end
 end
