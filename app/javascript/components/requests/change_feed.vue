@@ -32,7 +32,6 @@ export default {
     feeds() {
       return readFeeds(window.store).map(feed => {
         feed.current = feed.id == this.request.feedId;
-        console.log(feed);
         return feed;
       });
     },

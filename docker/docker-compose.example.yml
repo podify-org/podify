@@ -43,7 +43,7 @@ services:
       - pgdata:/var/lib/postgresql/data/pgdata
 
   redis:
-    image: redis
+    image: redis:6
     restart: always
 
 volumes:

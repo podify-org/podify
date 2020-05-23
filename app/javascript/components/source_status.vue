@@ -51,6 +51,8 @@ export default {
     }
   },
   mounted() {
+    if (this.source.downloadStatus.status == 'downloaded') return;
+
     this.$cable.subscribe({
       channel: 'DownloadStatusChannel',
       source: this.source.id,
