@@ -49,7 +49,7 @@ export default {
         mutation: mutations.requestForUrl,
         variables: {
           url: this.form.url,
-          feedId: this.$route.params.feedId,
+          feedId: parseInt(this.$route.params.feedId),
         },
         update: (store, { data: { requestForUrl: { request, errors } } }) => {
           if (errors.length > 0) {

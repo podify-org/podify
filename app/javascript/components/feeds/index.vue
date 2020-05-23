@@ -4,7 +4,7 @@
   <Requests :requests="requests"></Requests>
 
   <div class="big-subscribe">
-    <Subscribe :feed="feed" scope="big"></Subscribe>
+    <Subscribe :feed="currentFeed" scope="big"></Subscribe>
   </div>
 </div>
 </template>
@@ -18,13 +18,13 @@ export default {
   props: ['data'],
   computed: {
     requests() {
-      if (this.feed.type == 'all') {
+      if (this.currentFeed.type == 'all') {
         return this.data.requests;
       } else {
         return this.data.requests.filter(request => request.feedId == this.$route.params.feedId);
       }
     },
-    feed() {
+    currentFeed() {
       return this.data.feeds.find(feed => feed.id == this.$route.params.feedId);
     },
   },

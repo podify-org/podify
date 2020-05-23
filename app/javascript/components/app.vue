@@ -31,7 +31,9 @@ export default {
     Player,
   },
   updated() {
-    if (this.$route.params.feedId === undefined && this.data) {
+    if (!this.data) return;
+    if (this.$route.params.feedId === undefined ||
+        !this.data.feeds.find(f => f.id == this.$route.params.feedId)) {
       this.$router.replace({ name: 'feedIndex', params: { feedId: this.data.feeds[0].id } });
     }
   },

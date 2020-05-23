@@ -1,5 +1,5 @@
 <template>
-<li>
+<li v-if="!destroying">
   <div class="feeds-list-item nav-link">
     <router-link class="feed-name"
                  :to="{ name: 'feedIndex', params: { feedId: feed.id }}"
@@ -9,9 +9,10 @@
 
     <div class="feed-actions">
       <Subscribe :feed="feed" scope="sidebar"></Subscribe>
-      <i v-if="feed.type != 'all'"
-         class="feed-action fas fa-trash"
-         @click="destroy"></i>
+      <Destroy v-if="feed.type != 'all'"
+               :feed="feed"
+               @destroy="onDestroy"
+               ></Destroy>
     </div>
   </div>
 </li>
@@ -20,9 +21,8 @@
 </template>
 
 <script>
-import mutations from 'mutations';
-import { removeFeed } from 'store';
 import Subscribe from 'components/subscribe';
+import Destroy from 'components/feeds/destroy';
 
 export default {
   props: ['feed'],
@@ -32,26 +32,13 @@ export default {
     };
   },
   methods: {
-    destroy() {
-      this.destroying = true;
-
-      this.$apollo.mutate({
-        mutation: mutations.destroyFeed,
-        variables: { id: this.feed.id },
-        update: (store, { data: { destroyFeed: { errors } } }) => {
-          if (errors.length > 0) {
-            alert(errors.join("\n"));
-          } else {
-            removeFeed(store, this.feed.id);
-          }
-
-          this.destroying = false;
-        },
-      });
+    onDestroy(state) {
+      this.destroying = state;
     },
   },
   components: {
     Subscribe,
+    Destroy,
   },
 }
 </script>

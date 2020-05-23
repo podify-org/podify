@@ -79,6 +79,14 @@ export function addFeed(store, feed) {
   });
 };
 
+export function updateFeed(store, id, fn) {
+  updateFeeds(store, feeds => {
+    const feed = feeds.find(feed => feed.id == id);
+    if (!feed) return;
+    fn(feed);
+  });
+};
+
 export function removeFeed(store, id) {
   updateFeeds(store, feeds => {
     const index = feeds.findIndex(feed => feed.id == id);
