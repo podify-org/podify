@@ -20,10 +20,9 @@
     border: none;
     border-radius: 3px;
 
-    opacity: .6;
-    background: #000000;
+    background-color: rgba(0, 0, 0, 0.6);
     &:hover {
-      background: $brand-orange;
+      background-color: $brand-orange;
       opacity: 1;
     }
 
