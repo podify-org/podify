@@ -9,6 +9,7 @@
        class="dropdown-item"
        @click.prevent="onSelect(feed.id)"
        href="#"
+       :class="{ disabled: feed.current }"
        >
       {{ feed.name }}
     </a>
@@ -29,8 +30,11 @@ export default {
   },
   computed: {
     feeds() {
-      return readFeeds(window.store)
-        .filter(feed => feed.id != this.request.feedId);
+      return readFeeds(window.store).map(feed => {
+        feed.current = feed.id == this.request.feedId;
+        console.log(feed);
+        return feed;
+      });
     },
   },
   methods: {
