@@ -21,8 +21,14 @@
     <div class="actions top right">
       <slot name="actions-top-right"></slot>
     </div>
+    <div class="actions top left">
+      <slot name="actions-top-left"></slot>
+    </div>
     <div class="actions bottom right">
       <slot name="actions-bottom-right"></slot>
+    </div>
+    <div class="actions bottom left">
+      <slot name="actions-bottom-left"></slot>
     </div>
   </div>
 </template>

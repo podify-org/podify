@@ -19,6 +19,7 @@
     height: 30px;
     border: none;
     border-radius: 3px;
+    outline: none;
 
     background-color: rgba(0, 0, 0, 0.6);
     &:hover {
@@ -26,6 +27,9 @@
       opacity: 1;
     }
 
-    a { color: white; }
+    a {
+      color: white;
+      outline: none;
+    }
   }
 }

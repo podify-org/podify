@@ -14,9 +14,11 @@
             </b-button>
           </template>
         </template>
-        <template v-slot:actions-top-right>
-          <slot name="thumbnail-actions"></slot>
-        </template>
+
+        <template v-slot:actions-top-right><slot name="thumbnail-actions-top-right"></slot></template>
+        <template v-slot:actions-top-left><slot name="thumbnail-actions-top-left"></slot></template>
+        <template v-slot:actions-bottom-left><slot name="thumbnail-actions-bottom-left"></slot></template>
+
         <template v-slot:placeholder>
           <i v-if="source.downloadStatus.status != 'downloaded'" class="fas fa-cloud-download-alt"></i>
           <i v-else-if="!source.thumbnailUrl && source.lastDownload && source.lastDownload.format == 'mp3'" class="fa fa-headphones"></i>

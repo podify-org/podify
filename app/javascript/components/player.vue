@@ -14,7 +14,11 @@
       </div>
     </div>
 
-    <div v-show="visible && big" class="player-backdrop" @click="big = false"></div>
+    <div class="player-backdrop"
+         v-show="visible && big"
+         @click="big = false"
+         >
+    </div>
   </div>
 </template>
 

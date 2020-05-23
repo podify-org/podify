@@ -63,7 +63,6 @@ export default {
           if (errors.length > 0) {
             alert(errors.join("\n"));
           } else {
-            console.log(feed);
             addFeed(store, feed);
           }
           this.reset();

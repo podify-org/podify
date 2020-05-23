@@ -1,9 +1,13 @@
 import queries from 'queries';
 
 export function updateData(store, fn) {
-  const data = store.readQuery({ query: queries.data });
-  fn(data.data);
+  const data = getData(store);
+  fn(data);
   store.writeQuery({ query: queries.data, data });
+};
+
+export function readData(store) {
+  return store.readQuery({ query: queries.data }).data;
 };
 
 export function updateRequests(store, fn) {
@@ -50,6 +54,10 @@ export function updateDownloadStatus(store, source_id, changes) {
   updateSource(store, source_id, source => {
     Object.assign(source.downloadStatus, changes);
   });
+};
+
+export function readFeeds(store) {
+  return readData(store).feeds;
 };
 
 export function updateFeeds(store, fn) {
