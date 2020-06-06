@@ -39,13 +39,11 @@ export default {
 
       this.$store.dispatch('updateRequest', {
         apollo: this.$apollo,
-        params: {
-          id: this.request.id,
-          feedId
-        }
+        id: this.request.id,
+        feedId,
       })
-        .then(() => this.$emit('submit', false))
-        .catch(errors => alert(errors.join("\n")));
+        .catch(errors => alert(errors.join("\n")))
+        .finally(() => this.$emit('submit', false));
     },
   },
 }

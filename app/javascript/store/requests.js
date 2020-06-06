@@ -2,6 +2,12 @@ import Vue from 'vue';
 import mutations from 'mutations';
 import queries from 'queries';
 
+const indexById = (state, id) => state.all.findIndex(request => request.id == id);
+const indexBySourceId = (state, id) => state.all.findIndex(request => request.source.id == id);
+
+const findById = (state, id) => state.all[indexById(state, id)];
+
+
 export default {
   state: {
     all: [],
@@ -12,24 +18,24 @@ export default {
       state.all = requests;
     },
     updateRequest(state, { id, ...attributes }) {
-      const index = state.all.findIndex(request => request.id == id);
+      const index = indexById(state, id);
       Vue.set(state.all, index, { ...state.all[index], ...attributes });
     },
     addRequest(state, { request }) {
       state.all.unshift(request);
     },
     removeRequest(state, { id }) {
-      const index = state.all.findIndex(request => request.id == id);
+      const index = indexById(state, id);
       state.all.splice(index, 1);
     },
 
     updateSource(state, { id, ...attributes }) {
-      const index = state.all.findIndex(request => request.source.id == id);
+      const index = indexBySourceId(state, id);
       state.all[index].source = { ...state.all[index].source, ...attributes };
     },
 
     updateDownloadStatus(state, { sourceId, ...attributes }) {
-      const index = state.all.findIndex(request => request.source.id == sourceId);
+      const index = indexBySourceId(state, sourceId);
       const downloadStatus = state.all[index].source.downloadStatus;
       state.all[index].source.downloadStatus = { ...downloadStatus, ...attributes };
     },
@@ -52,13 +58,17 @@ export default {
       });
     },
 
-    updateRequest({ commit }, { apollo, params }) {
+    updateRequest({ state, commit }, { apollo, id, feedId }) {
+      const storedFeedId = findById(state, id).feedId;
+      commit('updateRequest', { id, feedId: feedId });
+
       return new Promise((resolve, reject) => {
         apollo.mutate({
           mutation: mutations.updateRequest,
-          variables: params,
+          variables: { id, feedId },
         }).then(({ data: { updateRequest: { request, errors } } }) => {
           if (errors.length > 0) {
+            commit('updateRequest', { id, feedId: storedFeedId });
             reject(errors);
           } else {
             commit('updateRequest', request);
