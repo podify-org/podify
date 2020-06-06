@@ -15,7 +15,7 @@ export default {
   getters: {
     requestsForFeed(state, getters) {
       return feed => {
-        let all = getters.requests;
+        let all = getters.allRequests;
         if (feed.type == 'all') {
           return all;
         } else {
@@ -23,9 +23,12 @@ export default {
         }
       };
     },
-    requests(state) {
+    allRequests(state) {
       return [...state.all].sort((a, b) => a.id < b.id ? 1 : -1);
     },
+    requestById(state) {
+      return id => findById(state, id);
+    }
   },
 
   mutations: {
@@ -93,16 +96,19 @@ export default {
       });
     },
 
-    destroyRequest({ commit }, { apollo, id }) {
+    destroyRequest({ commit, getters }, { apollo, id }) {
+      const storedRequest = getters.requestById(id);
+      commit('removeRequest', { id });
+
       return new Promise((resolve, reject) => {
         apollo.mutate({
           mutation: mutations.destroyRequest,
           variables: { id },
         }).then(({ data: { destroyRequest: { errors } } }) => {
           if (errors.length > 0) {
+            commit('addRequest', { request: storedRequest });
             reject(errors);
           } else {
-            commit('removeRequest', { id });
             resolve();
           }
         });
