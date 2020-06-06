@@ -7,10 +7,25 @@ const indexBySourceId = (state, id) => state.all.findIndex(request => request.so
 
 const findById = (state, id) => state.all[indexById(state, id)];
 
-
 export default {
   state: {
     all: [],
+  },
+
+  getters: {
+    requestsForFeed(state, getters) {
+      return feed => {
+        let all = getters.requests;
+        if (feed.type == 'all') {
+          return all;
+        } else {
+          return all.filter(request => request.feedId == feed.id);
+        }
+      };
+    },
+    requests(state) {
+      return [...state.all].sort((a, b) => a.id < b.id ? 1 : -1);
+    },
   },
 
   mutations: {

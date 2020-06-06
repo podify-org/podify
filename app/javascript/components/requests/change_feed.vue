@@ -27,9 +27,8 @@ export default {
   },
   computed: {
     feeds() {
-      return this.$store.state.feeds.all.map(feed => {
-        feed.current = feed.id == this.request.feedId;
-        return feed;
+      return this.$store.getters.allFeeds.map(feed => {
+        return { ...feed, current: feed.id == this.request.feedId };
       });
     },
   },

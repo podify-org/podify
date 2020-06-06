@@ -18,7 +18,7 @@ import FeedList from 'components/feeds/list';
 export default {
   props: ['active'],
   computed: {
-    feeds() { return this.$store.state.feeds.all; },
+    feeds() { return this.$store.getters.allFeeds; },
   },
   components: {
     FeedList

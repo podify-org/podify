@@ -6,6 +6,19 @@ export default {
   state: {
     all: [],
   },
+
+  getters: {
+    allFeeds(state) {
+      return state.all;
+    },
+    feedById(state) {
+      return id => state.all.find(feed => feed.id == parseInt(id));
+    },
+    defaultFeed(state) {
+      return state.all[0];
+    },
+  },
+
   mutations: {
     setFeeds(state, { feeds }) {
       state.all = feeds;
