@@ -37,11 +37,13 @@
 import FeedList from 'components/feeds/list';
 
 export default {
-  props: ['feeds'],
   data () {
     return {
       active: Math.max(document.documentElement.clientWidth, window.innerWidth || 0) >= 1780,
     };
+  },
+  computed: {
+    feeds() { return this.$store.state.feeds; },
   },
   methods: {
     toggleSidebar() {

@@ -57,14 +57,14 @@ const link = new HttpLink({
   headers: getHeaders()
 });
 
-const store = new InMemoryCache({
+const cache = new InMemoryCache({
   addTypename: true
 });
-window.store = store;
+window.store = cache;
 
 const client = new ApolloClient({
-  link: link,
-  cache: store,
+  link,
+  cache,
 });
 window.apollo = client;
 
@@ -76,6 +76,7 @@ Vue.directive('visible', (el, binding) => {
   el.style.visibility = !!binding.value ? 'visible' : 'hidden';
 });
 
+import store from 'store/index';
 
 import VueRouter from 'vue-router';
 import router from 'router';
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     apolloProvider,
     router,
+    store,
     render: h => h(App),
   }).$mount("#main");
 });

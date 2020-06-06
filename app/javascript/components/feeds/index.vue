@@ -15,17 +15,17 @@ import NewRequest from 'components/new_request';
 import Subscribe from 'components/subscribe';
 
 export default {
-  props: ['data'],
   computed: {
-    requests() {
-      if (this.currentFeed.type == 'all') {
-        return this.data.requests;
-      } else {
-        return this.data.requests.filter(request => request.feedId == this.$route.params.feedId);
-      }
-    },
     currentFeed() {
-      return this.data.feeds.find(feed => feed.id == this.$route.params.feedId);
+      return this.$store.state.feeds.find(feed => feed.id == this.$route.params.feedId);
+    },
+    requests() {
+      let allRequests = this.$store.state.requests;
+      if (this.currentFeed.type == 'all') {
+        return allRequests;
+      } else {
+        return allRequests.filter(request => request.feedId == this.$route.params.feedId);
+      }
     },
   },
   components: {

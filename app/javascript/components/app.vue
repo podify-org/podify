@@ -1,13 +1,13 @@
 <template>
 <div id="app">
   <div class="container">
-    <div v-if="$apolloData.loading" class="d-flex mt-5 mb-3 justify-content-center">
+    <div v-if="loading" class="d-flex mt-5 mb-3 justify-content-center">
       <b-spinner type="border" variant="primary"></b-spinner>
     </div>
     <template v-else>
-      <Navbar :feeds="data.feeds"></Navbar>
+      <Navbar></Navbar>
 
-      <router-view :data="data"></router-view>
+      <router-view></router-view>
 
       <Player></Player>
     </template>
@@ -21,20 +21,22 @@ import Navbar from 'components/navbar';
 import Player from 'components/player';
 
 export default {
-  apollo: {
-    data: {
-      query: queries.data,
-    },
-  },
   components: {
     Navbar,
     Player,
   },
+  computed: {
+    loading() { return this.$store.state.loading; },
+  },
+  mounted() {
+    this.$store.dispatch('fetchData', this.$apollo);
+  },
   updated() {
-    if (!this.data) return;
+    // Redirect to first feed if not currently on one, or the current one does not exist
+    let feeds = this.$store.state.feeds;
     if (this.$route.params.feedId === undefined ||
-        !this.data.feeds.find(f => f.id == this.$route.params.feedId)) {
-      this.$router.replace({ name: 'feedIndex', params: { feedId: this.data.feeds[0].id } });
+        !feeds.find(f => f.id == this.$route.params.feedId)) {
+      this.$router.replace({ name: 'feedIndex', params: { feedId: feeds[0].id } });
     }
   },
 }
