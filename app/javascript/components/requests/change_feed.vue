@@ -4,12 +4,12 @@
     <i class="fas fa-list"></i>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a v-for="feed in feeds"
+    <a v-for="feed in feeds" v-if="!feed._deleting"
        :key="feed.id"
        class="dropdown-item"
        @click.prevent="onSelect(feed.id)"
        href="#"
-       :class="{ disabled: feed.current }"
+       :class="{ disabled: feed._isCurrent }"
        >
       {{ feed.name }}
     </a>
@@ -28,7 +28,7 @@ export default {
   computed: {
     feeds() {
       return this.$store.getters.allFeeds.map(feed => {
-        return { ...feed, current: feed.id == this.request.feedId };
+        return { ...feed, _isCurrent: feed.id == this.request.feedId };
       });
     },
   },

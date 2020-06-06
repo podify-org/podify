@@ -1,5 +1,5 @@
 <template>
-<span class="subscribe">
+<span v-if="feed.rssUrl" class="subscribe">
   <i class="subscribe-icon fas fa-rss"
      :class="{ 'feed-action': scope == 'sidebar' }"
      v-b-modal="`subscribe-modal-${feed.id}-${scope}`">

@@ -1,5 +1,5 @@
 <template>
-<li v-if="!destroying">
+<li v-if="!feed._deleting">
   <div class="feeds-list-item nav-link">
     <router-link class="feed-name"
                  :to="{ name: 'feedIndex', params: { feedId: feed.id }}"
@@ -11,7 +11,6 @@
       <Subscribe :feed="feed" scope="sidebar"></Subscribe>
       <Destroy v-if="feed.type != 'all'"
                :feed="feed"
-               @destroy="onDestroy"
                ></Destroy>
     </div>
   </div>
@@ -26,16 +25,6 @@ import Destroy from 'components/feeds/destroy';
 
 export default {
   props: ['feed'],
-  data() {
-    return {
-      destroying: false,
-    };
-  },
-  methods: {
-    onDestroy(state) {
-      this.destroying = state;
-    },
-  },
   components: {
     Subscribe,
     Destroy,

@@ -1,5 +1,5 @@
 <template>
-<span>
+<span v-if="!feed._optimisticCreate">
   <i class="feed-action fas fa-trash"
      id="dropdownMenuButton"
      data-toggle="dropdown"
