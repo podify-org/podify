@@ -1,8 +1,6 @@
 <template>
 <div id="new-request" class="mb-4">
-  <b-form @submit="onSubmit" class="vld-parent">
-    <loading :active="submitting" :is-full-page="false" loader="dots"></loading>
-
+  <b-form @submit="onSubmit">
     <label class="sr-only" for="url">URL</label>
     <b-input-group class="flex-fill">
       <b-form-input
@@ -11,11 +9,10 @@
         size="lg"
         required
         autofocus
-        :disabled="submitting"
         placeholder="https://..."
         ></b-form-input>
       <div class="input-group-append">
-        <b-button type="submit" size="lg" variant="primary" :disabled="submitting">
+        <b-button type="submit" size="lg" variant="primary">
           Add
         </b-button>
       </div>
@@ -34,23 +31,19 @@ export default {
       form: {
         url: '',
       },
-      submitting: false,
     };
   },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      this.submitting = true;
 
       this.$store.dispatch('createRequest', {
         apollo: this.$apollo,
-        params: {
-          url: this.form.url,
-          feedId: parseInt(this.$route.params.feedId),
-        },
-      }).then(() => this.form.url = '')
-        .catch(this.$errorToaster.handler())
-        .finally(() => this.submitting = false);
+        url: this.form.url,
+        feedId: parseInt(this.$route.params.feedId),
+      }).catch(this.$errorToaster.handler());
+
+      this.form.url = '';
     },
   },
   components: {
