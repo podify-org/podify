@@ -20,8 +20,6 @@
 import NewFeed from 'components/feeds/new';
 import ListItem from 'components/feeds/list_item';
 import Draggable from 'vuedraggable'
-import mutations from 'mutations';
-import { updateData } from 'store';
 
 export default {
   props: ['feeds'],
@@ -33,14 +31,7 @@ export default {
   methods: {
     onDragEnd(x, y) {
       const feedIds = this.sortableFeeds.map(f => f.id);
-
-      this.$apollo.mutate({
-        mutation: mutations.orderFeeds,
-        variables: { feedIds },
-        update: (store, { data: { orderFeeds: { feeds } } }) => {
-          updateData(store, data => data.feeds = feeds);
-        },
-      });
+      this.$store.dispatch('orderFeeds', { apollo: this.$apollo, feedIds });
     },
   },
   components: {

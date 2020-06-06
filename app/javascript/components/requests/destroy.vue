@@ -3,9 +3,6 @@
 </template>
 
 <script>
-import mutations from 'mutations';
-import { removeRequest } from 'store';
-
 export default {
   props: ['id'],
   data() {
@@ -19,19 +16,9 @@ export default {
       this.submitting = true;
       this.$emit("destroy");
 
-      this.$apollo.mutate({
-        mutation: mutations.destroyRequest,
-        variables: { id: this.id },
-        update: (store, { data: { destroyRequest: { errors } } }) => {
-          if (errors.length > 0) {
-            alert(errors.join("\n"));
-          } else {
-            removeRequest(store, this.id);
-          }
-
-          this.submitting = false;
-        },
-      });
+      this.$store.dispatch('destroyRequest', { apollo: this.$apollo, id: this.id })
+        .catch(errors => alert(errors.join("\n")))
+        .finally(() => this.submitting = false);
     },
   },
 }

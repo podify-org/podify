@@ -4,26 +4,29 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 import queries from 'queries';
+import mutations from 'mutations';
+
+import feeds from 'store/feeds';
+import requests from 'store/requests';
 
 export default new Vuex.Store({
   // TODO: enable strict mode, only in development (https://vuex.vuejs.org/guide/strict.html)
   // strict: true,
   state: {
     loading: true,
-    requests: [],
-    feeds: [],
   },
+
+  modules: {
+    feeds,
+    requests,
+  },
+
   mutations: {
-    setRequests(state, { requests }) {
-      state.requests = requests;
-    },
-    setFeeds(state, { feeds }) {
-      state.feeds = feeds;
-    },
     loadingState(state, payload) {
       state.loading = payload.state;
     },
   },
+
   actions: {
     fetchData({ commit }, apollo) {
       commit('loadingState', { state: true });

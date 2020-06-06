@@ -17,10 +17,10 @@ import Subscribe from 'components/subscribe';
 export default {
   computed: {
     currentFeed() {
-      return this.$store.state.feeds.find(feed => feed.id == this.$route.params.feedId);
+      return this.$store.state.feeds.all.find(feed => feed.id == this.$route.params.feedId);
     },
     requests() {
-      let allRequests = this.$store.state.requests;
+      let allRequests = this.$store.state.requests.all;
       if (this.currentFeed.type == 'all') {
         return allRequests;
       } else {

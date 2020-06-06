@@ -43,7 +43,7 @@ export default {
     };
   },
   computed: {
-    feeds() { return this.$store.state.feeds; },
+    feeds() { return this.$store.state.feeds.all; },
   },
   methods: {
     toggleSidebar() {

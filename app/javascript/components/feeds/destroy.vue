@@ -25,9 +25,6 @@
 </template>
 
 <script>
-import mutations from 'mutations';
-import { updateFeed, removeFeed } from 'store';
-
 export default {
   props: ['feed'],
   methods: {
@@ -36,18 +33,8 @@ export default {
       this.$emit('destroy', true);
 
       this.$nextTick(() => {
-        this.$apollo.mutate({
-          mutation: mutations.destroyFeed,
-          variables: { id: this.feed.id },
-          update: (store, { data: { destroyFeed: { errors } } }) => {
-            if (errors.length > 0) {
-              this.$emit('destroy', false);
-              alert(errors.join("\n"));
-            } else {
-              removeFeed(store, this.feed.id);
-            }
-        },
-      });
+        this.$store.dispatch('destroyFeed', { apollo: this.$apollo, id: this.feed.id })
+          .catch(errors => console.log(errors));
       });
     },
   },

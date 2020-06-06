@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import { updateDownloadStatus, refreshSource } from 'store';
-
 export default {
   props: ['source'],
   channels: {
@@ -46,7 +44,7 @@ export default {
       rejected() {},
       disconnected() {},
       received(data) {
-        updateDownloadStatus(store, data.source_id, data.status);
+        this.$store.commit('updateDownloadStatus', { sourceId: data.source_id, ...data.status });
       },
     }
   },
@@ -62,8 +60,7 @@ export default {
   methods: {
     poll() {
       if (['pending', 'retrying', 'queued'].includes(this.source.downloadStatus.status)) {
-        // TODO: stop using global store
-        refreshSource(store, this.source.id);
+        this.$store.dispatch('refreshSource', { apollo: this.$apollo, id: this.source.id });
       }
       setTimeout(() => {
         this.poll();
@@ -74,8 +71,7 @@ export default {
     'source.downloadStatus.status': {
       handler(val, oldVal) {
         if (val == 'downloaded') {
-          // TODO: stop using global store
-          refreshSource(store, this.source.id);
+          this.$store.dispatch('refreshSource', { apollo: this.$apollo, id: this.source.id });
         }
       },
     },

@@ -18,9 +18,6 @@
 </template>
 
 <script>
-import mutations from 'mutations';
-import { readFeeds, updateRequest } from 'store';
-
 export default {
   props: ['request'],
   data() {
@@ -30,7 +27,7 @@ export default {
   },
   computed: {
     feeds() {
-      return readFeeds(window.store).map(feed => {
+      return this.$store.state.feeds.all.map(feed => {
         feed.current = feed.id == this.request.feedId;
         return feed;
       });
@@ -40,19 +37,15 @@ export default {
     onSelect(feedId) {
       this.$emit('submit', true);
 
-      this.$apollo.mutate({
-        mutation: mutations.updateRequest,
-        variables: { id: this.request.id, feedId },
-        update: (store, { data: { updateRequest: { request, errors } } }) => {
-          if (errors.length > 0) {
-            alert(errors.join("\n"));
-          } else {
-            updateRequest(store, this.id, request);
-          }
-
-          this.$emit('submit', false);
-        },
-      });
+      this.$store.dispatch('updateRequest', {
+        apollo: this.$apollo,
+        params: {
+          id: this.request.id,
+          feedId
+        }
+      })
+        .then(() => this.$emit('submit', false))
+        .catch(errors => alert(errors.join("\n")));
     },
   },
 }

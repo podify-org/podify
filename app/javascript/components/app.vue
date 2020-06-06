@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import queries from 'queries';
 import Navbar from 'components/navbar';
 import Player from 'components/player';
 
@@ -33,7 +32,7 @@ export default {
   },
   updated() {
     // Redirect to first feed if not currently on one, or the current one does not exist
-    let feeds = this.$store.state.feeds;
+    let feeds = this.$store.state.feeds.all;
     if (this.$route.params.feedId === undefined ||
         !feeds.find(f => f.id == this.$route.params.feedId)) {
       this.$router.replace({ name: 'feedIndex', params: { feedId: feeds[0].id } });

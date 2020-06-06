@@ -26,9 +26,6 @@
 
 <script>
 import gql from 'graphql-tag';
-import queries from 'queries';
-import mutations from 'mutations';
-import { addRequest } from 'store';
 import Loading from 'vue-loading-overlay';
 
 export default {
@@ -45,22 +42,15 @@ export default {
       evt.preventDefault();
       this.submitting = true;
 
-      this.$apollo.mutate({
-        mutation: mutations.requestForUrl,
-        variables: {
+      this.$store.dispatch('createRequest', {
+        apollo: this.$apollo,
+        params: {
           url: this.form.url,
           feedId: parseInt(this.$route.params.feedId),
         },
-        update: (store, { data: { requestForUrl: { request, errors } } }) => {
-          if (errors.length > 0) {
-            alert(errors.join("\n"));
-          } else {
-            addRequest(store, request);
-            this.form.url = '';
-          }
-          this.submitting = false;
-        },
-      });
+      }).then(() => this.form.url = '')
+        .catch(errors => alert(errors.join("\n")))
+        .finally(() => this.submitting = false);
     },
   },
   components: {

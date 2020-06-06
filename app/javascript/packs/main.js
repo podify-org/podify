@@ -60,13 +60,11 @@ const link = new HttpLink({
 const cache = new InMemoryCache({
   addTypename: true
 });
-window.store = cache;
 
 const client = new ApolloClient({
   link,
   cache,
 });
-window.apollo = client;
 
 const apolloProvider = new VueApollo({
   defaultClient: client,

@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import mutations from 'mutations';
-import { addFeed } from 'store';
 import Loading from 'vue-loading-overlay';
 
 export default {
@@ -55,19 +53,12 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       this.submitting = true;
-
-      this.$apollo.mutate({
-        mutation: mutations.createFeed,
-        variables: this.form,
-        update: (store, { data: { createFeed: { feed, errors } } }) => {
-          if (errors.length > 0) {
-            alert(errors.join("\n"));
-          } else {
-            addFeed(store, feed);
-          }
-          this.reset();
-        },
-      });
+      this.$store.dispatch('createFeed', {
+        apollo: this.$apollo,
+        feed: this.form
+      })
+        .then(this.reset)
+        .catch(errors => alert(errors.join("\n")));
     },
     reset() {
       this.formOpen = false;
