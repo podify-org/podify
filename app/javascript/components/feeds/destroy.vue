@@ -34,7 +34,7 @@ export default {
 
       this.$nextTick(() => {
         this.$store.dispatch('destroyFeed', { apollo: this.$apollo, id: this.feed.id })
-          .catch(errors => console.log(errors));
+          .catch(this.$errorToaster.handler());
       });
     },
   },

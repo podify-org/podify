@@ -17,7 +17,7 @@ export default {
       this.$emit("destroy");
 
       this.$store.dispatch('destroyRequest', { apollo: this.$apollo, id: this.id })
-        .catch(errors => alert(errors.join("\n")))
+        .catch(this.$errorToaster.handler())
         .finally(() => this.submitting = false);
     },
   },

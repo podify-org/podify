@@ -31,7 +31,8 @@ export default {
   methods: {
     onDragEnd(x, y) {
       const feedIds = this.sortableFeeds.map(f => f.id);
-      this.$store.dispatch('orderFeeds', { apollo: this.$apollo, feedIds });
+      this.$store.dispatch('orderFeeds', { apollo: this.$apollo, feedIds })
+        .catch(this.$errorToaster.handler());
     },
   },
   components: {

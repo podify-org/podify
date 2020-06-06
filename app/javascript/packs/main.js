@@ -80,6 +80,9 @@ import VueRouter from 'vue-router';
 import router from 'router';
 Vue.use(VueRouter);
 
+import ErrorToaster from 'error-toaster';
+Vue.use(ErrorToaster);
+
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     apolloProvider,

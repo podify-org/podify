@@ -49,7 +49,7 @@ export default {
           feedId: parseInt(this.$route.params.feedId),
         },
       }).then(() => this.form.url = '')
-        .catch(errors => alert(errors.join("\n")))
+        .catch(this.$errorToaster.handler())
         .finally(() => this.submitting = false);
     },
   },

@@ -42,7 +42,7 @@ export default {
         id: this.request.id,
         feedId,
       })
-        .catch(errors => alert(errors.join("\n")))
+        .catch(this.$errorToaster.handler())
         .finally(() => this.$emit('submit', false));
     },
   },

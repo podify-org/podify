@@ -60,7 +60,8 @@ export default {
   methods: {
     poll() {
       if (['pending', 'retrying', 'queued'].includes(this.source.downloadStatus.status)) {
-        this.$store.dispatch('refreshSource', { apollo: this.$apollo, id: this.source.id });
+        this.$store.dispatch('refreshSource', { apollo: this.$apollo, id: this.source.id })
+          .catch(errors => console.warn(errors));
       }
       setTimeout(() => {
         this.poll();
@@ -71,7 +72,8 @@ export default {
     'source.downloadStatus.status': {
       handler(val, oldVal) {
         if (val == 'downloaded') {
-          this.$store.dispatch('refreshSource', { apollo: this.$apollo, id: this.source.id });
+          this.$store.dispatch('refreshSource', { apollo: this.$apollo, id: this.source.id })
+            .catch(this.$errorToaster.handler());
         }
       },
     },

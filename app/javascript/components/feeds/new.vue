@@ -58,7 +58,7 @@ export default {
         feed: this.form
       })
         .then(this.reset)
-        .catch(errors => alert(errors.join("\n")));
+        .catch(this.$errorToaster.handler());
     },
     reset() {
       this.formOpen = false;

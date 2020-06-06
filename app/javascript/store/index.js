@@ -30,12 +30,16 @@ export default new Vuex.Store({
   actions: {
     fetchData({ commit }, apollo) {
       commit('loadingState', { state: true });
-      apollo.query({
-        query: queries.data,
-      }).then(({ data: { data: { requests, feeds } } }) => {
-        commit('setFeeds', { feeds });
-        commit('setRequests', { requests });
-        commit('loadingState', { state: false });
+
+      return new Promise((resolve, reject) => {
+        apollo.query({
+          query: queries.data,
+        }).then(({ data: { data: { requests, feeds } } }) => {
+          commit('setFeeds', { feeds });
+          commit('setRequests', { requests });
+          commit('loadingState', { state: false });
+          resolve();
+        }).catch(reject);
       });
     },
   },

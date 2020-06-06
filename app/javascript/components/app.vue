@@ -28,7 +28,8 @@ export default {
     loading() { return this.$store.state.loading; },
   },
   mounted() {
-    this.$store.dispatch('fetchData', this.$apollo);
+    this.$store.dispatch('fetchData', this.$apollo)
+      .catch(this.$errorToaster.handler());
   },
   updated() {
     // Redirect to first feed if not currently on one, or the current one does not exist
