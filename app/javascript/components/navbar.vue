@@ -3,7 +3,7 @@
 <div>
   <div class="navbar navbar-dark fixed-top bg-dark">
     <button class="navbar-toggler hamburger hamburger--arrow"
-            :class="{ 'is-active': active }"
+            :class="{ 'is-active': sidebarOpen }"
             type="button"
             aria-controls="sidebar"
             aria-expanded="false"
@@ -18,40 +18,27 @@
     <img class="logo" src="../../assets/images/logo/navbar.png">
   </div>
 
-  <aside id="sidebar" class="sidebar" :class="{ active: active }">
-    <FeedList :feeds="feeds"></FeedList>
-
-    <ul class="bottom nav">
-      <li class="nav-item">
-        <a class="nav-link" data-method="delete" href="/user/sign_out">
-          Sign out
-        </a>
-      </li>
-    </ul>
-  </aside>
+  <Sidebar :active="sidebarOpen"></Sidebar>
 </div>
 
 </template>
 
 <script>
-import FeedList from 'components/feeds/list';
+import Sidebar from 'components/sidebar';
 
 export default {
   data () {
     return {
-      active: Math.max(document.documentElement.clientWidth, window.innerWidth || 0) >= 1780,
+      sidebarOpen: Math.max(document.documentElement.clientWidth, window.innerWidth || 0) >= 1780,
     };
-  },
-  computed: {
-    feeds() { return this.$store.state.feeds.all; },
   },
   methods: {
     toggleSidebar() {
-      this.active = !this.active;
+      this.sidebarOpen = !this.sidebarOpen;
     }
   },
   components: {
-    FeedList
+    Sidebar,
   },
 }
 </script>
