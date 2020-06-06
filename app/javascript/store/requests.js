@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import mutations from 'mutations';
 import queries from 'queries';
+import { optimisticId } from 'utils';
 
 const indexById = (state, id) => state.all.findIndex(request => request.id == id);
 const indexBySourceId = (state, id) => state.all.findIndex(request => request.source.id == id);
@@ -39,6 +40,10 @@ export default {
       const index = indexById(state, id);
       Vue.set(state.all, index, { ...state.all[index], ...attributes });
     },
+    replaceRequest(state, { id, request }) {
+      const index = indexById(state, id);
+      Vue.set(state.all, index, request);
+    },
     addRequest(state, { request }) {
       state.all.unshift(request);
     },
@@ -60,16 +65,29 @@ export default {
   },
 
   actions: {
-    createRequest({ commit }, { apollo, params }) {
+    createRequest({ commit }, { apollo, url, feedId }) {
+      const optimisticRequest = {
+        id: optimisticId(),
+        feedId,
+        source: {
+          url,
+          downloadStatus: {
+            status: "pending",
+          },
+        },
+      };
+      commit('addRequest', { request: optimisticRequest });
+
       return new Promise((resolve, reject) => {
         apollo.mutate({
           mutation: mutations.requestForUrl,
-          variables: params,
+          variables: { url, feedId },
         }).then(({ data: { requestForUrl: { request, errors } } }) => {
           if (errors.length > 0) {
+            commit('removeRequest', { id: optimisticRequest.id });
             reject(errors);
           } else {
-            commit('addRequest', { request });
+            commit('replaceRequest', { id: optimisticRequest.id, request });
             resolve(request);
           }
         });

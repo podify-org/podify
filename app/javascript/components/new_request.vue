@@ -44,10 +44,8 @@ export default {
 
       this.$store.dispatch('createRequest', {
         apollo: this.$apollo,
-        params: {
-          url: this.form.url,
-          feedId: parseInt(this.$route.params.feedId),
-        },
+        url: this.form.url,
+        feedId: parseInt(this.$route.params.feedId),
       }).then(() => this.form.url = '')
         .catch(this.$errorToaster.handler())
         .finally(() => this.submitting = false);
