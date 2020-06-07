@@ -38,48 +38,5 @@
 <script>
 export default {
   props: ['source'],
-  channels: {
-    DownloadStatusChannel: {
-      connected() {},
-      rejected() {},
-      disconnected() {},
-      received(data) {
-        this.$store.commit('updateDownloadStatus', { sourceId: data.source_id, ...data.status });
-      },
-    }
-  },
-  mounted() {
-    if (this.source.downloadStatus.status == 'downloaded') return;
-
-    this.$cable.subscribe({
-      channel: 'DownloadStatusChannel',
-      source: this.source.id,
-    });
-    // this.poll();
-  },
-  methods: {
-    poll() {
-      if (['pending', 'retrying', 'queued'].includes(this.source.downloadStatus.status)) {
-        this.$store.dispatch('refreshSource', { apollo: this.$apollo, id: this.source.id })
-          .catch(errors => console.warn(errors));
-      }
-      setTimeout(() => {
-        this.poll();
-      }, 1000);
-    },
-  },
-  watch: {
-    'source.downloadStatus.status': {
-      handler(val, oldVal) {
-        if (val == 'downloaded') {
-          this.$store.dispatch('refreshSource', { apollo: this.$apollo, id: this.source.id })
-            .catch(this.$errorToaster.handler());
-        }
-      },
-    },
-  },
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

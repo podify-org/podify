@@ -29,7 +29,11 @@ export default {
     },
     requestById(state) {
       return id => findById(state, id);
-    }
+    },
+
+    allSources(state, getters) {
+      return getters.allRequests.map(request => request.source);
+    },
   },
 
   mutations: {

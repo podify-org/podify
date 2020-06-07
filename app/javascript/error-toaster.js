@@ -17,6 +17,8 @@ class ErrorToaster {
   };
 
   handle(payload, options = {}) {
+    console.warn(payload);
+
     let message;
 
     if (Array.isArray(payload))
