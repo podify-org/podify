@@ -10,7 +10,9 @@
   <div class="dropdown-menu p-3"
        aria-labelledby="dropdownMenuButton">
     <p>
-      Are you sure? This will delete all downloads in this feed.
+      Are you sure?
+      <br />
+      This will delete all downloads in this feed.
     </p>
     <p class="mb-0">
       <button class="btn btn-danger btn-sm"
