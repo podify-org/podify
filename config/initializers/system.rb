@@ -1,5 +1,6 @@
 Dry::Rails.container do
   # cherry-pick features
+  config.auto_inject_constant = 'Import'
   config.features = %i[application_contract safe_params controller_helpers]
 
   register('events', memoize: true) do
