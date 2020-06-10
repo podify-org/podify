@@ -18,4 +18,24 @@ class Source < ApplicationModel
       exclude(id: Request.distinct.select(:source_id))
     end
   end
+
+  def download_progress
+    redis.get(download_progress_redis_key)&.to_f
+  end
+
+  def download_progress=(progress)
+    redis.set(download_progress_redis_key, progress, ex: 10)
+  end
+
+  private
+
+  def download_progress_redis_key
+    raise "Can only get or set download_progress for persisted sources" unless id
+
+    "source:#{id}:download_progress"
+  end
+
+  def redis
+    Podify::Container['redis']
+  end
 end

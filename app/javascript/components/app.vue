@@ -16,7 +16,9 @@
   <DownloadStatusSubscription v-for="source in sources"
                               v-if="source.id !== undefined"
                               :key="source.id"
-                              :source="source">
+                              :source="source"
+                              :poll-rate="2000"
+                              >
   </DownloadStatusSubscription>
 </div>
 </template>

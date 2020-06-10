@@ -10,7 +10,7 @@
            ok-only hide-footer>
 
     <div class="subscribe-modal">
-      <p>Import this feed into your favorite podcast app:</p>
+      <p>Subscribe to this feed using your favorite podcast app:</p>
 
       <div class="input-group mb-3">
         <input type="text"

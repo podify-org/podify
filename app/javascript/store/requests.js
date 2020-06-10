@@ -142,6 +142,7 @@ export default {
         apollo.query({
           query: queries.source,
           variables: { id },
+          fetchPolicy: 'no-cache',
         }).then(({ data: { source } }) => {
           commit('updateSource', { id, ...source });
           resolve(source);

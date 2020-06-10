@@ -27,7 +27,7 @@ export default {
     this.subscribe();
 
     if (this.pollRate)
-      this.poll();
+      this.queuePoll();
   },
   methods: {
     subscribe() {
@@ -48,9 +48,12 @@ export default {
         this.refreshSource()
           .catch(errors => console.warn(errors))
           .finally(() => {
-            setTimeout(() => this.poll(), this.pollRate);
+            this.queuePoll();
           });
       }
+    },
+    queuePoll() {
+      setTimeout(() => this.poll(), this.pollRate);
     },
 
     refreshSource() {

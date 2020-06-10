@@ -107,7 +107,8 @@ export default {
   watch: {
     'source': {
       handler(val, oldVal) {
-        this.playSource(val);
+        if (val)
+          this.playSource(val);
       }
     },
     'visible': {

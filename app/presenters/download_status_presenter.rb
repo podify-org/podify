@@ -24,7 +24,7 @@ class DownloadStatusPresenter < ApplicationPresenter
     !!retry_job
   end
   def dead?
-    !!index_of_job(Sidekiq::DeadSet.new)
+    !!index_of_job_in(Sidekiq::DeadSet.new)
   end
 
   def new?
@@ -35,31 +35,25 @@ class DownloadStatusPresenter < ApplicationPresenter
     return @retry_job if defined?(@retry_job)
 
     retries = Sidekiq::RetrySet.new.to_a
-    index = index_of_job(retries)
+    index = index_of_job_in(retries)
     @retry_job = index && retries[index]
   end
 
   def downloading?
-    Sidekiq::Workers.new.any? do |_, _, work|
+    progress || Sidekiq::Workers.new.any? do |_, _, work|
       work.dig('payload', 'args', 0) == object.id
     end
   end
 
   def index_of_job_in_queue
-    @index_of_job_in_queue ||= index_of_job Sidekiq::Queue.new('default')
+    @index_of_job_in_queue ||= index_of_job_in Sidekiq::Queue.new('default')
   end
 
   def place_in_queue
     return nil unless index_of_job_in_queue
 
-    place = index_of_job_in_queue + 1
-    suffix = case place % 10
-             when 1 then "st"
-             when 2 then "nd"
-             when 3 then "rd"
-             else "th"
-             end
-    "#{place}#{suffix} in queue"
+    place = queue.size - index_of_job_in_queue
+    "#{place.ordinalize} in queue"
   end
 
   def retry_status
@@ -74,10 +68,8 @@ class DownloadStatusPresenter < ApplicationPresenter
     retry_at = Time.zone.at(retry_job.score)
     if retry_at.past?
       out += " now"
-    elsif retry_at.today?
-      out += " at " + I18n.l(retry_at, format: :time)
     else
-      out += " " + I18n.l(retry_at, format: :short)
+      out += " in " +  helpers.distance_of_time_in_words(Time.now, retry_at)
     end
 
     # if retry_job.item['error_message']
@@ -88,7 +80,7 @@ class DownloadStatusPresenter < ApplicationPresenter
   end
 
   def progress
-    nil
+    object.download_progress
   end
 
   def for_broadcast
@@ -99,9 +91,15 @@ class DownloadStatusPresenter < ApplicationPresenter
 
   private
 
-  def index_of_job(queue)
+  def index_of_job_in(queue)
     queue.find_index do |job|
       job.args[0] == object.id
+    end
+  end
+
+  def helpers
+    @helpers ||= Class.new do
+      extend ActionView::Helpers::DateHelper
     end
   end
 end

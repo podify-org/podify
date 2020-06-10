@@ -34,6 +34,10 @@ Dry::Rails.container do
     ActionCable.server
   end
 
+  register('redis', memoize: true) do
+    Redis.new
+  end
+
   auto_register!('lib')
   auto_register!('app/views')
   auto_register!('app/jobs') do |config|

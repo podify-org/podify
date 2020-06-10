@@ -10,7 +10,7 @@ module Downloader
       source = Source[source_id]
       raise "Source #{source_id} not found" unless source
 
-      provide('downloader.fetch_source.progress_callback' => BroadcastProgressCallback.new(source)) do
+      provide('downloader.fetch_source.progress_callback' => ProgressCallback.new(source)) do
         fetch_source.call(source).or do |failure|
           ap failure
 
@@ -36,8 +36,8 @@ module Downloader
 
     private
 
-    class BroadcastProgressCallback
-      BROADCAST_THROTTLE = 0.2.seconds
+    class ProgressCallback
+      PROGRESS_THROTTLE = 0.2.seconds
 
       extend Dry::Initializer
       param :source
@@ -47,8 +47,9 @@ module Downloader
       end
 
       def progress(progress)
-        return if @last_progress_broadcast && @last_progress_broadcast > BROADCAST_THROTTLE.ago
+        return if @last_progress_broadcast && @last_progress_broadcast > PROGRESS_THROTTLE.ago
 
+        source.download_progress = progress
         broadcast.progress(progress)
         @last_progress_broadcast = Time.now
       end
