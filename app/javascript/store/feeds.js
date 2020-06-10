@@ -52,16 +52,17 @@ export default {
       });
     },
 
-    destroyFeed({ commit }, { apollo, id }) {
+    destroyFeed({ commit, getters }, { apollo, feed }) {
       return new Promise((resolve, reject) => {
         apollo.mutate({
           mutation: mutations.destroyFeed,
-          variables: { id },
+          variables: { id: feed.id },
         }).then(({ data: { destroyFeed: { errors } } }) => {
           if (errors.length > 0) {
             reject(errors);
           } else {
-            commit('removeFeed', { id });
+            commit('removeFeed', { id: feed.id });
+            getters.requestsForFeed(feed).map(request => commit('removeRequest', { id: request.id }));
             resolve();
           }
         });

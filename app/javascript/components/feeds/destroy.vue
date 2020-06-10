@@ -35,7 +35,7 @@ export default {
       this.$emit('destroy', true);
 
       this.$nextTick(() => {
-        this.$store.dispatch('destroyFeed', { apollo: this.$apollo, id: this.feed.id })
+        this.$store.dispatch('destroyFeed', { apollo: this.$apollo, feed: this.feed })
           .catch(this.$errorToaster.handler());
       });
     },
