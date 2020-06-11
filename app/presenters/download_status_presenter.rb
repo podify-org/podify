@@ -46,7 +46,7 @@ class DownloadStatusPresenter < ApplicationPresenter
   end
 
   def index_of_job_in_queue
-    @index_of_job_in_queue ||= index_of_job_in Sidekiq::Queue.new('default')
+    @index_of_job_in_queue ||= index_of_job_in queue
   end
 
   def place_in_queue
@@ -101,5 +101,9 @@ class DownloadStatusPresenter < ApplicationPresenter
     @helpers ||= Class.new do
       extend ActionView::Helpers::DateHelper
     end
+  end
+
+  def queue
+    @queue ||= Sidekiq::Queue.new('default')
   end
 end
