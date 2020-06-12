@@ -2,19 +2,19 @@ version: '3.1'
 
 services:
   base:
-    image: maxhollmann/podify-base
+    image: maxhollmann/podify-base:preview
     build:
       context: ..
       dockerfile: docker/base.dockerfile
 
   web:
-    image: maxhollmann/podify-web
+    image: maxhollmann/podify-web:preview
     build:
       context: ..
       dockerfile: docker/web.dockerfile
 
   worker:
-    image: maxhollmann/podify-worker
+    image: maxhollmann/podify-worker:preview
     build:
       context: ..
       dockerfile: docker/worker.dockerfile
