@@ -1,4 +1,4 @@
-FROM maxhollmann/podify-base
+FROM maxhollmann/podify-base:preview
 
 ENV PRECOMPILE_ASSETS="yes"
 ENV RUN_MIGRATIONS="yes"
