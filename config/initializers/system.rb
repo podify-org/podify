@@ -50,6 +50,9 @@ Dry::Rails.container do
   boot(:settings, from: :system) do
     settings do
       key :storage_dir, Types::Coercible::Pathname.constrained(filled: true).default(Rails.root.join('tmp', 'storage').freeze)
+
+      key :initial_user_email, Types::String.optional.default(nil)
+      key :initial_user_password, Types::String.optional.default(nil)
     end
   end
 end
