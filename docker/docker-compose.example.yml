@@ -11,6 +11,7 @@ x-app-defaults: &app-defaults
     STORAGE_DIR: /storage
     INITIAL_USER_EMAIL: you@example.com
     INITIAL_USER_PASSWORD: yourpassword
+    ENABLE_SIGNUP: "no"
 
   volumes:
     - storage:/storage

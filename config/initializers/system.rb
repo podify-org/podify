@@ -53,6 +53,8 @@ Dry::Rails.container do
 
       key :initial_user_email, Types::String.optional.default(nil)
       key :initial_user_password, Types::String.optional.default(nil)
+
+      key :enable_signup, Types::Coercible::YesNoBoolean.optional.default(true)
     end
   end
 end

@@ -22,6 +22,7 @@ Here's a [sample `docker-compose.yml`](docker/docker-compose.example.yml).
 | RAILS_LOG_TO_STDOUT   | No       | Write logs to stdout so they end up in the docker container logs. `"yes"` or `"no"` (default: `"no"`) |
 | INITIAL_USER_EMAIL    | No       | Email of user to create at startup                                                                    |
 | INITIAL_USER_PASSWORD | No       | Password of user to create at startup                                                                 |
+| ENABLE_SIGNUP         | No       | Allow anyone with access to the site to sign up. `"yes"` or `"no"` (default: `"yes"`)                 |
 
 ### `SECRET_KEY_BASE`
 
