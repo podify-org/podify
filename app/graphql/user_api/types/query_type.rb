@@ -1,6 +1,13 @@
 module UserAPI
   module Types
     class QueryType < Types::BaseObject
+      field :server_info, ServerInfoType, description: 'Basic info about the server', null: false
+      def server_info
+        {
+          root_url: 'bla'
+        }
+      end
+
       field :data, DataType, description: 'All requests of the current user', null: false
       def data
         OpenStruct.new(

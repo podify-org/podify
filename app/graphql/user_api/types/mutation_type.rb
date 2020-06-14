@@ -1,6 +1,8 @@
 module UserAPI
   module Types
     class MutationType < Types::BaseObject
+      field :sign_in, mutation: Mutations::SignIn
+
       field :request_for_url, mutation: Mutations::RequestForUrl
       field :update_request, mutation: Mutations::UpdateRequest
       field :destroy_request, mutation: Mutations::DestroyRequest
