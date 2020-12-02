@@ -29,3 +29,16 @@ Here's a [sample `docker-compose.yml`](docker/docker-compose.example.yml).
 This is utilized to encrypt and sign sessions. It's recommended that you generate a new one instead of using the one from the example `docker-compose.yml`. You can generate a new one using
 
     docker run --rm maxhollmann/podify-worker rails secret
+
+## Development
+
+```shell
+docker-compose up
+bundle install
+
+be sequel -m db/migrate postgres://podify@localhost/podify_development
+be sequel -m db/migrate postgres://podify@localhost/podify_test
+
+bin/webpack-dev-server
+bundle exec rails s
+```
