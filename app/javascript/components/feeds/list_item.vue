@@ -9,6 +9,11 @@
 
     <div class="feed-actions">
       <Subscribe :feed="feed" scope="sidebar"></Subscribe>
+
+      <router-link :to="{ name: 'feedSettings', params: { feedId: feed.id }}">
+        <i class="feed-action fas fa-cog"></i>
+      </router-link>
+
       <Destroy v-if="feed.type != 'all'"
                :feed="feed"
                @destroy="onDestroy"
