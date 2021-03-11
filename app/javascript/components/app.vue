@@ -24,24 +24,24 @@
 </template>
 
 <script>
-import Navbar from 'components/navbar';
-import Player from 'components/player';
-import DownloadStatusSubscription from 'components/download_status_subscription';
+import Navbar from 'components/navbar'
+import Player from 'components/player'
+import DownloadStatusSubscription from 'components/download_status_subscription'
 
 export default {
   computed: {
-    loading() { return this.$store.state.loading; },
-    sources() { return this.$store.getters.allSources; },
+    loading() { return this.$store.state.loading },
+    sources() { return this.$store.getters.allSources },
   },
   mounted() {
     this.$store.dispatch('fetchData', this.$apollo)
-      .catch(this.$errorToaster.handler());
+      .catch(this.$errorToaster.handler())
   },
   updated() {
     // Redirect to first feed if not currently on one, or the current one does not exist
     if (this.$route.params.feedId === undefined ||
         !this.$store.getters.feedById(this.$route.params.feedId)) {
-      this.$router.replace({ name: 'feedIndex', params: { feedId: this.$store.getters.defaultFeed.id } });
+      this.$router.replace({ name: 'feedIndex', params: { feedId: this.$store.getters.defaultFeed.id } })
     }
   },
   components: {

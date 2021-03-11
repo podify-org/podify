@@ -1,12 +1,26 @@
 import VueRouter from 'vue-router';
 
 import FeedIndex from 'components/feeds/index';
+import FeedSettings from 'components/feeds/settings';
+import AddRequest from 'components/feeds/add_request';
 
 const routes = [
   {
     path: '/feeds/:feedId',
     name: 'feedIndex',
     component: FeedIndex,
+    children: [
+      {
+        path: 'add',
+        name: 'addRequest',
+        component: AddRequest,
+      },
+      {
+        path: 'settings',
+        name: 'feedSettings',
+        component: FeedSettings,
+      },
+    ],
   },
 ];
 

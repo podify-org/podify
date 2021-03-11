@@ -25,7 +25,10 @@
 import gql from 'graphql-tag';
 import Loading from 'vue-loading-overlay';
 
+import HasFeed from 'components/feeds/has_feed_mixin.js';
+
 export default {
+  mixins: [HasFeed],
   data() {
     return {
       form: {
@@ -36,13 +39,7 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-
-      this.$store.dispatch('createRequest', {
-        apollo: this.$apollo,
-        url: this.form.url,
-        feedId: parseInt(this.$route.params.feedId),
-      }).catch(this.$errorToaster.handler());
-
+      this.addRequest(this.form.url)
       this.form.url = '';
     },
   },
