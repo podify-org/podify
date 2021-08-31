@@ -28,13 +28,11 @@ module Downloader
           end
         end
       end
-    rescue => e
+    rescue StandardError => e
       puts e
       puts e.backtrace
       raise
     end
-
-    private
 
     class ProgressCallback
       PROGRESS_THROTTLE = 0.2.seconds

@@ -41,4 +41,5 @@ be sequel -m db/migrate postgres://podify@localhost/podify_test
 
 bin/webpack-dev-server
 bundle exec rails s
+bundle exec sidekiq
 ```

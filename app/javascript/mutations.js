@@ -20,7 +20,7 @@ export default {
     }
   `,
   updateRequest: gql`
-    mutation update_request($id: Int!, $feedId: Int) {
+    mutation update_request($id: Int!, $feedId: Int!) {
       updateRequest(input: {id: $id, feedId: $feedId}) {
         request {
           ${queryPartials.fullRequest}

@@ -2,6 +2,8 @@ module Events
   class Publisher
     include Dry::Events::Publisher[:podify]
 
+    register_event('feeds.created')
+
     register_event('users.created')
 
     register_event('requests.created')
