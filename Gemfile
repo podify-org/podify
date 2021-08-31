@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '2.7.4'
 
 gem 'dotenv-rails', "~> 2.7", groups: [:development, :test], require: 'dotenv/rails-now'
 
