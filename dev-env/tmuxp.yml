@@ -1,0 +1,26 @@
+session_name: podify
+windows:
+- window_name: all-processes
+  layout: tiled
+  panes:
+    - shell_command:
+      - tmux set -gw pane-border-status top
+
+      - printf '\033]2;%s\033\\' 'Docker services'
+      - cd dev-env
+      - docker-compose up
+
+    - shell_command:
+      - tmux set -gw pane-border-status top
+      - printf '\033]2;%s\033\\' 'Server'
+      - bundle exec rails s
+
+    - shell_command:
+      - tmux set -gw pane-border-status top
+      - printf '\033]2;%s\033\\' 'Worker'
+      - bundle exec sidekiq
+
+    - shell_command:
+      - tmux set -gw pane-border-status top
+      - printf '\033]2;%s\033\\' 'webpack-dev-server'
+      - bin/webpack-dev-server

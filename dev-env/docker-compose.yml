@@ -6,10 +6,12 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: DZKfAZ5SnvmkMrB
+      POSTGRES_PASSWORD: ""
+      POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
-      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
-    network_mode: host
+      - ./postgres/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
 
   redis:
     image: redis

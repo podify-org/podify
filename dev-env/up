@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+pushd . > /dev/null
+cd "$SCRIPT_DIR/.."
+
+tmuxp load dev-env/tmuxp.yml
+
+popd > /dev/null

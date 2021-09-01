@@ -43,3 +43,5 @@ bin/webpack-dev-server
 bundle exec rails s
 bundle exec sidekiq
 ```
+
+If you have [tmux](https://github.com/tmux/tmux/wiki) and [tmuxp](https://tmuxp.git-pull.com/) installed you can start all required services by running `dev-env/up`.

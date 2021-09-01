@@ -1,4 +1,4 @@
-psql -U postgres -c "CREATE USER podify WITH PASSWORD 'FJJuo5onaohF8rp';"
+psql -U postgres -c "CREATE USER podify;"
 
 createdb -U postgres -O podify podify_development
 createdb -U postgres -O podify podify_test
