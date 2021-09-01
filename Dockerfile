@@ -31,7 +31,8 @@ EXPOSE 3000
 ENV PATH="/app/bin:${PATH}"
 ENV RAILS_ENV=production
 
-# RUN rake assets:precompile
+# Precompile assets
+RUN webpack
 
 RUN pip3 install youtube-dl
 

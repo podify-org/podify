@@ -2,5 +2,6 @@
 set -e
 
 bundle exec sequel -m db/migrate "$DATABASE_URL"
+pip3 install --upgrade youtube-dl
 
 bundle exec sidekiq -c 3
