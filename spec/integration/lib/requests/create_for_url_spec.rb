@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Requests::CreateForUrl do
+  include Dry::Effects::Handler.Defer
+
   let(:url) { 'https://example.com/some-video' }
   let(:user) { create(:user) }
+  let(:feed) { create(:feed, user: user) }
 
-  let(:result) { subject.call(user: user, url: url) }
+  let(:result) { with_defer { subject.call(user: user, feed: feed, url: url) } }
   let(:request) { result.value! }
 
   context 'when a source with the url does not exist yet' do

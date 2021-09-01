@@ -1,6 +1,7 @@
 module Sources
   class ImportFile
     include Dry::Monads[:result, :do, :maybe]
+    include Dry::Effects::Handler.Defer
 
     include Podify::Import[
       'expand_path',
@@ -8,11 +9,13 @@ module Sources
     ]
 
     def call(path)
-      DB.transaction do
-        path = yield expand_path.call(path)
-        yield assert_file(path)
-        source = yield get_source(path)
-        return Success(source)
+      with_defer do
+        DB.transaction do
+          path = yield expand_path.call(path)
+          yield assert_file(path)
+          source = yield get_source(path)
+          next Success(source)
+        end
       end
     end
 
