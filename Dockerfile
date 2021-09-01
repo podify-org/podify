@@ -1,10 +1,7 @@
-FROM ruby:2.7.4
+FROM ruby:2.7.4-bullseye
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client python3 python3-pip ffmpeg
-
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update && apt-get install -y yarn
+RUN apt-get update -qq && apt-get install -y nodejs npm postgresql-client python3 python3-pip ffmpeg
+RUN npm install -g yarn
 
 
 RUN mkdir /app
@@ -31,7 +28,8 @@ EXPOSE 3000
 ENV PATH="/app/bin:${PATH}"
 ENV RAILS_ENV=production
 
-# RUN rake assets:precompile
+# Precompile assets
+RUN webpack
 
 RUN pip3 install youtube-dl
 
