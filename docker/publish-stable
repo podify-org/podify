@@ -2,12 +2,5 @@
 
 set -e
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
-source "$DIR/publish-preview"
-
-docker tag maxhollmann/podify-web:preview maxhollmann/podify-web:latest
-docker tag maxhollmann/podify-worker:preview maxhollmann/podify-worker:latest
-
-push maxhollmann/podify-web:latest
-push maxhollmann/podify-worker:latest
+docker/build
+docker/push latest

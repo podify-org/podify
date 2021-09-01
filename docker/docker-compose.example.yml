@@ -23,7 +23,8 @@ x-app-defaults: &app-defaults
 services:
   web:
     <<: *app-defaults
-    image: maxhollmann/podify-web:latest
+    image: maxhollmann/podify:latest
+    command: start-server
     ports:
       - 3000:3000
     environment:
@@ -31,7 +32,8 @@ services:
 
   worker:
     <<: *app-defaults
-    image: maxhollmann/podify-worker:latest
+    image: maxhollmann/podify:latest
+    command: start-worker
     environment:
       <<: *app-env
 

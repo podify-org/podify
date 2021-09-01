@@ -24,9 +24,8 @@ RUN yarn install --production
 
 COPY . /app
 
-COPY docker/entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+RUN chmod +x /app/docker/entrypoint.sh
+ENTRYPOINT ["/app/docker/entrypoint.sh"]
 EXPOSE 3000
 
 ENV PATH="/app/bin:${PATH}"
@@ -35,3 +34,8 @@ ENV RAILS_ENV=production
 # RUN rake assets:precompile
 
 RUN pip3 install youtube-dl
+
+ENV RAILS_SERVE_STATIC_FILES="yes"
+ENV PORT=3000
+
+CMD ["start-server"]

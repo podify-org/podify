@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+bundle exec sequel -m db/migrate "$DATABASE_URL"
+
+bundle exec sidekiq -c 3

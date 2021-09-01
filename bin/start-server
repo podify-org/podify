@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+bundle exec sequel -m db/migrate "$DATABASE_URL"
+
+rails assets:precompile
+
+bundle exec rails server -b 0.0.0.0

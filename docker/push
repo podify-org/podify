@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [[ "$1" = "-h" ]]; then
+    echo "Usage: docker-push [tag]"
+    echo
+    echo "  tag defaults to 'dev'"
+    exit 1
+fi
+
+tag=${1:-dev}
+
+image=maxhollmann/podify
+
+echo "Tagging $image:dev as $image:$tag"
+docker tag $image:dev $image:$tag
+
+echo "Pushing $image:$tag"
+docker push $image:$tag

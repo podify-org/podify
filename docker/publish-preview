@@ -2,20 +2,5 @@
 
 set -e
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
-docker-compose -f "$DIR/docker-compose.build.yml" build
-
-function push {
-    # The push keeps timing out and only randomly succeeds
-    while [ 1 ]
-    do
-        docker push $1 && break
-        echo
-        echo "Retrying..."
-        echo
-    done
-}
-
-push maxhollmann/podify-web:preview
-push maxhollmann/podify-worker:preview
+docker/build
+docker/push preview
