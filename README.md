@@ -36,8 +36,8 @@ This is utilized to encrypt and sign sessions. It's recommended that you generat
 docker-compose up
 bundle install
 
-be sequel -m db/migrate postgres://podify@localhost/podify_development
-be sequel -m db/migrate postgres://podify@localhost/podify_test
+bundle exec sequel -m db/migrate postgres://podify@localhost/podify_development
+bundle exec sequel -m db/migrate postgres://podify@localhost/podify_test
 
 bin/webpack-dev-server
 bundle exec rails s

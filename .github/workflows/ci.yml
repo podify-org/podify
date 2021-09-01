@@ -6,13 +6,55 @@ on:
       - '*'
     tags:
       - 'v*'
-  pull_request:
-    branches:
-      - '*'
+  # pull_request:
+  #   branches:
+  #     - '*'
 
 jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run rspec
+        run: |
+          bundle exec sequel -m db/migrate $DATABASE_URL
+          bundle exec rspec
+        env:
+          DATABASE_URL: postgres://postgres:pass@localhost:5432/podify
+          REDIS_URL: redis://localhost:6379
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: pass
+          POSTGRES_DB: podify
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        # tmpfs makes DB faster by using RAM
+        options: >-
+          --mount type=tmpfs,destination=/var/lib/postgresql/data
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 20
+
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+
   push_to_registry:
     name: Push Docker image to Docker Hub
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -51,7 +93,7 @@ jobs:
             type=semver,pattern=v{{version}},event=tag
             type=semver,pattern=v{{major}},event=tag
             type=semver,pattern=v{{major}}.{{minor}},event=tag
-            type=ref,event=pr
+          # type=ref,event=pr
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
