@@ -4,6 +4,6 @@ class UpgradeYoutubeDlJob
   sidekiq_options retry: false
 
   def perform
-    `pip3 install --upgrade youtube-dl`
+    `pip3 install --upgrade yt-dlp`
   end
 end
