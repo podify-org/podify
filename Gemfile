@@ -45,7 +45,7 @@ gem 'devise-token_authenticatable', "~> 1.1"
 
 gem 'shrine', '~> 3.2'
 
-gem 'ytdl', "~> 0.0"
+gem 'ytdl', "~> 0.1.0"
 
 gem 'slim-rails', "~> 3.2"
 gem 'builder', "~> 3.2"
