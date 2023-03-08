@@ -33,7 +33,7 @@ This is utilized to encrypt and sign sessions. It's recommended that you generat
 ## Development
 
 ```shell
-docker-compose up
+docker compose -f dev-env/docker-compose.yml up
 bundle install
 yarn install
 
