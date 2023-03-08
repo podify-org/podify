@@ -5,8 +5,7 @@ ruby '3.2.1'
 
 gem 'dotenv-rails', "~> 2.7", groups: [:development, :test], require: 'dotenv/rails-now'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0', '>= 6.0.2.2'
+gem 'rails', '~> 7.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
