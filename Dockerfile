@@ -1,4 +1,4 @@
-FROM ruby:2.7.4-bullseye
+FROM ruby:3.2.1-bullseye
 
 RUN apt-get update -qq && apt-get install -y nodejs npm postgresql-client python3 python3-pip ffmpeg
 RUN npm install -g yarn

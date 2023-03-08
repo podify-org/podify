@@ -12,7 +12,7 @@ class FilePresenter < ApplicationPresenter
   end
 
   def human_size(units = %i[KB MB GB], decimals: 1)
-    conv = SIZE_UNITS.reverse.find { |unit:, exp:| units.include?(unit) && object.size.fdiv(1024 ** exp) >= 1 }
+    conv = SIZE_UNITS.reverse.find { |u| units.include?(u[:unit]) && object.size.fdiv(1024 ** u[:exp]) >= 1 }
     conv ||= SIZE_UNITS.last
 
     "#{object.size.fdiv(1024 ** conv[:exp]).round(decimals)} #{conv[:unit]}"
