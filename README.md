@@ -19,7 +19,6 @@ Here's a [sample `docker-compose.yml`](docker/docker-compose.example.yml).
 | URL_HOST              | Yes      | Where the app will be available, e.g. `https://podify.yourdomain.com`                                 |
 | SECRET_KEY_BASE       | Yes      | This is used to encrypt sessions, see [below](#secret_key_base)                                       |
 | STORAGE_DIR           | Yes      | Where downloads will be stored                                                                        |
-| RAILS_LOG_TO_STDOUT   | No       | Write logs to stdout so they end up in the docker container logs. `"yes"` or `"no"` (default: `"no"`) |
 | INITIAL_USER_EMAIL    | No       | Email of user to create at startup                                                                    |
 | INITIAL_USER_PASSWORD | No       | Password of user to create at startup                                                                 |
 | ENABLE_SIGNUP         | No       | Allow anyone with access to the site to sign up. `"yes"` or `"no"` (default: `"yes"`)                 |

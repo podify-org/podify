@@ -3,7 +3,6 @@ FROM ruby:3.2.1-bullseye
 RUN apt-get update -qq && apt-get install -y nodejs npm postgresql-client python3 python3-pip ffmpeg
 RUN npm install -g yarn
 
-
 RUN mkdir /app
 WORKDIR /app
 
@@ -31,9 +30,8 @@ ENV RAILS_ENV=production
 # Precompile assets
 RUN webpack
 
-RUN pip3 install youtube-dl
-
 ENV RAILS_SERVE_STATIC_FILES="yes"
+ENV RAILS_LOG_TO_STDOUT="yes"
 ENV PORT=3000
 
 CMD ["start-server"]
