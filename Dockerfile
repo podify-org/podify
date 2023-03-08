@@ -26,6 +26,7 @@ EXPOSE 3000
 
 ENV PATH="/app/bin:${PATH}"
 ENV RAILS_ENV=production
+ENV NODE_ENV=production
 
 # Precompile assets
 RUN webpack
