@@ -7,7 +7,6 @@ x-app-defaults: &app-defaults
     DATABASE_URL: postgres://podify:verysecurepassword@db/podify
     REDIS_URL: redis://redis
     SECRET_KEY_BASE: a57d57661ef5df58b46fab6f04304e89108f22f89b31d2242b31891102da87d519a1f3c6459c1d2716b3b8c5438ef43e06ed4c29c8fb059eb650dc2ec0062d57
-    RAILS_LOG_TO_STDOUT: "yes"
     STORAGE_DIR: /storage
     INITIAL_USER_EMAIL: you@example.com
     INITIAL_USER_PASSWORD: yourpassword

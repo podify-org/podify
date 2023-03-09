@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   # view_context is defined by ActionView
   def dry_view_context(**options)
-    container["application_view_context"].with(view_context_options(**options))
+    container["application_view_context"].with(**view_context_options(**options))
   end
 
   def view_context_options(**overrides)

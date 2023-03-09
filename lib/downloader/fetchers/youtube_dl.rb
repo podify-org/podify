@@ -16,7 +16,7 @@ module Downloader
       end
 
       def download(source)
-        YoutubeDL.download(source.url, arguments(source))
+        YoutubeDL.download(source.url, **arguments(source))
           .on_progress do |state:, **|
             progress_callback.progress(state.progress)
           end

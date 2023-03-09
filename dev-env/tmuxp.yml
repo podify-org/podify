@@ -8,7 +8,7 @@ windows:
 
       - printf '\033]2;%s\033\\' 'Docker services'
       - cd dev-env
-      - docker-compose up
+      - docker compose up
 
     - shell_command:
       - tmux set -gw pane-border-status top

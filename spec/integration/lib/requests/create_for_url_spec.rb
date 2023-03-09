@@ -7,12 +7,12 @@ RSpec.describe Requests::CreateForUrl do
   let(:user) { create(:user) }
   let(:feed) { create(:feed, user: user) }
 
-  let(:result) { with_defer { subject.call(user: user, feed: feed, url: url) } }
+  let(:result) { subject.call(user: user, feed: feed, url: url) }
   let(:request) { result.value! }
 
   context 'when a source with the url does not exist yet' do
     it 'creates a source and request' do
-      expect { result }
+      expect { with_defer { result } }
         .to change(Source, :count).by(1)
         .and change(Request, :count).by(1)
       expect(result).to be_success
