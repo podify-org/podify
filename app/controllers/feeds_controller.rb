@@ -1,5 +1,3 @@
-require 'rss'
-
 class FeedsController < ApplicationController
   schema(:show) do
     required(:token).filled(:string)
