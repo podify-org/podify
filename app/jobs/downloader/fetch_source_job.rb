@@ -8,7 +8,10 @@ module Downloader
 
     def perform(source_id)
       source = Source[source_id]
-      raise "Source #{source_id} not found" unless source
+      if source.nil?
+        logger.error "Source #{source_id} doesn't exist"
+        return
+      end
 
       provide('downloader.fetch_source.progress_callback' => ProgressCallback.new(source)) do
         fetch_source.call(source).or do |failure|
