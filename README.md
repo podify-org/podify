@@ -1,5 +1,10 @@
 # Podify
 
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/maxhollmann/podify?sort=semver)
+![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/maxhollmann/podify?sort=semver)
+![GitHub](https://img.shields.io/github/license/podify-org/podify)
+![CI](https://github.com/podify-org/podify/workflows/CI/badge.svg)
+
 Create podcasts from anything youtube-dl can handle.
 
 ![Demo](demo.gif)
